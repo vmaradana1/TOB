@@ -1,0 +1,1812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Taste of Bharat | Authentic Indian Restaurant in Swindon</title>
+
+  <!-- SEO Meta -->
+  <meta name="description" content="Taste of Bharat is an authentic Indian restaurant in Swindon serving rich, homely flavours of India. Dine-in, takeaway and delivery available." />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Icons (Font Awesome) -->
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  />
+
+  <style>
+    :root {
+      --primary: #c94b32; /* warm red */
+      --primary-dark: #8f2e1c;
+      --accent: #f4b41a; /* saffron gold */
+      --bg: #0e0b0a;
+      --bg-light: #171212;
+      --text: #f7f3f0;
+      --muted: #c7bab0;
+      --card: #201614;
+      --shadow-soft: 0 18px 40px rgba(0, 0, 0, 0.4);
+      --radius-lg: 22px;
+      --radius-pill: 999px;
+      --transition-fast: 0.2s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: radial-gradient(circle at top, #2b1815 0, #050203 50%, #000 100%);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    /* Layout */
+    .container {
+      width: min(1120px, 92vw);
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: radial-gradient(circle at top, rgba(79, 30, 19, 0.9), rgba(8, 4, 5, 0.95));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.8rem 0;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .brand-logo {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 20% 20%, #f4b41a, #8f2e1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1.1rem;
+      box-shadow: 0 0 0 2px rgba(244, 180, 26, 0.25);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1.2;
+    }
+
+    .brand-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      letter-spacing: 0.04em;
+    }
+
+    .brand-sub {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      color: var(--muted);
+      letter-spacing: 0.16em;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.6rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      position: relative;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 500;
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -0.35rem;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--primary));
+      border-radius: 999px;
+      transition: width var(--transition-fast);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+
+    .btn {
+      border: none;
+      outline: none;
+      border-radius: var(--radius-pill);
+      padding: 0.6rem 1.3rem;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
+      white-space: nowrap;
+    }
+
+    .btn-primary {
+      background: linear-gradient(120deg, var(--accent), var(--primary));
+      color: #1a0503;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+    }
+
+    .btn-ghost:hover {
+      background: rgba(255, 255, 255, 0.04);
+      color: var(--text);
+    }
+
+    .phone-link {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.86rem;
+      color: var(--muted);
+    }
+
+    .phone-link span {
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 20px;
+      height: 2px;
+      background: #f5e9e3;
+      border-radius: 999px;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    /* Mobile nav */
+    @media (max-width: 768px) {
+      .nav-links,
+      .nav-cta .phone-link {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav {
+        padding-inline: 0.2rem;
+      }
+
+      header {
+        background: rgba(10, 4, 5, 0.96);
+      }
+
+      .mobile-menu {
+        display: none;
+        background: #120708;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+      }
+
+      .mobile-menu.open {
+        display: block;
+      }
+
+      .mobile-menu-inner {
+        padding: 0.75rem 0 1rem;
+        display: flex;
+        flex-direction: column;
+        gap: 0.4rem;
+      }
+
+      .mobile-menu-inner a {
+        padding: 0.45rem 0;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+        border-bottom: 1px dotted rgba(255, 255, 255, 0.08);
+      }
+
+      .mobile-menu-inner a:last-child {
+        border-bottom: none;
+      }
+
+      .mobile-cta {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    /* Hero */
+    .hero {
+      padding: 3.5rem 0 3rem;
+      position: relative;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 2.8rem;
+      align-items: center;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      border-radius: var(--radius-pill);
+      padding: 0.25rem 0.7rem;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(244, 180, 26, 0.38);
+      font-size: 0.72rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 0.9rem;
+    }
+
+    .pill i {
+      color: var(--accent);
+    }
+
+    .hero-title {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(2.2rem, 5vw, 3.1rem);
+      line-height: 1.1;
+      margin-bottom: 0.9rem;
+    }
+
+    .hero-title span {
+      color: var(--accent);
+    }
+
+    .hero-subtitle {
+      font-size: 0.96rem;
+      color: var(--muted);
+      max-width: 32rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .hero-tag {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+    }
+
+    .hero-tag-label {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: rgba(199, 186, 176, 0.7);
+    }
+
+    .hero-tag-value {
+      font-weight: 500;
+    }
+
+    .hero-image-card {
+      background: radial-gradient(circle at top left, #3a201b, #130606 60%, #040102 100%);
+      border-radius: 32px;
+      padding: 0.85rem;
+      box-shadow: var(--shadow-soft);
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .hero-photo {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      max-height: 360px;
+    }
+
+    .hero-photo::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.68), transparent 60%);
+      z-index: 1;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-photo-caption {
+      position: absolute;
+      left: 1rem;
+      bottom: 1rem;
+      z-index: 2;
+    }
+
+    .hero-photo-caption h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.15rem;
+    }
+
+    .hero-photo-caption p {
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    .hero-floating-badge {
+      position: absolute;
+      top: 0.9rem;
+      right: 0.9rem;
+      background: rgba(12, 5, 4, 0.88);
+      border: 1px solid rgba(244, 180, 26, 0.5);
+      border-radius: 999px;
+      padding: 0.4rem 0.75rem;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .hero-floating-badge i {
+      color: var(--accent);
+    }
+
+    .hero-chip-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+    }
+
+    .chip {
+      font-size: 0.7rem;
+      padding: 0.25rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: var(--muted);
+      background: rgba(0, 0, 0, 0.4);
+    }
+
+    /* Sections */
+    .section {
+      padding: 3.5rem 0;
+    }
+
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      gap: 1.8rem;
+      margin-bottom: 2.2rem;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 1.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .section-title span {
+      color: var(--accent);
+    }
+
+    .section-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      font-size: 0.72rem;
+      color: var(--muted);
+      margin-bottom: 0.15rem;
+    }
+
+    .section-desc {
+      font-size: 0.9rem;
+      color: var(--muted);
+      max-width: 26rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero {
+        padding-top: 2.4rem;
+      }
+
+      .hero-grid {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 2rem;
+      }
+
+      .hero-image-card {
+        order: -1;
+      }
+
+      .section {
+        padding: 3rem 0;
+      }
+
+      .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    /* About */
+    .about-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
+      gap: 2.4rem;
+    }
+
+    .about-text p {
+      margin-bottom: 0.9rem;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .about-highlights {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-top: 1rem;
+    }
+
+    .about-stat {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 18px;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .about-stat h4 {
+      font-size: 0.9rem;
+      margin-bottom: 0.1rem;
+    }
+
+    .about-stat p {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .about-card {
+      background: radial-gradient(circle at top, #2b1815, #100606 60%);
+      border-radius: 22px;
+      padding: 1.1rem 1.25rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 0.7rem;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+
+    .about-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chef-info {
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+
+    .chef-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 20%, #f4b41a, #8f2e1c);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+    }
+
+    .chef-meta span {
+      display: block;
+      font-size: 0.8rem;
+    }
+
+    .chef-meta small {
+      font-size: 0.7rem;
+      color: rgba(199, 186, 176, 0.8);
+    }
+
+    .about-card-badge {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      padding: 0.3rem 0.7rem;
+      border-radius: 999px;
+      border: 1px solid rgba(244, 180, 26, 0.6);
+      color: var(--accent);
+    }
+
+    .about-card-footer {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.6rem;
+      font-size: 0.77rem;
+    }
+
+    .about-card-footer span i {
+      margin-right: 0.35rem;
+      color: var(--accent);
+    }
+
+    @media (max-width: 900px) {
+      .about-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .about-highlights {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .about-highlights {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Menu */
+    .menu-card {
+      background: radial-gradient(circle at top, #271313, #0b0505 55%);
+      border-radius: 26px;
+      padding: 1.4rem 1.5rem 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .menu-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .menu-tab {
+      font-size: 0.78rem;
+      padding: 0.35rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      background: transparent;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      cursor: pointer;
+      transition: background var(--transition-fast), color var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .menu-tab.active {
+      background: linear-gradient(120deg, var(--accent), var(--primary));
+      color: #160503;
+      border-color: transparent;
+      transform: translateY(-1px);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .menu-item {
+      display: flex;
+      gap: 0.8rem;
+      align-items: flex-start;
+      padding: 0.7rem 0.75rem;
+      border-radius: 18px;
+      background: rgba(0, 0, 0, 0.35);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .menu-thumb {
+      width: 52px;
+      height: 52px;
+      border-radius: 18px;
+      overflow: hidden;
+      flex-shrink: 0;
+      background: linear-gradient(120deg, #4d261a, #a53c19);
+    }
+
+    .menu-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .menu-content {
+      flex: 1;
+    }
+
+    .menu-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .menu-name {
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .menu-price {
+      font-size: 0.86rem;
+      font-weight: 500;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+
+    .menu-desc {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-bottom: 0.2rem;
+    }
+
+    .menu-tags {
+      font-size: 0.72rem;
+      color: rgba(199, 186, 176, 0.8);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem;
+    }
+
+    .menu-tags span {
+      padding: 0.1rem 0.4rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .menu-note {
+      margin-top: 1rem;
+      font-size: 0.76rem;
+      color: rgba(199, 186, 176, 0.85);
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .menu-note i {
+      margin-right: 0.25rem;
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .menu-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Order section */
+    .order-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+      gap: 1.8rem;
+      padding: 1.5rem 1.7rem;
+      border-radius: 26px;
+      background: radial-gradient(circle at top, #341b15, #0b0505 60%);
+      border: 1px solid rgba(244, 180, 26, 0.55);
+      box-shadow: var(--shadow-soft);
+      align-items: center;
+    }
+
+    .order-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.3rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .order-card p {
+      font-size: 0.9rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .order-cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.7rem;
+    }
+
+    .order-details {
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .order-details div {
+      margin-bottom: 0.25rem;
+    }
+
+    .order-details i {
+      margin-right: 0.35rem;
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .order-card {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Gallery */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.7rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      border-radius: 18px;
+      overflow: hidden;
+      background: #2b1815;
+      aspect-ratio: 4/3;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.02);
+      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
+    }
+
+    .gallery-item::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.2s ease-out;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.06);
+      opacity: 0.92;
+    }
+
+    .gallery-item:hover::after {
+      opacity: 1;
+    }
+
+    .gallery-badge {
+      position: absolute;
+      left: 0.7rem;
+      bottom: 0.6rem;
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(255, 255, 255, 0.35);
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+    }
+
+    @media (max-width: 900px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 600px) {
+      .gallery-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Contact */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+      gap: 2rem;
+    }
+
+    .contact-card {
+      background: rgba(0, 0, 0, 0.4);
+      border-radius: 22px;
+      padding: 1.2rem 1.3rem 1.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: var(--shadow-soft);
+    }
+
+    .contact-card h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      margin-bottom: 0.2rem;
+    }
+
+    .contact-card p {
+      font-size: 0.88rem;
+      color: var(--muted);
+      margin-bottom: 1rem;
+    }
+
+    .contact-form {
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .field {
+      display: flex;
+      flex-direction: column;
+      gap: 0.15rem;
+      font-size: 0.8rem;
+    }
+
+    .field label {
+      color: var(--muted);
+    }
+
+    .field input,
+    .field textarea {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 0.6rem 0.7rem;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 0.85rem;
+      outline: none;
+      transition: border var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .field input:focus,
+    .field textarea:focus {
+      border-color: rgba(244, 180, 26, 0.8);
+      box-shadow: 0 0 0 1px rgba(244, 180, 26, 0.4);
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    .field textarea {
+      min-height: 110px;
+      resize: vertical;
+    }
+
+    .contact-meta {
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    .contact-meta-item {
+      margin-bottom: 0.6rem;
+    }
+
+    .contact-meta-item i {
+      margin-right: 0.4rem;
+      color: var(--accent);
+    }
+
+    .contact-hours {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+    }
+
+    .hours-list {
+      margin-top: 0.25rem;
+    }
+
+    .hours-list div {
+      display: flex;
+      justify-content: space-between;
+      gap: 0.5rem;
+    }
+
+    .map-card {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 22px;
+      padding: 1rem;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .map-placeholder {
+      width: 100%;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      aspect-ratio: 4/3;
+      background: radial-gradient(circle at top, #3b1f1a, #080405 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      color: var(--muted);
+      text-align: center;
+      padding: 1rem;
+    }
+
+    .map-link {
+      margin-top: 0.7rem;
+      font-size: 0.8rem;
+      color: var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    @media (max-width: 900px) {
+      .contact-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    /* Footer */
+    footer {
+      padding: 1.8rem 0 2.2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 2rem;
+    }
+
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.4rem;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.8rem;
+      color: var(--muted);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .footer-social {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .footer-social a {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.86rem;
+      transition: background var(--transition-fast), border var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .footer-social a:hover {
+      background: rgba(244, 180, 26, 0.1);
+      border-color: rgba(244, 180, 26, 0.7);
+      transform: translateY(-1px);
+    }
+
+    /* WhatsApp floating button (optional) */
+    .whatsapp-float {
+      position: fixed;
+      right: 1.2rem;
+      bottom: 1.3rem;
+      z-index: 60;
+    }
+
+    .whatsapp-float a {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background: #25d366;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+      font-size: 1.3rem;
+    }
+
+    @media (max-width: 600px) {
+      .whatsapp-float a {
+        width: 46px;
+        height: 46px;
+        font-size: 1.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <nav class="nav">
+        <div class="brand">
+          <div class="brand-logo">TB</div>
+          <div class="brand-text">
+            <span class="brand-title">Taste of Bharat</span>
+            <span class="brand-sub">Authentic Indian Kitchen</span>
+          </div>
+        </div>
+
+        <div class="nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">Story</a>
+          <a href="#menu">Menu</a>
+          <a href="#order">Order</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Visit</a>
+        </div>
+
+        <div class="nav-cta">
+          <a href="tel:01793316158" class="phone-link">
+            <i class="fa-solid fa-phone"></i>
+            <span>01793&nbsp;316158</span>
+          </a>
+          <a href="#order" class="btn btn-primary">
+            <i class="fa-solid fa-bowl-food"></i>
+            Order Now
+          </a>
+          <div class="hamburger" id="hamburger">
+            <span></span><span></span><span></span>
+          </div>
+        </div>
+      </nav>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="container">
+        <div class="mobile-menu-inner">
+          <a href="#home">Home</a>
+          <a href="#about">Our Story</a>
+          <a href="#menu">Menu</a>
+          <a href="#order">Order Online</a>
+          <a href="#gallery">Gallery</a>
+          <a href="#contact">Contact</a>
+
+          <div class="mobile-cta">
+            <a href="tel:01793316158" class="btn btn-ghost">
+              <i class="fa-solid fa-phone"></i>
+              Call Restaurant
+            </a>
+            <a href="#order" class="btn btn-primary">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Order on JustEat
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <main id="home" class="hero">
+    <div class="container">
+      <div class="hero-grid">
+        <!-- Left -->
+        <div>
+          <div class="pill">
+            <i class="fa-solid fa-fire-flame-curved"></i>
+            Now open in Swindon • Dine-in · Takeaway · Delivery
+          </div>
+          <h1 class="hero-title">
+            Experience the <span>True Taste of India</span> in Swindon.
+          </h1>
+          <p class="hero-subtitle">
+            Taste of Bharat brings recipes from Indian homes and streets straight to your table — rich curries, fragrant biryanis and tandoor-fresh breads, crafted with warmth and care.
+          </p>
+
+          <div class="hero-cta">
+            <a href="#order" class="btn btn-primary">
+              <i class="fa-solid fa-bag-shopping"></i>
+              Order on JustEat
+            </a>
+            <a href="#contact" class="btn btn-ghost">
+              <i class="fa-regular fa-calendar-check"></i>
+              Book a Table
+            </a>
+          </div>
+
+          <div class="hero-meta">
+            <div class="hero-tag">
+              <span class="hero-tag-label">Location</span>
+              <span class="hero-tag-value">198 Rodbourne Rd, Swindon SN2 2AA</span>
+            </div>
+            <div class="hero-tag">
+              <span class="hero-tag-label">Opening Hours</span>
+              <span class="hero-tag-value">Mon–Sun · 12:00 – 22:30</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right -->
+        <div class="hero-image-card">
+          <div class="hero-photo">
+            <!-- Replace src with your hero food photo -->
+            <img src="hero-food.jpg" alt="Taste of Bharat signature dishes" />
+            <div class="hero-photo-caption">
+              <h3>Plates Full of Bharat</h3>
+              <p>North & South Indian classics · Street favourites</p>
+            </div>
+          </div>
+
+          <div class="hero-floating-badge">
+            <i class="fa-solid fa-star"></i>
+            Authentic Indian flavours · Swindon
+          </div>
+
+          <div class="hero-chip-stack">
+            <span class="chip">Butter Chicken</span>
+            <span class="chip">Hyderabadi Biryani</span>
+            <span class="chip">Masala Dosa</span>
+            <span class="chip">Tandoori Specials</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- About -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Our Story</div>
+          <h2 class="section-title">
+            From the heart of India <span>to your table.</span>
+          </h2>
+        </div>
+        <p class="section-desc">
+          Taste of Bharat is built around one simple idea: Indian food should feel like a warm welcome. Every curry, bread and starter is made to taste like home — rich, aromatic and full of character.
+        </p>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-text">
+          <p>
+            At Taste of Bharat, we celebrate the many regions of India. From the creamy gravies of the North and fiery curries of the South to the tangy chaats of the streets, our menu is a journey through India’s most-loved flavours.
+          </p>
+          <p>
+            We use carefully sourced spices, fresh ingredients and time-tested cooking methods. Whether you’re joining us for a relaxed dine-in experience or ordering a cosy night-in via JustEat, expect food that’s comforting, generous and full of soul.
+          </p>
+
+          <div class="about-highlights">
+            <div class="about-stat">
+              <h4>Regional Classics</h4>
+              <p>Signature dishes from across India’s diverse states.</p>
+            </div>
+            <div class="about-stat">
+              <h4>Fresh Ingredients</h4>
+              <p>Cooked to order with handpicked spices and herbs.</p>
+            </div>
+            <div class="about-stat">
+              <h4>Family Friendly</h4>
+              <p>Perfect for families, friends, celebrations and big groups.</p>
+            </div>
+          </div>
+        </div>
+
+        <aside class="about-card">
+          <div class="about-card-header">
+            <div class="chef-info">
+              <div class="chef-avatar">C</div>
+              <div class="chef-meta">
+                <span>Chef’s Note</span>
+                <small>Head Chef · Taste of Bharat</small>
+              </div>
+            </div>
+            <div class="about-card-badge">Made with Heart</div>
+          </div>
+          <p>
+            “When you eat with us, we want it to feel like a visit to a friend’s home in India. No shortcuts, no compromise —
+            just slow-cooked gravies, fresh tandoor breads and comfort food that keeps you coming back.”
+          </p>
+          <div class="about-card-footer">
+            <span><i class="fa-solid fa-pepper-hot"></i>Spice levels adjusted to your taste</span>
+            <span><i class="fa-solid fa-leaf"></i>Plenty of vegetarian & vegan options</span>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <!-- Menu -->
+  <section id="menu" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Our Menu</div>
+          <h2 class="section-title">
+            Crafted dishes <span>for every craving.</span>
+          </h2>
+        </div>
+        <p class="section-desc">
+          Explore starters, mains, biryanis and breads inspired by recipes from homes and kitchens across India. Here’s a taste of what we serve.
+        </p>
+      </div>
+
+      <div class="menu-card">
+        <div class="menu-tabs">
+          <button class="menu-tab active" data-category="all">All</button>
+          <button class="menu-tab" data-category="starters">Starters</button>
+          <button class="menu-tab" data-category="mains">Curries</button>
+          <button class="menu-tab" data-category="biryani">Biryani</button>
+          <button class="menu-tab" data-category="breads">Breads</button>
+          <button class="menu-tab" data-category="south">South Indian</button>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+          <!-- Each .menu-item has data-category attribute(s) -->
+          <article class="menu-item" data-category="starters">
+            <div class="menu-thumb">
+              <img src="starter-mixed-platter.jpg" alt="Taste of Bharat mixed starter platter" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Bharat Mixed Platter</h3>
+                <span class="menu-price">£8.95</span>
+              </div>
+              <p class="menu-desc">
+                A sharing platter of onion bhajis, samosas, pakoras and tikka bites served with house chutneys.
+              </p>
+              <div class="menu-tags">
+                <span>Popular</span>
+                <span>Serves 2</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="starters">
+            <div class="menu-thumb">
+              <img src="starter-chaat.jpg" alt="Crispy aloo chaat" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Aloo Chaat</h3>
+                <span class="menu-price">£5.50</span>
+              </div>
+              <p class="menu-desc">
+                Crispy potatoes tossed with chutneys, yoghurt and spices — sweet, tangy and crunchy.
+              </p>
+              <div class="menu-tags">
+                <span>Vegetarian</span>
+                <span>Street Food</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="mains">
+            <div class="menu-thumb">
+              <img src="main-butter-chicken.jpg" alt="Butter chicken curry" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Butter Chicken (Murgh Makhani)</h3>
+                <span class="menu-price">£11.95</span>
+              </div>
+              <p class="menu-desc">
+                Tender chicken in a silky tomato-butter gravy, finished with cream and kasuri methi.
+              </p>
+              <div class="menu-tags">
+                <span>Mild</span>
+                <span>House Special</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="mains">
+            <div class="menu-thumb">
+              <img src="main-paneer-tikka-masala.jpg" alt="Paneer tikka masala" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Paneer Tikka Masala</h3>
+                <span class="menu-price">£10.95</span>
+              </div>
+              <p class="menu-desc">
+                Chargrilled paneer cubes simmered in a rich, spiced masala sauce with peppers and onions.
+              </p>
+              <div class="menu-tags">
+                <span>Vegetarian</span>
+                <span>Creamy</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="biryani">
+            <div class="menu-thumb">
+              <img src="biryani-hyderabadi.jpg" alt="Hyderabadi chicken biryani" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Hyderabadi Chicken Biryani</h3>
+                <span class="menu-price">£12.50</span>
+              </div>
+              <p class="menu-desc">
+                Layered basmati rice and marinated chicken slow-cooked with saffron, fried onions and whole spices.
+              </p>
+              <div class="menu-tags">
+                <span>Medium</span>
+                <span>Served with raita</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="biryani">
+            <div class="menu-thumb">
+              <img src="biryani-veg.jpg" alt="Vegetable biryani" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Vegetable Biryani</h3>
+                <span class="menu-price">£10.50</span>
+              </div>
+              <p class="menu-desc">
+                Fragrant basmati rice with seasonal vegetables, nuts and aromatic spices.
+              </p>
+              <div class="menu-tags">
+                <span>Vegetarian</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="breads">
+            <div class="menu-thumb">
+              <img src="bread-naan.jpg" alt="Garlic naan bread" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Garlic & Coriander Naan</h3>
+                <span class="menu-price">£3.20</span>
+              </div>
+              <p class="menu-desc">
+                Soft, tandoor-baked naan topped with garlic, butter and fresh coriander.
+              </p>
+              <div class="menu-tags">
+                <span>Tandoor</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="breads">
+            <div class="menu-thumb">
+              <img src="bread-roti.jpg" alt="Tandoori roti" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Tandoori Roti</h3>
+                <span class="menu-price">£2.40</span>
+              </div>
+              <p class="menu-desc">
+                Whole wheat bread cooked in the tandoor — a simple classic that goes with everything.
+              </p>
+              <div class="menu-tags">
+                <span>Vegan</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="south">
+            <div class="menu-thumb">
+              <img src="south-dosa.jpg" alt="Masala dosa" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Masala Dosa</h3>
+                <span class="menu-price">£9.95</span>
+              </div>
+              <p class="menu-desc">
+                Crispy rice & lentil crepe filled with spiced potato masala, served with sambar and chutneys.
+              </p>
+              <div class="menu-tags">
+                <span>South Indian</span>
+                <span>Vegetarian</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="menu-item" data-category="south">
+            <div class="menu-thumb">
+              <img src="south-idli.jpg" alt="Idli sambar" />
+            </div>
+            <div class="menu-content">
+              <div class="menu-title-row">
+                <h3 class="menu-name">Idli Sambar</h3>
+                <span class="menu-price">£8.50</span>
+              </div>
+              <p class="menu-desc">
+                Soft steamed rice cakes served with hot sambar and coconut chutney — light and comforting.
+              </p>
+              <div class="menu-tags">
+                <span>Vegan</span>
+                <span>Light</span>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="menu-note">
+          <span>
+            <i class="fa-solid fa-circle-info"></i>
+            Full menu, allergens and specials available in-restaurant and on JustEat.
+          </span>
+          <span>
+            Spice levels can be customised — just let us know when you order.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Order Online -->
+  <section id="order" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Order Online</div>
+          <h2 class="section-title">
+            Craving comfort? <span>We’ll bring Bharat to you.</span>
+          </h2>
+        </div>
+        <p class="section-desc">
+          Enjoy your favourite curries, biryanis and starters at home. Order securely through JustEat or call us directly for takeaway.
+        </p>
+      </div>
+
+      <div class="order-card">
+        <div>
+          <h3>Order via JustEat or call the restaurant directly.</h3>
+          <p>
+            Choose your favourites, customise your spice level and add sides — we’ll prepare everything fresh and have it ready for collection or delivery.
+          </p>
+
+          <div class="order-cta">
+            <!-- Replace # with your actual JustEat listing URL when available -->
+            <a href="#" class="btn btn-primary" target="_blank" rel="noopener">
+              <i class="fa-brands fa-justeat"></i>
+              Order on JustEat
+            </a>
+            <a href="tel:01793316158" class="btn btn-ghost">
+              <i class="fa-solid fa-phone"></i>
+              Call 01793 316158
+            </a>
+          </div>
+        </div>
+
+        <div class="order-details">
+          <div>
+            <i class="fa-solid fa-location-dot"></i>
+            <strong>Address:</strong> 198 Rodbourne Rd, Swindon SN2 2AA
+          </div>
+          <div>
+            <i class="fa-solid fa-clock"></i>
+            <strong>Opening hours:</strong> Mon – Sun · 12:00 – 22:30
+          </div>
+          <div>
+            <i class="fa-solid fa-truck-fast"></i>
+            <strong>Services:</strong> Dine-in · Takeaway · Delivery via JustEat
+          </div>
+          <div>
+            <i class="fa-solid fa-note-sticky"></i>
+            <strong>Note:</strong> Delivery radius and fees are managed directly by JustEat.
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Gallery</div>
+          <h2 class="section-title">
+            A little preview <span>from our kitchen & tables.</span>
+          </h2>
+        </div>
+        <p class="section-desc">
+          Swap “What should we eat?” for “Let’s go to Taste of Bharat.” Replace these images with photos of your dishes, ambience and guests.
+        </p>
+      </div>
+
+      <div class="gallery-grid">
+        <!-- Replace src values with your own photos -->
+        <div class="gallery-item">
+          <img src="gallery-1.jpg" alt="Indian thali spread" />
+          <span class="gallery-badge">Chef’s Special</span>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-2.jpg" alt="Tandoori platter" />
+          <span class="gallery-badge">Tandoor</span>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-3.jpg" alt="Restaurant interior" />
+          <span class="gallery-badge">Ambience</span>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-4.jpg" alt="Biryani close up" />
+          <span class="gallery-badge">Biryani</span>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-5.jpg" alt="Indian desserts" />
+          <span class="gallery-badge">Sweet Finish</span>
+        </div>
+        <div class="gallery-item">
+          <img src="gallery-6.jpg" alt="Family dining at Taste of Bharat" />
+          <span class="gallery-badge">Good Times</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="section">
+    <div class="container">
+      <div class="section-header">
+        <div>
+          <div class="section-kicker">Visit Us</div>
+          <h2 class="section-title">
+            Come by, say hello <span>& share a meal.</span>
+          </h2>
+        </div>
+        <p class="section-desc">
+          Book a table, plan a family dinner or organise a group celebration. Drop us a message or call — we’re happy to help.
+        </p>
+      </div>
+
+      <div class="contact-grid">
+        <div class="contact-card">
+          <h3>Book a table or ask us anything.</h3>
+          <p>
+            Use the form below to send us your enquiry. For same-day bookings or large groups, calling us is usually fastest.
+          </p>
+
+          <!-- Replace action with your Formspree / backend endpoint if needed -->
+          <form class="contact-form" action="#" method="post">
+            <div class="field">
+              <label for="name">Name</label>
+              <input id="name" name="name" type="text" placeholder="Your full name" required />
+            </div>
+            <div class="field">
+              <label for="phone">Phone</label>
+              <input id="phone" name="phone" type="tel" placeholder="Your contact number" required />
+            </div>
+            <div class="field">
+              <label for="guests">Guests &amp; Date</label>
+              <input id="guests" name="guests" type="text" placeholder="E.g. 4 people, Saturday 7:30 pm" />
+            </div>
+            <div class="field">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your booking or question"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">
+              <i class="fa-regular fa-paper-plane"></i>
+              Send Enquiry
+            </button>
+          </form>
+        </div>
+
+        <div class="map-card">
+          <div class="contact-meta">
+            <div class="contact-meta-item">
+              <i class="fa-solid fa-location-dot"></i>
+              198 Rodbourne Rd, Swindon SN2 2AA
+            </div>
+            <div class="contact-meta-item">
+              <i class="fa-solid fa-phone"></i>
+              <a href="tel:01793316158">01793 316158</a>
+            </div>
+            <div class="contact-meta-item">
+              <i class="fa-brands fa-facebook"></i>
+              <a href="https://www.facebook.com/share/1CAsTpvdjP/?mibextid=wwXIfr" target="_blank" rel="noopener">
+                Taste of Bharat on Facebook
+              </a>
+            </div>
+
+            <div class="contact-hours">
+              Opening hours
+              <div class="hours-list">
+                <div><span>Mon – Thu</span><span>12:00 – 22:00</span></div>
+                <div><span>Fri – Sat</span><span>12:00 – 22:30</span></div>
+                <div><span>Sunday</span><span>12:00 – 22:00</span></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="map-placeholder">
+            <!-- You can replace this with an actual Google Maps embed iframe -->
+            <div>
+              <strong>Find us on Google Maps</strong><br />
+              Search for “Taste of Bharat, 198 Rodbourne Rd, Swindon SN2 2AA”.
+            </div>
+          </div>
+
+          <a
+            class="map-link"
+            href="https://www.google.com/maps/search/?api=1&query=198+Rodbourne+Rd,+Swindon+SN2+2AA"
+            target="_blank"
+            rel="noopener"
+          >
+            <i class="fa-solid fa-map-location-dot"></i>
+            Open in Google Maps
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span>&copy; <span id="year"></span> Taste of Bharat.</span>
+          <span>All rights reserved.</span>
+        </div>
+        <div>198 Rodbourne Rd, Swindon SN2 2AA · Phone: <a href="tel:01793316158">01793 316158</a></div>
+        <div class="footer-social">
+          <span>Follow us</span>
+          <a
+            href="https://www.facebook.com/share/1CAsTpvdjP/?mibextid=wwXIfr"
+            target="_blank"
+            rel="noopener"
+            aria-label="Facebook"
+          >
+            <i class="fa-brands fa-facebook-f"></i>
+          </a>
+          <!-- Add Instagram or others when available
+          <a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          -->
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp Button (update the phone number if you use WhatsApp for orders) -->
+  <!--
+  <div class="whatsapp-float">
+    <a href="https://wa.me/44XXXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+    </a>
+  </div>
+  -->
+
+  <script>
+    // Mobile menu toggle
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    // Close mobile menu on link click
+    document.querySelectorAll(".mobile-menu-inner a").forEach((link) => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+      });
+    });
+
+    // Menu filter
+    const tabs = document.querySelectorAll(".menu-tab");
+    const items = document.querySelectorAll(".menu-item");
+
+    tabs.forEach((tab) => {
+      tab.addEventListener("click", () => {
+        const category = tab.getAttribute("data-category");
+
+        tabs.forEach((t) => t.classList.remove("active"));
+        tab.classList.add("active");
+
+        items.forEach((item) => {
+          const itemCategory = item.getAttribute("data-category");
+          if (category === "all" || itemCategory === category) {
+            item.style.display = "flex";
+          } else {
+            item.style.display = "none";
+          }
+        });
+      });
+    });
+
+    // Dynamic year
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
