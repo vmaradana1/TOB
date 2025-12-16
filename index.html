@@ -30,7 +30,6 @@
       --header-height: 90px;
     }
 
-    /* --- RESET & BASICS --- */
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
     html { scroll-behavior: smooth; font-size: 16px; }
@@ -61,7 +60,7 @@
     }
     .btn-primary {
       background-color: var(--color-accent);
-      color: #000; /* Black text on orange for contrast */
+      color: #000;
     }
     .btn-primary:hover {
       background-color: var(--color-accent-hover);
@@ -97,9 +96,7 @@
       display: flex; justify-content: space-between; align-items: center;
     }
 
-    .brand {
-      display: flex; align-items: center; gap: 1rem;
-    }
+    .brand { display: flex; align-items: center; gap: 1rem; }
     
     .logo-wrapper {
       width: 60px; height: 60px;
@@ -109,55 +106,36 @@
       display: flex; justify-content: center; align-items: center;
       background: #000;
     }
-    .logo-wrapper img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-    }
+    .logo-wrapper img { width: 100%; height: 100%; object-fit: cover; }
 
     .brand-text h1 {
-      font-size: 1.6rem;
-      line-height: 1;
-      margin-bottom: 0.2rem;
-      color: var(--color-primary);
+      font-size: 1.6rem; line-height: 1; margin-bottom: 0.2rem; color: var(--color-primary);
     }
     .brand-text span {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      color: var(--color-accent);
-      font-weight: 600;
-      font-family: 'DM Sans', sans-serif;
+      font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px;
+      color: var(--color-accent); font-weight: 600; font-family: 'DM Sans', sans-serif;
     }
 
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-primary); position: relative; }
     .nav-links a:hover { color: var(--color-accent); }
 
-    /* --- HERO SECTION --- */
+    /* --- HERO --- */
     .hero {
       padding-top: calc(var(--header-height) + 3rem);
       padding-bottom: 5rem;
       background: white;
     }
-    
     .hero-grid {
       display: grid; grid-template-columns: 1.1fr 0.9fr;
       gap: 4rem; align-items: center;
     }
-
     .hero-content h2 {
-      font-size: 3.8rem;
-      line-height: 1.1;
-      margin-bottom: 1.5rem;
-      color: var(--color-primary);
+      font-size: 3.8rem; line-height: 1.1; margin-bottom: 1.5rem; color: var(--color-primary);
     }
     .hero-content p {
-      font-size: 1.2rem;
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 500px;
+      font-size: 1.2rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 500px;
     }
-    
     .hero-image-frame { position: relative; }
     .hero-image {
       border-radius: 30px 0 30px 0;
@@ -167,41 +145,27 @@
       transition: transform 0.5s ease;
     }
     .hero-image:hover { transform: rotate(0); }
-    .hero-image img { width: 100%; height: auto; }
 
-    /* --- MENU SECTION --- */
-    .section-title {
-      text-align: center; margin: 4rem 0 3rem;
-    }
+    /* --- MENU --- */
+    .section-title { text-align: center; margin: 4rem 0 3rem; }
     .section-title h3 { font-size: 2.8rem; margin-bottom: 0.5rem; }
     .section-title p { color: var(--text-muted); font-size: 1.1rem; }
 
     .menu-container {
       display: grid; grid-template-columns: 280px 1fr;
-      gap: 3rem;
-      align-items: start;
+      gap: 3rem; align-items: start;
     }
-
     .menu-sidebar {
       position: sticky; top: calc(var(--header-height) + 2rem);
-      background: white;
-      padding: 1.5rem;
-      border-radius: 12px;
-      box-shadow: var(--shadow-soft);
-      border: 1px solid var(--border-light);
+      background: white; padding: 1.5rem;
+      border-radius: 12px; box-shadow: var(--shadow-soft); border: 1px solid var(--border-light);
     }
-    
     .category-btn {
       display: block; width: 100%; text-align: left;
-      padding: 1rem 1.2rem; 
-      margin-bottom: 0.5rem;
+      padding: 1rem 1.2rem; margin-bottom: 0.5rem;
       border: none; background: transparent;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 1.15rem; 
-      font-weight: 600; 
-      color: var(--text-muted);
-      border-radius: 8px; cursor: pointer;
-      transition: all 0.2s;
+      font-family: 'DM Sans', sans-serif; font-size: 1.15rem; font-weight: 600; 
+      color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s;
     }
     .category-btn:hover { background: #f4f4f4; color: var(--color-primary); }
     .category-btn.active { background: var(--color-primary); color: var(--color-accent); }
@@ -210,23 +174,13 @@
       display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 1.5rem;
     }
-
     .dish-card {
-      background: white;
-      padding: 1.8rem;
-      border-radius: 16px;
-      border: 1px solid var(--border-light);
+      background: white; padding: 1.8rem;
+      border-radius: 16px; border: 1px solid var(--border-light);
       transition: transform 0.3s, box-shadow 0.3s;
     }
-    .dish-card:hover {
-      transform: translateY(-5px);
-      box-shadow: var(--shadow-soft);
-      border-color: var(--color-accent);
-    }
-    .dish-header {
-      display: flex; justify-content: space-between; align-items: flex-start;
-      margin-bottom: 0.5rem;
-    }
+    .dish-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--color-accent); }
+    .dish-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; }
     .dish-title { font-weight: 700; color: var(--text-main); font-size: 1.15rem; }
     .dish-price { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
     .dish-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
@@ -234,152 +188,84 @@
     /* --- GALLERY --- */
     .gallery-grid {
       display: grid; grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 250px;
-      gap: 1.2rem;
-      padding-bottom: 4rem;
+      grid-auto-rows: 250px; gap: 1.2rem; padding-bottom: 4rem;
     }
     .gallery-item {
-      position: relative;
-      border-radius: 16px;
-      overflow: hidden;
-      box-shadow: var(--shadow-soft);
+      position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft);
     }
-    .gallery-item img {
-      width: 100%; height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .gallery-item:hover img { transform: scale(1.08); }
-    
     .g-large { grid-column: span 8; }
     .g-tall { grid-column: span 4; grid-row: span 2; }
     .g-std { grid-column: span 4; }
 
-    /* --- CONTACT & HOURS (Light Theme) --- */
-    .info-grid {
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 5rem;
-      margin-top: 2rem;
-    }
-
-    /* MODERN LIGHT FORM STYLING */
+    /* --- CONTACT --- */
+    .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; margin-top: 2rem; }
     .form-wrapper {
-      background: white; 
-      padding: 2.5rem;
-      border-radius: 24px;
-      border: 1px solid var(--border-light);
-      box-shadow: var(--shadow-soft);
+      background: white; padding: 2.5rem;
+      border-radius: 24px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft);
     }
     .form-wrapper h3 { color: var(--color-primary); margin-bottom: 0.5rem; font-size: 2rem; }
     .form-sub { color: var(--text-muted); margin-bottom: 2rem; display:block; }
-    
     .form-group { margin-bottom: 1.2rem; }
     .form-group label { 
-      display: block; margin-bottom: 0.6rem; 
-      font-size: 0.85rem; letter-spacing: 1px; 
-      text-transform: uppercase; color: #888; font-weight: 600; 
+      display: block; margin-bottom: 0.6rem; font-size: 0.85rem; 
+      letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; 
     }
-    
     .form-control {
-      width: 100%; padding: 1.1rem;
-      border-radius: 12px; border: 1px solid #ddd;
-      background: #F9F9F9; /* Light Grey Input */
-      color: var(--color-primary);
-      font-family: inherit;
-      font-size: 1rem;
-      transition: all 0.3s;
+      width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd;
+      background: #F9F9F9; color: var(--color-primary);
+      font-family: inherit; font-size: 1rem; transition: all 0.3s;
     }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
 
-    /* LIGHT HOURS STYLING */
     .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; }
     .hours-list {
-      background: transparent;
-      padding: 0;
-      border-left: 3px solid var(--color-accent);
-      padding-left: 2rem;
+      background: transparent; padding: 0;
+      border-left: 3px solid var(--color-accent); padding-left: 2rem;
     }
     .hour-row {
-      display: flex; justify-content: space-between;
-      padding: 1rem 0;
-      border-bottom: 1px solid #eee;
+      display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee;
     }
     .hour-row:last-child { border-bottom: none; }
     .day { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
     .time { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
 
-    /* MAP CONTAINER */
     .map-container {
-      margin-top: 3rem;
-      border-radius: 20px;
-      overflow: hidden;
-      height: 300px; /* Increased height for better visibility */
-      border: 1px solid #ddd;
-      box-shadow: var(--shadow-soft);
+      margin-top: 3rem; border-radius: 20px; overflow: hidden;
+      height: 300px; border: 1px solid #ddd; box-shadow: var(--shadow-soft);
     }
 
     /* --- FOOTER --- */
     footer {
-      background: #000;
-      color: #666;
-      padding: 3rem 0;
-      text-align: center;
-      font-size: 0.9rem;
-      border-top: 1px solid #222;
-      margin-top: 5rem;
+      background: #000; color: #666; padding: 3rem 0;
+      text-align: center; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 5rem;
     }
-    .social-links {
-      display: flex; justify-content: center; gap: 1rem;
-      margin-bottom: 1.5rem;
-    }
+    .social-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
     .social-links a {
-      width: 44px; height: 44px;
-      border-radius: 50%;
-      background: #111;
-      display: flex; justify-content: center; align-items: center;
-      color: white;
-      transition: background 0.3s;
+      width: 44px; height: 44px; border-radius: 50%; background: #111;
+      display: flex; justify-content: center; align-items: center; color: white; transition: background 0.3s;
     }
     .social-links a:hover { background: var(--color-accent); color: black; }
-
-    /* --- WHATSAPP FLOAT --- */
     .whatsapp-float {
-      position: fixed; bottom: 30px; right: 30px;
-      width: 60px; height: 60px;
-      background: #25d366; color: white;
-      border-radius: 50%;
+      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+      background: #25d366; color: white; border-radius: 50%;
       display: flex; justify-content: center; align-items: center;
-      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
-      z-index: 999;
-      transition: transform 0.3s;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 999; transition: transform 0.3s;
     }
     .whatsapp-float:hover { transform: scale(1.1); }
 
-    /* --- RESPONSIVE --- */
     @media (max-width: 900px) {
       .nav-links { display: none; }
-      
       .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
       .hero-content h2 { font-size: 2.8rem; }
       .hero-image { transform: rotate(0); margin-top: 1rem; }
-      
       .menu-container { grid-template-columns: 1fr; }
-      .menu-sidebar { 
-        position: relative; top: 0; 
-        overflow-x: auto; display: flex; 
-        padding: 1rem; margin-bottom: 1rem; 
-      }
-      .category-btn { 
-        white-space: nowrap; width: auto; 
-        margin: 0 0.5rem 0 0; background: #f8f8f8;
-        font-size: 1rem;
-      }
-      
+      .menu-sidebar { position: relative; top: 0; overflow-x: auto; display: flex; padding: 1rem; margin-bottom: 1rem; }
+      .category-btn { white-space: nowrap; width: auto; margin: 0 0.5rem 0 0; background: #f8f8f8; font-size: 1rem; }
       .gallery-grid { display: flex; flex-direction: column; height: auto; }
       .gallery-item { height: 260px; }
-      
       .info-grid { grid-template-columns: 1fr; gap: 3rem; }
-      
       .hours-list { padding-left: 1rem; border-left-width: 2px; }
     }
   </style>
@@ -390,7 +276,7 @@
     <div class="nav-container">
       <div class="brand">
         <div class="logo-wrapper">
-          <img src="Screenshot 2025-11-23 at 10.04.04 PM.jpg" alt="Taste of Bharat Logo">
+          <img src="logo.jpg" alt="Taste of Bharat Logo">
         </div>
         <div class="brand-text">
           <h1>Taste Of Bharat</h1>
@@ -420,7 +306,7 @@
       </div>
       <div class="hero-image-frame">
         <div class="hero-image">
-          <img src="Screenshot 2025-12-16 at 5.09.29 PM.jpg" alt="Sizzling Mixed Grill Platter">
+          <img src="hero.jpg" alt="Sizzling Mixed Grill Platter">
         </div>
       </div>
     </div>
@@ -431,18 +317,14 @@
       <h3>Our Menu</h3>
       <p>Search dishes or select a category below</p>
     </div>
-
     <div class="menu-container">
-      <aside class="menu-sidebar" id="categoryList">
-        </aside>
-
+      <aside class="menu-sidebar" id="categoryList"></aside>
       <div class="menu-content">
         <div style="margin-bottom: 2rem;">
           <input type="text" id="menuSearch" placeholder="Search for Butter Chicken, Biryani..." 
                  style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size:1rem;">
         </div>
-        <div class="menu-grid" id="menuGrid">
-          </div>
+        <div class="menu-grid" id="menuGrid"></div>
       </div>
     </div>
   </div>
@@ -452,19 +334,18 @@
       <h3>Visual Feast</h3>
       <p>A glimpse into our kitchen</p>
     </div>
-    
     <div class="gallery-grid">
       <div class="gallery-item g-large">
-        <img src="Screenshot 2025-12-16 at 5.08.40 PM.jpg" alt="Indian Feast">
+        <img src="feast.jpg" alt="Indian Feast">
       </div>
       <div class="gallery-item g-tall">
-        <img src="Screenshot 2025-12-16 at 5.09.05 PM.jpg" alt="Crispy Starters">
+        <img src="starters.jpg" alt="Crispy Starters">
       </div>
       <div class="gallery-item g-std">
-        <img src="Screenshot 2025-12-16 at 5.08.49 PM.jpg" alt="Paneer Tikka">
+        <img src="paneer.jpg" alt="Paneer Tikka">
       </div>
       <div class="gallery-item g-std">
-        <img src="Screenshot 2025-12-16 at 5.09.15 PM.jpg" alt="Pineapple Dessert">
+        <img src="dessert.jpg" alt="Pineapple Dessert">
       </div>
     </div>
   </div>
@@ -479,7 +360,6 @@
           <form action="https://formsubmit.co/kamalshelley@gmal.com" method="POST">
             <input type="hidden" name="_subject" value="Table Reservation">
             <input type="hidden" name="_captcha" value="false">
-            
             <div class="form-group">
               <label>Full Name</label>
               <input type="text" name="name" class="form-control" required placeholder="e.g. John Doe">
@@ -504,7 +384,6 @@
                 <input type="tel" name="phone" class="form-control" required placeholder="07...">
               </div>
             </div>
-            
             <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1rem;">Confirm Booking</button>
           </form>
         </div>
@@ -514,32 +393,14 @@
           <p style="color:var(--text-muted); margin-bottom:2rem; font-size:1.1rem;">198 Rodbourne Rd, Swindon SN2 2AA<br>01793 316158</p>
 
           <div class="hours-list">
-            <div class="hour-row">
-              <span class="day">Monday</span>
-              <span class="time" style="color: #999;">Closed</span>
-            </div>
-            <div class="hour-row">
-              <span class="day">Tuesday — Friday</span>
-              <span class="time">5:00 PM — 10:00 PM</span>
-            </div>
-            <div class="hour-row">
-              <span class="day">Saturday</span>
-              <span class="time">12—2 PM, 5—10 PM</span>
-            </div>
-            <div class="hour-row">
-              <span class="day">Sunday</span>
-              <span class="time">12—2 PM, 5—10 PM</span>
-            </div>
+            <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
+            <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">5:00 PM — 10:00 PM</span></div>
+            <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
+            <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
           </div>
           
           <div class="map-container">
-            <iframe 
-              width="100%" 
-              height="100%" 
-              style="border:0" 
-              loading="lazy" 
-              src="https://maps.app.goo.gl/S5HmpF2xbsMGzudN9">
-            </iframe>
+            <iframe width="100%" height="100%" style="border:0" loading="lazy" src="https://maps.app.goo.gl/S5HmpF2xbsMGzudN9"></iframe>
           </div>
         </div>
 
@@ -566,7 +427,6 @@
   </a>
 
   <script>
-    // --- MENU DATA ---
     const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
 
     // --- LOGIC ---
@@ -602,18 +462,15 @@
     function renderMenu(filter = '') {
       menuGrid.innerHTML = '';
       let itemsToRender = [];
-
       if(filter) {
         itemsToRender = menuItems.filter(i => (i.name + i.desc).toLowerCase().includes(filter.toLowerCase()));
       } else {
         itemsToRender = grouped.get(activeCategory);
       }
-
       if(itemsToRender.length === 0) {
         menuGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">No dishes found matching your search.</div>';
         return;
       }
-
       itemsToRender.forEach(item => {
         const card = document.createElement('div');
         card.className = 'dish-card';
@@ -632,7 +489,6 @@
       renderMenu(e.target.value);
     });
 
-    // Init
     renderCategories();
     renderMenu();
     document.getElementById('year').textContent = new Date().getFullYear();
