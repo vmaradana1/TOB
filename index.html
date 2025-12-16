@@ -3,9 +3,19 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Taste of Bharat | Modern Indian Dining</title>
-  <meta name="description" content="Taste Of Bharat — Authentic & Modern Indian Cuisine in Swindon. Dine-in, Takeaway & Delivery." />
+  
+  <title>Taste of Bharat | Modern Indian Restaurant in Swindon</title>
+  <meta name="title" content="Taste of Bharat | Modern Indian Restaurant in Swindon">
+  <meta name="description" content="Experience authentic and modern Indian cuisine at Taste of Bharat, Swindon. Dine-in, takeaway, and delivery available. Rated for best curries, biryanis, and grills." />
+  <meta name="keywords" content="Indian restaurant Swindon, Taste of Bharat, best curry Swindon, Indian takeaway, dine-in Swindon, authentic Indian food">
+  <meta name="robots" content="index, follow">
   <meta name="theme-color" content="#0B0B0B" />
+
+  <meta property="og:type" content="restaurant.restaurant" />
+  <meta property="og:url" content="https://tasteofbharat.com/" />
+  <meta property="og:title" content="Taste of Bharat | Modern Indian Dining" />
+  <meta property="og:description" content="Authentic Indian flavours in Swindon. Book your table today." />
+  <meta property="og:image" content="hero.jpg" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -36,6 +46,7 @@
       color: var(--text-main);
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--color-primary); }
@@ -43,6 +54,24 @@
     img { max-width: 100%; display: block; height: auto; }
     ul { list-style: none; }
 
+    /* --- ANIMATIONS (New) --- */
+    /* Fade In Up */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+    }
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Staggered delays */
+    .delay-100 { transition-delay: 0.1s; }
+    .delay-200 { transition-delay: 0.2s; }
+    .delay-300 { transition-delay: 0.3s; }
+
+    /* --- UTILITIES --- */
     .container { max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; }
     
     .btn {
@@ -50,10 +79,14 @@
       padding: 0.8rem 1.8rem;
       font-weight: 600; letter-spacing: 0.5px;
       border-radius: 50px;
-      transition: transform 0.2s, box-shadow 0.2s;
+      transition: all 0.3s ease;
       cursor: pointer;
       font-size: 0.95rem;
+      position: relative;
+      overflow: hidden;
     }
+    .btn:active { transform: scale(0.98); }
+    
     .btn-primary {
       background-color: var(--color-accent);
       color: #000;
@@ -61,7 +94,7 @@
     .btn-primary:hover {
       background-color: var(--color-accent-hover);
       transform: translateY(-2px);
-      box-shadow: 0 10px 20px rgba(233, 142, 58, 0.3);
+      box-shadow: 0 10px 25px rgba(233, 142, 58, 0.4);
     }
     .btn-outline {
       border: 2px solid var(--color-primary);
@@ -71,6 +104,7 @@
     .btn-outline:hover {
       background: var(--color-primary);
       color: white;
+      transform: translateY(-2px);
     }
 
     /* --- NAVIGATION --- */
@@ -78,10 +112,12 @@
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--header-height);
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(0,0,0,0.05);
       display: flex; align-items: center;
+      transition: all 0.3s;
     }
     
     .nav-container {
@@ -94,22 +130,22 @@
 
     .brand { display: flex; align-items: center; gap: 0.8rem; }
     
+    /* LOGO FIX */
     .logo-wrapper {
-      width: 50px; height: 50px;
+      width: 54px; height: 54px;
       border-radius: 50%;
       border: 2px solid var(--color-accent);
       overflow: hidden; 
       display: flex; justify-content: center; align-items: center;
       background: #000;
       flex-shrink: 0;
+      padding: 0; /* Ensure no padding pushes image */
     }
-    
-    /* FIX 1: Logo Alignment - Ensures image is perfectly centered */
     .logo-wrapper img { 
       width: 100%; 
       height: 100%; 
       object-fit: cover; 
-      object-position: center; 
+      object-position: center; /* Forces center alignment */
       display: block; 
     }
 
@@ -121,9 +157,13 @@
       color: var(--color-accent); font-weight: 600; font-family: 'DM Sans', sans-serif; display: block;
     }
 
-    /* Desktop Nav */
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-primary); position: relative; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px;
+      background: var(--color-accent); transition: width 0.3s;
+    }
+    .nav-links a:hover::after { width: 100%; }
     .nav-links a:hover { color: var(--color-accent); }
 
     /* Mobile Toggle */
@@ -143,31 +183,42 @@
       position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
       background: white; z-index: 1001;
       display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-      transform: translateY(-100%); transition: transform 0.4s ease;
+      transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
     }
     .mobile-menu.active { transform: translateY(0); }
-    .mobile-menu a { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 700; }
+    .mobile-menu a { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--color-primary); }
 
     /* --- HERO --- */
     .hero {
       padding-top: calc(var(--header-height) + 3rem);
       padding-bottom: 5rem;
       background: white;
+      position: relative;
+      overflow: hidden;
     }
+    /* Subtle background animation */
+    .hero::before {
+      content: ''; position: absolute; top: -50%; right: -50%; width: 100%; height: 100%;
+      background: radial-gradient(circle, rgba(233,142,58,0.05) 0%, transparent 70%);
+      animation: pulse 10s infinite alternate;
+    }
+    @keyframes pulse { 0% { transform: scale(1); } 100% { transform: scale(1.5); } }
+
     .hero-grid {
       display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem; align-items: center;
+      gap: 4rem; align-items: center; position: relative;
     }
     .hero-content h2 {
-      font-size: clamp(2.5rem, 5vw, 3.8rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--color-primary);
+      font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--color-primary);
     }
     .hero-content p {
       font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 500px;
     }
+    
     .hero-image-frame { position: relative; }
     .hero-image {
       border-radius: 30px 0 30px 0;
-      box-shadow: 15px 15px 0 var(--color-primary); 
+      box-shadow: 20px 20px 0 var(--color-primary); 
       overflow: hidden;
       transform: rotate(-2deg);
       transition: transform 0.5s ease;
@@ -183,14 +234,13 @@
       display: grid; grid-template-columns: 260px 1fr;
       gap: 3rem; align-items: start;
     }
-    
-    /* Menu Categories */
     .menu-sidebar {
       position: sticky; top: calc(var(--header-height) + 2rem);
       background: white; padding: 1.5rem;
       border-radius: 12px; box-shadow: var(--shadow-soft); border: 1px solid var(--border-light);
       max-height: 80vh; overflow-y: auto;
     }
+    
     .category-btn {
       display: block; width: 100%; text-align: left;
       padding: 0.9rem 1.1rem; margin-bottom: 0.3rem;
@@ -198,8 +248,8 @@
       font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 600; 
       color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s;
     }
-    .category-btn:hover { background: #FFF4E5; color: var(--color-primary); }
-    .category-btn.active { background: var(--color-primary); color: var(--color-accent); }
+    .category-btn:hover { background: #FFF4E5; color: var(--color-primary); padding-left: 1.4rem; }
+    .category-btn.active { background: var(--color-primary); color: var(--color-accent); padding-left: 1.4rem; }
 
     .menu-grid {
       display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -208,9 +258,9 @@
     .dish-card {
       background: white; padding: 1.5rem;
       border-radius: 16px; border: 1px solid var(--border-light);
-      transition: transform 0.3s, box-shadow 0.3s;
+      transition: all 0.3s ease;
     }
-    .dish-card:hover { transform: translateY(-3px); box-shadow: var(--shadow-soft); border-color: var(--color-accent); }
+    .dish-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--color-accent); }
     .dish-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 10px; }
     .dish-title { font-weight: 700; color: var(--text-main); font-size: 1.1rem; }
     .dish-price { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; white-space: nowrap; }
@@ -259,7 +309,6 @@
       width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%;
       display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;
     }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
     .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; }
     .hours-list {
@@ -289,7 +338,7 @@
       width: 44px; height: 44px; border-radius: 50%; background: #111;
       display: flex; justify-content: center; align-items: center; color: white; transition: background 0.3s;
     }
-    .social-links a:hover { background: var(--color-accent); color: black; }
+    .social-links a:hover { background: var(--color-accent); color: black; transform: scale(1.1); }
     .whatsapp-float {
       position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
       background: #25d366; color: white; border-radius: 50%;
@@ -300,13 +349,12 @@
 
     /* --- MOBILE OPTIMIZATION --- */
     @media (max-width: 900px) {
-      /* Header & Nav */
-      .nav-links { display: none; } /* Hide Desktop Nav */
-      .hamburger { display: flex; } /* Show Hamburger */
-      
+      /* Header */
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
       .brand-text h1 { font-size: 1.2rem; }
       .brand-text span { font-size: 0.65rem; }
-      .logo-wrapper { width: 42px; height: 42px; }
+      .logo-wrapper { width: 45px; height: 45px; }
 
       /* Hero */
       .hero { padding-top: calc(var(--header-height) + 1.5rem); text-align: center; padding-bottom: 3rem; }
@@ -314,39 +362,76 @@
       .hero-content h2 { font-size: 2.8rem; }
       .hero-image { transform: rotate(0); margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
 
-      /* Menu - Horizontal Scroll for Categories */
+      /* Menu Scroll */
       .menu-container { grid-template-columns: 1fr; gap: 1.5rem; }
       .menu-sidebar { 
         position: relative; top: 0; 
         display: flex; gap: 0.5rem;
-        padding: 1rem; margin-bottom: 0.5rem;
+        padding: 1rem 0; margin-bottom: 0.5rem;
         overflow-x: auto; white-space: nowrap;
-        -webkit-overflow-scrolling: touch; /* Smooth scroll on iOS */
+        -webkit-overflow-scrolling: touch; 
         border: none; box-shadow: none; background: transparent;
       }
       .menu-sidebar::-webkit-scrollbar { display: none; } /* Hide scrollbar */
-      
       .category-btn { 
         width: auto; display: inline-block;
         padding: 0.6rem 1.2rem; margin: 0;
         background: white; border: 1px solid #eee;
         border-radius: 50px; font-size: 0.95rem;
       }
-      .category-btn.active { border-color: var(--color-primary); }
+      .category-btn:hover { padding-left: 1.2rem; }
+      .category-btn.active { border-color: var(--color-primary); padding-left: 1.2rem; }
 
       /* Gallery */
       .gallery-grid { display: flex; flex-direction: column; gap: 1rem; }
       .gallery-item { height: 260px; }
 
-      /* Contact Form */
+      /* Contact */
       .info-grid { grid-template-columns: 1fr; gap: 3rem; }
       .form-wrapper { padding: 1.5rem; }
       .hours-list { padding-left: 1rem; border-left-width: 2px; }
-      
-      /* Map */
       .map-container { height: 300px; }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Taste of Bharat",
+    "image": "https://tasteofbharat.com/hero.jpg",
+    "description": "Authentic and Modern Indian Cuisine in Swindon.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "198 Rodbourne Rd",
+      "addressLocality": "Swindon",
+      "postalCode": "SN2 2AA",
+      "addressCountry": "UK"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.564,
+      "longitude": -1.795
+    },
+    "telephone": "01793316158",
+    "openingHoursSpecification": [
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
+        "opens": "17:00",
+        "closes": "22:00"
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Saturday", "Sunday"],
+        "opens": "12:00",
+        "closes": "22:00"
+      }
+    ],
+    "menu": "https://tasteofbharat.com/#menu",
+    "servesCuisine": "Indian"
+  }
+  </script>
 </head>
 <body>
 
@@ -387,7 +472,7 @@
 
   <section class="hero">
     <div class="container hero-grid">
-      <div class="hero-content">
+      <div class="hero-content reveal">
         <div style="text-transform:uppercase; letter-spacing:2px; font-weight:600; color:#E98E3A; margin-bottom:1rem;">Swindon's Finest</div>
         <h2>Authentic Spice.<br>Modern Soul.</h2>
         <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
@@ -396,7 +481,7 @@
           <a href="#contact" class="btn btn-outline">Book a Table</a>
         </div>
       </div>
-      <div class="hero-image-frame">
+      <div class="hero-image-frame reveal delay-200">
         <div class="hero-image">
           <img src="hero.jpg" alt="Sizzling Mixed Grill Platter">
         </div>
@@ -404,7 +489,7 @@
     </div>
   </section>
 
-  <div class="container" id="menu">
+  <div class="container reveal" id="menu">
     <div class="section-title">
       <h3>Our Menu</h3>
       <p>Search dishes or select a category below</p>
@@ -421,7 +506,7 @@
     </div>
   </div>
 
-  <div class="container" id="gallery" style="margin-top: 6rem;">
+  <div class="container reveal" id="gallery" style="margin-top: 6rem;">
     <div class="section-title">
       <h3>Visual Feast</h3>
       <p>A glimpse into our kitchen</p>
@@ -442,7 +527,7 @@
     </div>
   </div>
 
-  <div id="contact" style="background: #FFFFFF; padding-top:4rem;">
+  <div id="contact" class="reveal" style="background: #FFFFFF; padding-top:4rem;">
     <div class="container">
       <div class="info-grid">
         
@@ -506,7 +591,7 @@
           </div>
           
           <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe>
           </div>
         </div>
 
@@ -538,7 +623,20 @@
       menu.classList.toggle('active');
     }
 
+    // Scroll Animation Observer
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting) {
+          entry.target.classList.add('active');
+        }
+      });
+    }, { threshold: 0.1 });
+
     document.addEventListener("DOMContentLoaded", function() {
+      
+      // Init Animations
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
       // Menu Data
       const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
 
