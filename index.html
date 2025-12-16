@@ -231,10 +231,13 @@
     .day { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
     .time { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
 
+    /* Updated Map Container */
     .map-container {
-      margin-top: 3rem; border-radius: 20px; overflow: hidden;
-      height: 300px; border: 1px solid #ddd; box-shadow: var(--shadow-soft);
+      margin-top: 2.5rem; border-radius: 24px; overflow: hidden;
+      height: 320px; border: 1px solid #ddd; box-shadow: var(--shadow-soft);
+      position: relative;
     }
+    .map-container iframe { width: 100%; height: 100%; border: 0; display: block; }
 
     /* --- FOOTER --- */
     footer {
@@ -338,9 +341,11 @@
       <div class="gallery-item g-large">
         <img src="feast.jpg" alt="Indian Feast">
       </div>
+      
       <div class="gallery-item g-tall">
         <img src="Starters.jpg" alt="Crispy Starters">
       </div>
+      
       <div class="gallery-item g-std">
         <img src="paneer.jpg" alt="Paneer Tikka">
       </div>
@@ -400,7 +405,11 @@
           </div>
           
           <div class="map-container">
-            <iframe width="100%" height="100%" style="border:0" loading="lazy" src="https://maps.app.goo.gl/S5HmpF2xbsMGzudN9"></iframe>
+            <iframe 
+              src="https://googleusercontent.com/maps.google.com/3" 
+              loading="lazy" 
+              title="Taste of Bharat Map">
+            </iframe>
           </div>
         </div>
 
