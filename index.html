@@ -219,6 +219,25 @@
     }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
 
+    /* Success Message Styles */
+    .success-message {
+      text-align: center;
+      padding: 2rem 0;
+      color: var(--color-primary);
+      display: none; /* Hidden by default */
+      animation: fadeIn 0.5s ease;
+    }
+    .success-icon {
+      width: 60px; height: 60px;
+      background: #25D366;
+      color: white;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1.5rem;
+      font-size: 2rem;
+    }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
     .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; }
     .hours-list {
       background: transparent; padding: 0;
@@ -235,7 +254,7 @@
       margin-top: 3rem; border-radius: 20px; overflow: hidden;
       height: 450px; border: 1px solid #ddd; box-shadow: var(--shadow-soft);
     }
-    /* Ensure user's iframe is responsive */
+    /* Ensure iframe is responsive */
     .map-container iframe {
       width: 100% !important;
       height: 100% !important;
@@ -360,37 +379,53 @@
       <div class="info-grid">
         
         <div class="form-wrapper">
-          <h3>Reserve Your Table</h3>
-          <span class="form-sub">Book instantly. No account required.</span>
-          <form action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
-            <input type="hidden" name="_subject" value="Table Reservation">
-            <input type="hidden" name="_captcha" value="false">
-            <div class="form-group">
-              <label>Full Name</label>
-              <input type="text" name="name" class="form-control" required placeholder="e.g. John Doe">
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          
+          <div id="formContainer">
+            <h3>Reserve Your Table</h3>
+            <span class="form-sub">Book instantly. No account required.</span>
+            
+            <form id="bookingForm">
+              <input type="hidden" name="_captcha" value="false">
+              <input type="hidden" name="_subject" value="New Table Reservation">
+
               <div class="form-group">
-                <label>Date</label>
-                <input type="date" name="date" class="form-control" required>
+                <label>Full Name</label>
+                <input type="text" name="name" class="form-control" required placeholder="e.g. John Doe">
               </div>
-              <div class="form-group">
-                <label>Time</label>
-                <input type="time" name="time" class="form-control" required>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Date</label>
+                  <input type="date" name="date" class="form-control" required>
+                </div>
+                <div class="form-group">
+                  <label>Time</label>
+                  <input type="time" name="time" class="form-control" required>
+                </div>
               </div>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
-              <div class="form-group">
-                <label>Guests</label>
-                <input type="number" name="guests" class="form-control" value="2" min="1" required>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label>Guests</label>
+                  <input type="number" name="guests" class="form-control" value="2" min="1" required>
+                </div>
+                <div class="form-group">
+                  <label>Phone</label>
+                  <input type="tel" name="phone" class="form-control" required placeholder="07...">
+                </div>
               </div>
-              <div class="form-group">
-                <label>Phone</label>
-                <input type="tel" name="phone" class="form-control" required placeholder="07...">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1rem;">Confirm Booking</button>
-          </form>
+              <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1rem;">Confirm Booking</button>
+            </form>
+          </div>
+
+          <div id="successMessage" class="success-message">
+            <div class="success-icon">✓</div>
+            <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">Booking Submitted!</h3>
+            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.5;">
+              Thank you for choosing Taste of Bharat.<br>
+              <strong>We will call you shortly to confirm your table.</strong>
+            </p>
+            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
+          </div>
+
         </div>
 
         <div class="hours-wrapper" style="color: var(--text-main); padding-top: 2rem;">
@@ -432,78 +467,110 @@
   </a>
 
   <script>
-    // Define Menu Items Globally
-    const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
-
     document.addEventListener("DOMContentLoaded", function() {
-      const grouped = new Map();
-      menuItems.forEach(item => {
-        const cat = item.category || "General";
-        if(!grouped.has(cat)) grouped.set(cat, []);
-        grouped.get(cat).push(item);
-      });
+      // MENU DATA
+      const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
 
-      const categories = Array.from(grouped.keys());
-      const categoryList = document.getElementById('categoryList');
-      const menuGrid = document.getElementById('menuGrid');
-      const searchInput = document.getElementById('menuSearch');
-      let activeCategory = categories[0];
-
-      if (!categoryList || !menuGrid) return; // Safety check
-
-      function renderCategories() {
-        categoryList.innerHTML = '';
-        categories.forEach(cat => {
-          const btn = document.createElement('button');
-          btn.className = `category-btn ${cat === activeCategory ? 'active' : ''}`;
-          btn.textContent = cat;
-          btn.onclick = () => {
-            activeCategory = cat;
-            if(searchInput) searchInput.value = '';
-            renderCategories();
-            renderMenu();
-          };
-          categoryList.appendChild(btn);
+      // LOGIC: MENU INITIALIZATION
+      function initMenu() {
+        const grouped = new Map();
+        menuItems.forEach(item => {
+          const cat = item.category || "General";
+          if(!grouped.has(cat)) grouped.set(cat, []);
+          grouped.get(cat).push(item);
         });
-      }
 
-      function renderMenu(filter = '') {
-        menuGrid.innerHTML = '';
-        let itemsToRender = [];
+        const categories = Array.from(grouped.keys());
+        const categoryList = document.getElementById('categoryList');
+        const menuGrid = document.getElementById('menuGrid');
+        const searchInput = document.getElementById('menuSearch');
+        
+        // 1. UPDATED: Set Default Category to "Non-Veg Starters" if exists, else first category
+        let activeCategory = categories.includes("Non-Veg Starters") ? "Non-Veg Starters" : categories[0];
 
-        if(filter) {
-          itemsToRender = menuItems.filter(i => (i.name + " " + i.desc).toLowerCase().includes(filter.toLowerCase()));
-        } else {
-          itemsToRender = grouped.get(activeCategory);
+        if (!categoryList || !menuGrid) return; 
+
+        function renderCategories() {
+          categoryList.innerHTML = '';
+          categories.forEach(cat => {
+            const btn = document.createElement('button');
+            btn.className = `category-btn ${cat === activeCategory ? 'active' : ''}`;
+            btn.textContent = cat;
+            btn.onclick = () => {
+              activeCategory = cat;
+              if(searchInput) searchInput.value = '';
+              renderCategories();
+              renderMenu();
+            };
+            categoryList.appendChild(btn);
+          });
         }
 
-        if(!itemsToRender || itemsToRender.length === 0) {
-          menuGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">No dishes found matching your search.</div>';
-          return;
+        function renderMenu(filter = '') {
+          menuGrid.innerHTML = '';
+          let itemsToRender = [];
+
+          if(filter) {
+            itemsToRender = menuItems.filter(i => (i.name + " " + i.desc).toLowerCase().includes(filter.toLowerCase()));
+          } else {
+            itemsToRender = grouped.get(activeCategory);
+          }
+
+          if(!itemsToRender || itemsToRender.length === 0) {
+            menuGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">No dishes found matching your search.</div>';
+            return;
+          }
+
+          itemsToRender.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'dish-card';
+            card.innerHTML = `
+              <div class="dish-header">
+                <div class="dish-title">${item.name}</div>
+                <div class="dish-price">${item.price}</div>
+              </div>
+              <div class="dish-desc">${item.desc}</div>
+            `;
+            menuGrid.appendChild(card);
+          });
         }
 
-        itemsToRender.forEach(item => {
-          const card = document.createElement('div');
-          card.className = 'dish-card';
-          card.innerHTML = `
-            <div class="dish-header">
-              <div class="dish-title">${item.name}</div>
-              <div class="dish-price">${item.price}</div>
-            </div>
-            <div class="dish-desc">${item.desc}</div>
-          `;
-          menuGrid.appendChild(card);
+        if(searchInput) {
+          searchInput.addEventListener('input', (e) => {
+            renderMenu(e.target.value);
+          });
+        }
+
+        renderCategories();
+        renderMenu();
+      }
+
+      // LOGIC: FORM SUBMISSION (Prevent Redirect)
+      const form = document.getElementById('bookingForm');
+      if(form) {
+        form.addEventListener('submit', function(e) {
+          e.preventDefault(); // Stop redirect
+          
+          const formData = new FormData(form);
+          
+          // Submit via fetch to FormSubmit
+          fetch("https://formsubmit.co/kamalshelley@gmail.com", {
+            method: "POST",
+            body: formData
+          })
+          .then(response => {
+            // Hide form, show success message
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+          })
+          .catch(error => {
+            alert("Something went wrong. Please call us to book.");
+          });
         });
       }
 
-      if(searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          renderMenu(e.target.value);
-        });
-      }
-
-      renderCategories();
-      renderMenu();
+      // Initialize Menu
+      initMenu();
       const yearEl = document.getElementById('year');
       if(yearEl) yearEl.textContent = new Date().getFullYear();
     });
