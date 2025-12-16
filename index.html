@@ -1,2470 +1,641 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Taste of Bharat | Authentic Indian Restaurant in Swindon</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Taste of Bharat | Modern Indian Dining</title>
+  <meta name="description" content="Taste Of Bharat — Authentic & Modern Indian Cuisine in Swindon. Dine-in, Takeaway & Delivery." />
+  <meta name="theme-color" content="#0B0B0B" />
 
-  <!-- SEO Meta -->
-  <meta name="description" content="Taste of Bharat is an authentic Indian restaurant in Swindon serving rich, homely flavours of India. Dine-in, takeaway and delivery available." />
-
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
-  <!-- Icons (Font Awesome) -->
-  <link
-    rel="stylesheet"
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
-    integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
-    crossorigin="anonymous"
-    referrerpolicy="no-referrer"
-  />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --primary: #c94b32; /* warm red */
-      --primary-dark: #9c321e;
-      --accent: #e07a19; /* saffron gold */
-      --bg: #f5eee7;
-      --bg-light: #efe4db;
-      --text: #2d1b14;
-      --muted: #5f4b40;
-      --card: #fff8f1;
-      --shadow-soft: 0 8px 20px rgba(0, 0, 0, 0.08);
-      --radius-lg: 22px;
-      --radius-pill: 999px;
-      --transition-fast: 0.2s ease-out;
+      /* Palette: Rich Black & Brand Orange */
+      --bg-body: #F9F9F9;
+      --bg-card: #FFFFFF;
+      --text-main: #1A1A1A;
+      --text-muted: #666666;
+      
+      --color-primary: #0B0B0B; 
+      --color-accent: #E98E3A;  
+      --color-accent-hover: #d37a28;
+      
+      --border-light: rgba(0,0,0,0.08);
+      --shadow-soft: 0 12px 40px -10px rgba(0,0,0,0.1);
+      
+      --container-width: 1200px;
+      --header-height: 90px;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
+    /* --- RESET & BASICS --- */
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    html { scroll-behavior: smooth; font-size: 16px; }
     body {
-      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background: #f7f3ec;
-      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      background-color: var(--bg-body);
+      color: var(--text-main);
       line-height: 1.6;
-      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
     }
 
-    img {
-      max-width: 100%;
-      display: block;
-      border-radius: 12px;
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--color-primary); }
+    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    img { max-width: 100%; display: block; height: auto; }
+    ul { list-style: none; }
+
+    /* --- UTILITIES --- */
+    .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
+    
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      padding: 0.9rem 2.2rem;
+      font-weight: 600; letter-spacing: 0.5px;
+      border-radius: 50px;
+      transition: transform 0.2s, box-shadow 0.2s;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+    .btn-primary {
+      background-color: var(--color-accent);
+      color: #000; /* Black text on orange for contrast */
+    }
+    .btn-primary:hover {
+      background-color: var(--color-accent-hover);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(233, 142, 58, 0.3);
+    }
+    .btn-outline {
+      border: 2px solid var(--color-primary);
+      color: var(--color-primary);
+      background: transparent;
+    }
+    .btn-outline:hover {
+      background: var(--color-primary);
+      color: white;
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* Layout */
-    .container {
-      width: min(1120px, 92vw);
-      margin: 0 auto;
-    }
-
-    /* Header */
+    /* --- NAVIGATION --- */
     header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      backdrop-filter: blur(10px);
-      background: rgba(255, 255, 255, 0.92);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--header-height);
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(0,0,0,0.05);
+      display: flex; align-items: center;
     }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0.8rem 0;
+    
+    .nav-container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 2rem;
+      display: flex; justify-content: space-between; align-items: center;
     }
 
     .brand {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
+      display: flex; align-items: center; gap: 1rem;
     }
-
-    .brand-logo {
-      width: 52px;
-      height: 52px;
+    
+    .logo-wrapper {
+      width: 60px; height: 60px;
       border-radius: 50%;
-      background: #0c0604;
-      display: grid;
-      place-items: center;
-      box-shadow: 0 0 0 2px rgba(244, 126, 28, 0.3);
-      border: 1px solid rgba(244, 126, 28, 0.24);
-      padding: 6px;
+      border: 2px solid var(--color-accent);
+      overflow: hidden; 
+      display: flex; justify-content: center; align-items: center;
+      background: #000;
     }
-
-    .brand-logo svg {
-      width: 100%;
-      height: 100%;
-    }
-
-    .brand-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1.2;
-    }
-
-    .brand-title {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      letter-spacing: 0.04em;
-    }
-
-    .brand-sub {
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      color: var(--muted);
-      letter-spacing: 0.16em;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 1.6rem;
-      font-size: 0.9rem;
-    }
-
-    .nav-links a {
-      position: relative;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      font-weight: 500;
-      font-size: 0.78rem;
-      color: #3d2a20;
-    }
-
-    .nav-links a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -0.35rem;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), var(--primary));
-      border-radius: 999px;
-      transition: width var(--transition-fast);
-    }
-
-    .nav-links a:hover::after {
-      width: 100%;
-    }
-
-    .nav-links a:hover {
-      color: var(--primary-dark);
-    }
-
-    .nav-cta {
-      display: flex;
-      align-items: center;
-      gap: 0.6rem;
-    }
-
-    .btn {
-      border: none;
-      outline: none;
-      border-radius: var(--radius-pill);
-      padding: 0.6rem 1.3rem;
-      font-size: 0.85rem;
-      font-weight: 500;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      text-transform: uppercase;
-      letter-spacing: 0.12em;
-      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast), color var(--transition-fast);
-      white-space: nowrap;
-    }
-
-    .btn-primary {
-      background: linear-gradient(120deg, #f9b24d, #e3762a);
-      color: #3a1907;
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
-    }
-
-    .btn-primary:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55);
-    }
-
-    .btn-ghost {
-      background: transparent;
-      color: #3d2a20;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-    }
-
-    .btn-ghost:hover {
-      background: rgba(0, 0, 0, 0.03);
-      color: var(--primary-dark);
-    }
-
-    .phone-link {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-size: 0.86rem;
-      color: var(--muted);
-    }
-
-    .phone-link span {
-      font-weight: 500;
-      color: var(--text);
-    }
-
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 4px;
-      cursor: pointer;
-    }
-
-    .hamburger span {
-      width: 20px;
-      height: 2px;
-      background: #f5e9e3;
-      border-radius: 999px;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    /* Mobile nav */
-    @media (max-width: 768px) {
-      .nav-links,
-      .nav-cta .phone-link {
-        display: none;
-      }
-
-      .hamburger {
-        display: flex;
-      }
-
-      .nav {
-        padding-inline: 0.2rem;
-      }
-
-      header {
-        background: rgba(255, 248, 241, 0.96);
-      }
-
-    .mobile-menu {
-      display: none;
-      background: rgba(255, 248, 241, 0.98);
-      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
-    }
-
-    .mobile-menu.open {
-      display: block;
-      animation: fadeUp 0.4s ease;
-    }
-
-      .mobile-menu-inner {
-        padding: 0.75rem 0 1rem;
-        display: flex;
-        flex-direction: column;
-        gap: 0.4rem;
-      }
-
-      .mobile-menu-inner a {
-        padding: 0.45rem 0;
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.16em;
-        color: var(--muted);
-        border-bottom: 1px dotted rgba(0, 0, 0, 0.08);
-      }
-
-      .mobile-menu-inner a:last-child {
-        border-bottom: none;
-      }
-
-      .mobile-cta {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-        margin-top: 0.5rem;
-      }
-    }
-
-    /* Hero */
-    .hero {
-      padding: 3rem 0 3rem;
-      position: relative;
-    }
-
-    .hero-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 2.8rem;
-      align-items: center;
-      column-gap: 2.2rem;
-    }
-
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      border-radius: var(--radius-pill);
-      padding: 0.25rem 0.7rem;
-      background: rgba(227, 118, 42, 0.12);
-      border: 1px solid rgba(227, 118, 42, 0.25);
-      font-size: 0.72rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 0.9rem;
-    }
-
-    .pill i {
-      color: var(--accent);
-    }
-
-    .hero-title {
-      font-family: "Playfair Display", serif;
-      font-size: clamp(2.2rem, 5vw, 3.1rem);
-      line-height: 1.1;
-      margin-bottom: 0.9rem;
-      animation: fadeUp 0.9s ease forwards;
-      opacity: 0;
-    }
-
-    .hero-title span {
-      color: var(--primary-dark);
-    }
-
-    .hero-subtitle {
-      font-size: 0.96rem;
-      color: #4c362b;
-      max-width: 32rem;
-      margin-bottom: 1.5rem;
-      animation: fadeUp 1s ease 0.1s forwards;
-      opacity: 0;
-    }
-
-    .hero-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.8rem;
-      margin-bottom: 1.6rem;
-      animation: fadeUp 1s ease 0.2s forwards;
-      opacity: 0;
-    }
-
-    .hero-meta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.5rem;
-      font-size: 0.8rem;
-      color: #4c362b;
-      animation: fadeUp 1s ease 0.3s forwards;
-      opacity: 0;
-    }
-
-    .hero-tag {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-    }
-
-    .hero-tag-label {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: rgba(199, 186, 176, 0.7);
-    }
-
-    .hero-tag-value {
-      font-weight: 500;
-    }
-
-    .hero-image-card {
-      background: linear-gradient(180deg, #fffaf4 0%, #f2e6db 100%);
-      border-radius: 32px;
-      padding: 0.85rem;
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .hero-photo {
-      position: relative;
-      border-radius: 26px;
-      overflow: hidden;
-      max-height: 360px;
-    }
-
-    .hero-photo::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.2), transparent 60%);
-      z-index: 1;
-    }
-
-    .hero-photo img {
-      width: 100%;
-      height: 100%;
+    .logo-wrapper img {
+      width: 100%; height: 100%;
       object-fit: cover;
     }
 
-    .hero-photo-caption {
-      position: absolute;
-      left: 1rem;
-      bottom: 1rem;
-      z-index: 2;
-    }
-
-    .hero-photo-caption h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      margin-bottom: 0.15rem;
-    }
-
-    .hero-photo-caption p {
-      font-size: 0.78rem;
-      color: var(--muted);
-    }
-
-    .hero-floating-badge {
-      position: absolute;
-      top: 0.9rem;
-      right: 0.9rem;
-      background: rgba(255, 255, 255, 0.85);
-      border: 1px solid rgba(227, 118, 42, 0.4);
-      border-radius: 999px;
-      padding: 0.4rem 0.75rem;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .hero-floating-badge i {
-      color: var(--accent);
-    }
-
-    .hero-chip-stack {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-      margin-top: 0.7rem;
-    }
-
-    .chip {
-      font-size: 0.7rem;
-      padding: 0.25rem 0.6rem;
-      border-radius: 999px;
-      border: 1px solid rgba(227, 118, 42, 0.25);
-      color: #5a3f33;
-      background: rgba(227, 118, 42, 0.12);
-    }
-
-    /* Sections */
-    .section {
-      padding: 3.5rem 0;
-    }
-
-    .section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 1.8rem;
-      margin-bottom: 2.2rem;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
+    .brand-text h1 {
       font-size: 1.6rem;
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
+      line-height: 1;
+      margin-bottom: 0.2rem;
+      color: var(--color-primary);
     }
-
-    .section-title span {
-      color: var(--accent);
-    }
-
-    .section-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--muted);
-      margin-bottom: 0.15rem;
-    }
-
-    .section-desc {
-      font-size: 0.9rem;
-      color: var(--muted);
-      max-width: 26rem;
-    }
-
-    @media (max-width: 768px) {
-      .hero {
-        padding-top: 2.4rem;
-      }
-
-      .hero-grid {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 2rem;
-      }
-
-      .hero-image-card {
-        order: -1;
-      }
-
-      .section {
-        padding: 3rem 0;
-      }
-
-      .section-header {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-    }
-
-    /* About */
-    .about-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.9fr);
-      gap: 2.4rem;
-    }
-
-    .about-text p {
-      margin-bottom: 0.9rem;
-      font-size: 0.95rem;
-      color: #4c362b;
-    }
-
-    .about-highlights {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.9rem;
-      margin-top: 1rem;
-    }
-
-    .about-stat {
-      background: #fffdfb;
-      border-radius: 18px;
-      padding: 0.7rem 0.8rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
-    }
-
-    .about-stat h4 {
-      font-size: 0.9rem;
-      margin-bottom: 0.1rem;
-    }
-
-    .about-stat p {
+    .brand-text span {
       font-size: 0.75rem;
-      color: #4c362b;
-    }
-
-    .about-card {
-      background: linear-gradient(180deg, #fffaf4, #f4e8dd);
-      border-radius: 22px;
-      padding: 1.1rem 1.25rem;
-      border: 1px solid rgba(0, 0, 0, 0.04);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
-      display: flex;
-      flex-direction: column;
-      gap: 0.7rem;
-      font-size: 0.88rem;
-      color: #4c362b;
-    }
-
-    .about-card-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .chef-info {
-      display: flex;
-      align-items: center;
-      gap: 0.7rem;
-    }
-
-    .chef-avatar {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      background: radial-gradient(circle at 30% 20%, #f4b41a, #8f2e1c);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 600;
-    }
-
-    .chef-meta span {
-      display: block;
-      font-size: 0.8rem;
-    }
-
-    .chef-meta small {
-      font-size: 0.7rem;
-      color: rgba(199, 186, 176, 0.8);
-    }
-
-    .about-card-badge {
-      font-size: 0.7rem;
       text-transform: uppercase;
-      letter-spacing: 0.14em;
-      padding: 0.3rem 0.7rem;
-      border-radius: 999px;
-      border: 1px solid rgba(227, 118, 42, 0.6);
-      color: var(--accent);
+      letter-spacing: 2px;
+      color: var(--color-accent);
+      font-weight: 600;
+      font-family: 'DM Sans', sans-serif;
     }
 
-    .about-card-footer {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 0.6rem;
-      font-size: 0.77rem;
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-primary); position: relative; }
+    .nav-links a:hover { color: var(--color-accent); }
+
+    /* --- HERO SECTION --- */
+    .hero {
+      padding-top: calc(var(--header-height) + 3rem);
+      padding-bottom: 5rem;
+      background: white;
+    }
+    
+    .hero-grid {
+      display: grid; grid-template-columns: 1.1fr 0.9fr;
+      gap: 4rem; align-items: center;
     }
 
-    .about-card-footer span i {
-      margin-right: 0.35rem;
-      color: var(--accent);
+    .hero-content h2 {
+      font-size: 3.8rem;
+      line-height: 1.1;
+      margin-bottom: 1.5rem;
+      color: var(--color-primary);
     }
-
-    @media (max-width: 900px) {
-      .about-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      .about-highlights {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
+    .hero-content p {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      margin-bottom: 2rem;
+      max-width: 500px;
     }
-
-    @media (max-width: 600px) {
-      .about-highlights {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* Menu */
-    .menu-card {
-      background: #fffaf4;
-      border-radius: 26px;
-      padding: 1.4rem 1.5rem 1.5rem;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: var(--shadow-soft);
+    
+    .hero-image-frame { position: relative; }
+    .hero-image {
+      border-radius: 30px 0 30px 0;
+      box-shadow: 20px 20px 0 var(--color-primary); 
       overflow: hidden;
-      position: relative;
+      transform: rotate(-2deg);
+      transition: transform 0.5s ease;
+    }
+    .hero-image:hover { transform: rotate(0); }
+    .hero-image img { width: 100%; height: auto; }
+
+    /* --- MENU SECTION --- */
+    .section-title {
+      text-align: center; margin: 4rem 0 3rem;
+    }
+    .section-title h3 { font-size: 2.8rem; margin-bottom: 0.5rem; }
+    .section-title p { color: var(--text-muted); font-size: 1.1rem; }
+
+    .menu-container {
+      display: grid; grid-template-columns: 280px 1fr;
+      gap: 3rem;
+      align-items: start;
     }
 
-    .menu-card::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at 15% 10%, rgba(227, 118, 42, 0.06), transparent 38%);
-      pointer-events: none;
-    }
-
-    .menu-columns {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1rem;
-    }
-
-    .menu-section {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 0.95rem 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      display: grid;
-      gap: 0.65rem;
+    .menu-sidebar {
+      position: sticky; top: calc(var(--header-height) + 2rem);
+      background: white;
+      padding: 1.5rem;
+      border-radius: 12px;
       box-shadow: var(--shadow-soft);
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      border: 1px solid var(--border-light);
+    }
+    
+    .category-btn {
+      display: block; width: 100%; text-align: left;
+      padding: 1rem 1.2rem; 
+      margin-bottom: 0.5rem;
+      border: none; background: transparent;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.15rem; 
+      font-weight: 600; 
+      color: var(--text-muted);
+      border-radius: 8px; cursor: pointer;
+      transition: all 0.2s;
+    }
+    .category-btn:hover { background: #f4f4f4; color: var(--color-primary); }
+    .category-btn.active { background: var(--color-primary); color: var(--color-accent); }
+
+    .menu-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 1.5rem;
     }
 
-    .menu-section:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.1);
+    .dish-card {
+      background: white;
+      padding: 1.8rem;
+      border-radius: 16px;
+      border: 1px solid var(--border-light);
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-
-    .menu-section h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .menu-section .menu-kicker {
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      font-size: 0.72rem;
-      color: var(--muted);
-      display: block;
-    }
-
-    .menu-list {
-      display: flex;
-      flex-direction: column;
-      gap: 0.6rem;
-    }
-
-    .menu-item-row {
-      padding-bottom: 0.55rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .menu-item-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .menu-item-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 0.7rem;
-    }
-
-    .menu-name {
-      font-size: 0.96rem;
-      font-weight: 600;
-    }
-
-    .menu-price {
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: var(--accent);
-      white-space: nowrap;
-    }
-
-    .menu-desc {
-      font-size: 0.82rem;
-      color: #4c362b;
-      margin-top: 0.1rem;
-    }
-
-    .menu-tags {
-      font-size: 0.72rem;
-      color: #694b3d;
-      display: flex;
-      gap: 0.35rem;
-      flex-wrap: wrap;
-    }
-
-    .menu-tags span {
-      padding: 0.05rem 0.4rem;
-      border-radius: 999px;
-      background: rgba(233, 199, 164, 0.2);
-      border: 1px solid rgba(227, 118, 42, 0.15);
-      letter-spacing: 0.06em;
-    }
-
-    .menu-note {
-      margin-top: 1rem;
-      font-size: 0.76rem;
-      color: rgba(199, 186, 176, 0.85);
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-      flex-wrap: wrap;
-    }
-
-    .menu-note i {
-      margin-right: 0.25rem;
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      .menu-columns {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* Order section */
-    .order-card {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-      gap: 1.8rem;
-      padding: 1.5rem 1.7rem;
-      border-radius: 26px;
-      background: linear-gradient(180deg, #fff7ef, #f1e0d3);
-      border: 1px solid rgba(227, 118, 42, 0.25);
+    .dish-card:hover {
+      transform: translateY(-5px);
       box-shadow: var(--shadow-soft);
-      align-items: center;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      border-color: var(--color-accent);
     }
-
-    .order-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 12px 26px rgba(0, 0, 0, 0.12);
+    .dish-header {
+      display: flex; justify-content: space-between; align-items: flex-start;
+      margin-bottom: 0.5rem;
     }
+    .dish-title { font-weight: 700; color: var(--text-main); font-size: 1.15rem; }
+    .dish-price { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
+    .dish-desc { font-size: 0.95rem; color: var(--text-muted); line-height: 1.5; }
 
-    .order-card h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.3rem;
-      margin-bottom: 0.4rem;
-    }
-
-    .order-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      margin-bottom: 1rem;
-    }
-
-    .order-cta {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.7rem;
-    }
-
-    .order-details {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .order-details div {
-      margin-bottom: 0.25rem;
-    }
-
-    .order-details i {
-      margin-right: 0.35rem;
-      color: var(--accent);
-    }
-
-    @media (max-width: 768px) {
-      .order-card {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* Gallery */
+    /* --- GALLERY --- */
     .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 0.7rem;
+      display: grid; grid-template-columns: repeat(12, 1fr);
+      grid-auto-rows: 250px;
+      gap: 1.2rem;
+      padding-bottom: 4rem;
     }
-
     .gallery-item {
       position: relative;
-      border-radius: 18px;
-      overflow: hidden;
-      background: #fff6ec;
-      aspect-ratio: 4/3;
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transform: scale(1.02);
-      transition: transform 0.25s ease-out, opacity 0.25s ease-out;
-    }
-
-    .gallery-item::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.18), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.2s ease-out;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.06);
-      opacity: 0.92;
-    }
-
-    .gallery-item:hover::after {
-      opacity: 1;
-    }
-
-    .gallery-item:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 14px 28px rgba(0, 0, 0, 0.12);
-    }
-
-    .gallery-badge {
-      position: absolute;
-      left: 0.7rem;
-      bottom: 0.6rem;
-      font-size: 0.7rem;
-      padding: 0.2rem 0.6rem;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.35);
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    @media (max-width: 900px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 600px) {
-      .gallery-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* Contact */
-    .contact-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-      gap: 2rem;
-    }
-
-    .contact-card {
-      background: #fffaf5;
-      border-radius: 22px;
-      padding: 1.2rem 1.3rem 1.4rem;
-      border: 1px solid rgba(0, 0, 0, 0.06);
-      box-shadow: var(--shadow-soft);
-      position: relative;
-      overflow: hidden;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .contact-card h3 {
-      font-family: "Playfair Display", serif;
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    .contact-card p {
-      font-size: 0.88rem;
-      color: #4c362b;
-      margin-bottom: 1rem;
-    }
-
-    .contact-form {
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .field {
-      display: flex;
-      flex-direction: column;
-      gap: 0.15rem;
-      font-size: 0.8rem;
-    }
-
-    .field label {
-      color: var(--muted);
-    }
-
-    .field input,
-    .field textarea {
-      background: #fffdfb;
-      border-radius: 12px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      padding: 0.6rem 0.7rem;
-      color: var(--text);
-      font-family: inherit;
-      font-size: 0.85rem;
-      outline: none;
-      transition: border var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
-    }
-
-    .field input:focus,
-    .field textarea:focus {
-      border-color: rgba(244, 180, 26, 0.8);
-      box-shadow: 0 0 0 1px rgba(227, 118, 42, 0.3);
-      background: #fffdf8;
-    }
-
-    .field textarea {
-      min-height: 110px;
-      resize: vertical;
-    }
-
-    .contact-meta {
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .contact-meta-item {
-      margin-bottom: 0.6rem;
-    }
-
-    .contact-meta-item i {
-      margin-right: 0.4rem;
-      color: var(--accent);
-    }
-
-    .contact-hours {
-      margin-top: 0.7rem;
-      font-size: 0.8rem;
-    }
-
-    .hours-list {
-      margin-top: 0.25rem;
-    }
-
-    .hours-list div {
-      display: flex;
-      justify-content: space-between;
-      gap: 0.5rem;
-    }
-
-    .map-card {
-      background: #fffaf5;
-      border-radius: 22px;
-      padding: 1rem;
-      border: 1px solid rgba(0, 0, 0, 0.1);
-      box-shadow: var(--shadow-soft);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .map-placeholder {
-      width: 100%;
       border-radius: 16px;
       overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      aspect-ratio: 4/3;
-      background: linear-gradient(180deg, #fff2df, #f0ddc6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.85rem;
-      color: var(--muted);
-      text-align: center;
-      padding: 1rem;
+      box-shadow: var(--shadow-soft);
     }
-
-    .map-link {
-      margin-top: 0.7rem;
-      font-size: 0.8rem;
-      color: var(--accent);
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
     }
+    .gallery-item:hover img { transform: scale(1.08); }
+    
+    .g-large { grid-column: span 8; }
+    .g-tall { grid-column: span 4; grid-row: span 2; }
+    .g-std { grid-column: span 4; }
 
-    .contact-card:hover,
-    .map-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.1);
-    }
-
-    @media (max-width: 900px) {
-      .contact-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
-    /* Footer */
-    footer {
-      padding: 1.8rem 0 2.2rem;
-      border-top: 1px solid rgba(0, 0, 0, 0.06);
+    /* --- CONTACT & HOURS (Light Theme) --- */
+    .info-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 5rem;
       margin-top: 2rem;
     }
 
-    .footer-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1.4rem;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.8rem;
-      color: var(--muted);
+    /* MODERN LIGHT FORM STYLING */
+    .form-wrapper {
+      background: white; 
+      padding: 2.5rem;
+      border-radius: 24px;
+      border: 1px solid var(--border-light);
+      box-shadow: var(--shadow-soft);
+    }
+    .form-wrapper h3 { color: var(--color-primary); margin-bottom: 0.5rem; font-size: 2rem; }
+    .form-sub { color: var(--text-muted); margin-bottom: 2rem; display:block; }
+    
+    .form-group { margin-bottom: 1.2rem; }
+    .form-group label { 
+      display: block; margin-bottom: 0.6rem; 
+      font-size: 0.85rem; letter-spacing: 1px; 
+      text-transform: uppercase; color: #888; font-weight: 600; 
+    }
+    
+    .form-control {
+      width: 100%; padding: 1.1rem;
+      border-radius: 12px; border: 1px solid #ddd;
+      background: #F9F9F9; /* Light Grey Input */
+      color: var(--color-primary);
+      font-family: inherit;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
+
+    /* LIGHT HOURS STYLING */
+    .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; }
+    .hours-list {
+      background: transparent;
+      padding: 0;
+      border-left: 3px solid var(--color-accent);
+      padding-left: 2rem;
+    }
+    .hour-row {
+      display: flex; justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .hour-row:last-child { border-bottom: none; }
+    .day { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
+    .time { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
+
+    /* MAP CONTAINER */
+    .map-container {
+      margin-top: 3rem;
+      border-radius: 20px;
+      overflow: hidden;
+      height: 300px; /* Increased height for better visibility */
+      border: 1px solid #ddd;
+      box-shadow: var(--shadow-soft);
     }
 
-    .footer-brand {
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
+    /* --- FOOTER --- */
+    footer {
+      background: #000;
+      color: #666;
+      padding: 3rem 0;
+      text-align: center;
+      font-size: 0.9rem;
+      border-top: 1px solid #222;
+      margin-top: 5rem;
     }
-
-    .footer-social {
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
+    .social-links {
+      display: flex; justify-content: center; gap: 1rem;
+      margin-bottom: 1.5rem;
     }
-
-    .footer-social a {
-      width: 30px;
-      height: 30px;
-      border-radius: 999px;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.86rem;
-      transition: background var(--transition-fast), border var(--transition-fast), transform var(--transition-fast);
-    }
-
-    .footer-social a:hover {
-      background: rgba(244, 180, 26, 0.1);
-      border-color: rgba(244, 180, 26, 0.7);
-      transform: translateY(-1px);
-    }
-
-    /* WhatsApp floating button (optional) */
-    .whatsapp-float {
-      position: fixed;
-      right: 1.2rem;
-      bottom: 1.3rem;
-      z-index: 60;
-    }
-
-    .whatsapp-float a {
-      width: 50px;
-      height: 50px;
+    .social-links a {
+      width: 44px; height: 44px;
       border-radius: 50%;
-      background: #25d366;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-      font-size: 1.3rem;
+      background: #111;
+      display: flex; justify-content: center; align-items: center;
+      color: white;
+      transition: background 0.3s;
     }
+    .social-links a:hover { background: var(--color-accent); color: black; }
 
-    @media (max-width: 600px) {
-      .whatsapp-float a {
-        width: 46px;
-        height: 46px;
-        font-size: 1.15rem;
-      }
+    /* --- WHATSAPP FLOAT --- */
+    .whatsapp-float {
+      position: fixed; bottom: 30px; right: 30px;
+      width: 60px; height: 60px;
+      background: #25d366; color: white;
+      border-radius: 50%;
+      display: flex; justify-content: center; align-items: center;
+      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3);
+      z-index: 999;
+      transition: transform 0.3s;
     }
+    .whatsapp-float:hover { transform: scale(1.1); }
 
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(14px);
+    /* --- RESPONSIVE --- */
+    @media (max-width: 900px) {
+      .nav-links { display: none; }
+      
+      .hero-grid { grid-template-columns: 1fr; text-align: center; gap: 3rem; }
+      .hero-content h2 { font-size: 2.8rem; }
+      .hero-image { transform: rotate(0); margin-top: 1rem; }
+      
+      .menu-container { grid-template-columns: 1fr; }
+      .menu-sidebar { 
+        position: relative; top: 0; 
+        overflow-x: auto; display: flex; 
+        padding: 1rem; margin-bottom: 1rem; 
       }
-      to {
-        opacity: 1;
-        transform: translateY(0);
+      .category-btn { 
+        white-space: nowrap; width: auto; 
+        margin: 0 0.5rem 0 0; background: #f8f8f8;
+        font-size: 1rem;
       }
-    }
-
-    @keyframes floatY {
-      from {
-        transform: translateY(0);
-      }
-      to {
-        transform: translateY(-8px);
-      }
-    }
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(16px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      * {
-        animation-duration: 0.001ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.001ms !important;
-      }
+      
+      .gallery-grid { display: flex; flex-direction: column; height: auto; }
+      .gallery-item { height: 260px; }
+      
+      .info-grid { grid-template-columns: 1fr; gap: 3rem; }
+      
+      .hours-list { padding-left: 1rem; border-left-width: 2px; }
     }
   </style>
 </head>
 <body>
-  <!-- Header -->
+
   <header>
-    <div class="container">
-      <nav class="nav">
-        <div class="brand">
-          <div class="brand-logo" aria-hidden="true">
-            <svg viewBox="0 0 120 120" role="presentation">
-              <circle cx="60" cy="60" r="56" fill="none" stroke="#f47c1c" stroke-width="8" />
-              <rect x="56" y="20" width="8" height="80" rx="4" transform="rotate(-42 60 60)" fill="#f47c1c" />
-              <rect x="56" y="20" width="8" height="80" rx="3" transform="rotate(42 60 60)" fill="#f47c1c" />
-              <circle cx="60" cy="60" r="9" fill="#050203" stroke="#f47c1c" stroke-width="4" />
-              <text x="60" y="30" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="#f47c1c" font-weight="700">
-                O
-              </text>
-              <text x="28" y="68" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="#f47c1c" font-weight="700">
-                T
-              </text>
-              <text x="92" y="68" text-anchor="middle" font-family="Playfair Display, serif" font-size="18" fill="#f47c1c" font-weight="700">
-                B
-              </text>
-            </svg>
-          </div>
-          <div class="brand-text">
-            <span class="brand-title">Taste of Bharat</span>
-            <span class="brand-sub">Modern Indian Restaurant</span>
-          </div>
+    <div class="nav-container">
+      <div class="brand">
+        <div class="logo-wrapper">
+          <img src="Screenshot 2025-11-23 at 10.04.04 PM.jpg" alt="Taste of Bharat Logo">
         </div>
-
-        <div class="nav-links">
-          <a href="#home">Home</a>
-          <a href="#about">Story</a>
-          <a href="#menu">Menu</a>
-          <a href="#order">Order</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Visit</a>
-        </div>
-
-        <div class="nav-cta">
-          <a href="tel:01793316158" class="phone-link">
-            <i class="fa-solid fa-phone"></i>
-            <span>01793&nbsp;316158</span>
-          </a>
-          <a href="#order" class="btn btn-primary">
-            <i class="fa-solid fa-bowl-food"></i>
-            Order Now
-          </a>
-          <div class="hamburger" id="hamburger">
-            <span></span><span></span><span></span>
-          </div>
-        </div>
-      </nav>
-    </div>
-
-    <!-- Mobile menu -->
-    <div class="mobile-menu" id="mobileMenu">
-      <div class="container">
-        <div class="mobile-menu-inner">
-          <a href="#home">Home</a>
-          <a href="#about">Our Story</a>
-          <a href="#menu">Menu</a>
-          <a href="#order">Order Online</a>
-          <a href="#gallery">Gallery</a>
-          <a href="#contact">Contact</a>
-
-          <div class="mobile-cta">
-            <a href="tel:01793316158" class="btn btn-ghost">
-              <i class="fa-solid fa-phone"></i>
-              Call Restaurant
-            </a>
-            <a href="#order" class="btn btn-primary">
-              <i class="fa-solid fa-bag-shopping"></i>
-              Order on JustEat
-            </a>
-          </div>
+        <div class="brand-text">
+          <h1>Taste Of Bharat</h1>
+          <span>Modern Indian Dining</span>
         </div>
       </div>
+
+      <nav class="nav-links">
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#contact">Book & Info</a>
+        <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder" class="btn btn-primary" target="_blank">Order Online</a>
+      </nav>
     </div>
   </header>
 
-  <!-- Hero -->
-  <main id="home" class="hero">
-    <div class="container">
-      <div class="hero-grid">
-        <!-- Left -->
-        <div>
-          <div class="pill">
-            <i class="fa-solid fa-fire-flame-curved"></i>
-            Now open in Swindon • Dine-in · Takeaway · Delivery
-          </div>
-          <h1 class="hero-title">
-            Experience the <span>True Taste of India</span> in Swindon.
-          </h1>
-          <p class="hero-subtitle">
-            Taste of Bharat brings recipes from Indian homes and streets straight to your table — rich curries, fragrant biryanis and tandoor-fresh breads, crafted with warmth and care.
-          </p>
-
-          <div class="hero-cta">
-            <a href="#order" class="btn btn-primary">
-              <i class="fa-solid fa-bag-shopping"></i>
-              Order on JustEat
-            </a>
-            <a href="#contact" class="btn btn-ghost">
-              <i class="fa-regular fa-calendar-check"></i>
-              Book a Table
-            </a>
-          </div>
-
-          <div class="hero-meta">
-            <div class="hero-tag">
-              <span class="hero-tag-label">Location</span>
-              <span class="hero-tag-value">198 Rodbourne Rd, Swindon SN2 2AA</span>
-            </div>
-            <div class="hero-tag">
-              <span class="hero-tag-label">Opening Hours</span>
-              <span class="hero-tag-value">Mon–Sun · 12:00 – 22:30</span>
-            </div>
-          </div>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:600; color:#E98E3A; margin-bottom:1rem;">Swindon's Finest</div>
+        <h2>Authentic Spice.<br>Modern Soul.</h2>
+        <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#menu" class="btn btn-primary">View Full Menu</a>
+          <a href="#contact" class="btn btn-outline">Book a Table</a>
         </div>
-
-        <!-- Right -->
-        <div class="hero-image-card">
-          <div class="hero-photo">
-            <img
-              src="https://images.unsplash.com/photo-1543353071-087092ec3934?auto=format&fit=crop&w=1200&q=80"
-              alt="Taste of Bharat signature dishes"
-            />
-            <div class="hero-photo-caption">
-              <h3>Plates Full of Bharat</h3>
-              <p>North & South Indian classics · Street favourites</p>
-            </div>
-          </div>
-
-          <div class="hero-floating-badge">
-            <i class="fa-solid fa-star"></i>
-            Authentic Indian flavours · Swindon
-          </div>
-
-          <div class="hero-chip-stack">
-            <span class="chip">Butter Chicken</span>
-            <span class="chip">Hyderabadi Biryani</span>
-            <span class="chip">Masala Dosa</span>
-            <span class="chip">Tandoori Specials</span>
-          </div>
+      </div>
+      <div class="hero-image-frame">
+        <div class="hero-image">
+          <img src="Screenshot 2025-12-16 at 5.09.29 PM.jpg" alt="Sizzling Mixed Grill Platter">
         </div>
       </div>
     </div>
-  </main>
+  </section>
 
-  <!-- About -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Our Story</div>
-          <h2 class="section-title">
-            From the heart of India <span>to your table.</span>
-          </h2>
-        </div>
-        <p class="section-desc">
-          Taste of Bharat is built around one simple idea: Indian food should feel like a warm welcome. Every curry, bread and starter is made to taste like home — rich, aromatic and full of character.
-        </p>
-      </div>
+  <div class="container" id="menu">
+    <div class="section-title">
+      <h3>Our Menu</h3>
+      <p>Search dishes or select a category below</p>
+    </div>
 
-      <div class="about-grid reveal">
-        <div class="about-text">
-          <p>
-            At Taste of Bharat, we celebrate the many regions of India. From the creamy gravies of the North and fiery curries of the South to the tangy chaats of the streets, our menu is a journey through India’s most-loved flavours.
-          </p>
-          <p>
-            We use carefully sourced spices, fresh ingredients and time-tested cooking methods. Whether you’re joining us for a relaxed dine-in experience or ordering a cosy night-in via JustEat, expect food that’s comforting, generous and full of soul.
-          </p>
-
-          <div class="about-highlights">
-            <div class="about-stat">
-              <h4>Regional Classics</h4>
-              <p>Signature dishes from across India’s diverse states.</p>
-            </div>
-            <div class="about-stat">
-              <h4>Fresh Ingredients</h4>
-              <p>Cooked to order with handpicked spices and herbs.</p>
-            </div>
-            <div class="about-stat">
-              <h4>Family Friendly</h4>
-              <p>Perfect for families, friends, celebrations and big groups.</p>
-            </div>
-          </div>
-        </div>
-
-        <aside class="about-card">
-          <div class="about-card-header">
-            <div class="chef-info">
-              <div class="chef-avatar">C</div>
-              <div class="chef-meta">
-                <span>Chef’s Note</span>
-                <small>Head Chef · Taste of Bharat</small>
-              </div>
-            </div>
-            <div class="about-card-badge">Made with Heart</div>
-          </div>
-          <p>
-            “When you eat with us, we want it to feel like a visit to a friend’s home in India. No shortcuts, no compromise —
-            just slow-cooked gravies, fresh tandoor breads and comfort food that keeps you coming back.”
-          </p>
-          <div class="about-card-footer">
-            <span><i class="fa-solid fa-pepper-hot"></i>Spice levels adjusted to your taste</span>
-            <span><i class="fa-solid fa-leaf"></i>Plenty of vegetarian & vegan options</span>
-          </div>
+    <div class="menu-container">
+      <aside class="menu-sidebar" id="categoryList">
         </aside>
+
+      <div class="menu-content">
+        <div style="margin-bottom: 2rem;">
+          <input type="text" id="menuSearch" placeholder="Search for Butter Chicken, Biryani..." 
+                 style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size:1rem;">
+        </div>
+        <div class="menu-grid" id="menuGrid">
+          </div>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Menu -->
-  <section id="menu" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Our Menu</div>
-          <h2 class="section-title">
-            Crafted dishes <span>for every craving.</span>
-          </h2>
-        </div>
-        <p class="section-desc">
-          Explore starters, mains, biryanis and breads inspired by recipes from homes and kitchens across India. Here’s a taste of what we serve.
-        </p>
+  <div class="container" id="gallery" style="margin-top: 6rem;">
+    <div class="section-title">
+      <h3>Visual Feast</h3>
+      <p>A glimpse into our kitchen</p>
+    </div>
+    
+    <div class="gallery-grid">
+      <div class="gallery-item g-large">
+        <img src="Screenshot 2025-12-16 at 5.08.40 PM.jpg" alt="Indian Feast">
       </div>
-
-      <div class="menu-card reveal">
-        <div class="menu-columns">
-          <div class="menu-section">
-            <span class="menu-kicker">Tandoori Khazana</span>
-            <h3>Clay Oven Signatures</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Mixed Grill</div>
-                    <p class="menu-desc">
-                      1 tandoori chicken leg, Punjabi chicken tikka (2), Malai chicken tikka (2), lamb chops (3), onion bhaji (3),
-                      lamb shami kebab (2). Complimentary butter naan.
-                    </p>
-                  </div>
-                  <span class="menu-price">£18.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Achari Paneer Tikka (4pc)</div>
-                    <p class="menu-desc">Cottage cheese marinated with pickling spices in yoghurt cooked in the tandoor.</p>
-                  </div>
-                  <span class="menu-price">£7.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Malai Chicken Tikka (4pc)</div>
-                    <p class="menu-desc">Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.</p>
-                  </div>
-                  <span class="menu-price">£6.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Punjabi Chicken Tikka (4pc)</div>
-                    <p class="menu-desc">Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.</p>
-                  </div>
-                  <span class="menu-price">£6.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Tandoori Chicken Wings (6pc)</div>
-                    <p class="menu-desc">Chili coated chicken wings grilled in the tandoor.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Tandoori Chicken Half / Full</div>
-                    <p class="menu-desc">Tandoor-marinated spring chicken.</p>
-                  </div>
-                  <span class="menu-price">£8.50 / £14.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Biryanis</span>
-            <h3>Fragrant Rice Classics</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Kathal and Paneer Biryani</div>
-                    <p class="menu-desc">Spice infused basmati rice with tender jackfruit, paneer and nuts.</p>
-                  </div>
-                  <span class="menu-price">£9.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>N</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chicken Dum Biryani</div>
-                    <p class="menu-desc">Basmati rice slow-cooked with tender chicken and spices, served with raita.</p>
-                  </div>
-                  <span class="menu-price">£10.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chicken Tikka Biryani</div>
-                    <p class="menu-desc">Spice infused basmati rice with fragrant herbs and raita.</p>
-                  </div>
-                  <span class="menu-price">£10.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Lamb Biryani</div>
-                    <p class="menu-desc">Spice infused basmati with fragrant herbs and raita.</p>
-                  </div>
-                  <span class="menu-price">£11.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Prawn Biryani</div>
-                    <p class="menu-desc">Spice infused basmati with fragrant herbs and raita.</p>
-                  </div>
-                  <span class="menu-price">£12.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>P</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Sides</span>
-            <h3>Shareables & Extras</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Noodles (Chicken / Veg)</div>
-                    <p class="menu-desc">Wok tossed noodles with the option of either tender chicken or assorted veg.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>G</span><span>S</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Aloo Jeera</div>
-                    <p class="menu-desc">Boiled baby potatoes tossed in jeera and Indian spices.</p>
-                  </div>
-                  <span class="menu-price">£6.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Steam Rice</div>
-                    <p class="menu-desc">Steam plain long grain basmati rice.</p>
-                  </div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Pulao Rice</div>
-                    <p class="menu-desc">Basmati rice flavoured with cumin seeds.</p>
-                  </div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Special TOB Salad</div>
-                    <p class="menu-desc">Onion, tomato, cucumber, coriander & spiced with roasted cumin.</p>
-                  </div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Raita</div>
-                    <p class="menu-desc">Natural yoghurt with cucumber and roasted cumin.</p>
-                  </div>
-                  <span class="menu-price">£2.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Tandoor Breads (Eggless)</span>
-            <h3>Fresh from the Clay Oven</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Tandoori Roti</div>
-                  <span class="menu-price">£2.50</span>
-                </div>
-                <div class="menu-tags"><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Plain Naan</div>
-                  <span class="menu-price">£3.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Butter Naan</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Cheese Naan</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Chilli Naan</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Garlic Naan</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Chilli Cheese Naan</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Lacchedar Paratha</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Keema Naan</div>
-                  <span class="menu-price">£5.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Aloo Paratha</div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Peshwari Naan</div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>N</span><span>G</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Desserts</span>
-            <h3>Sweet Finish</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Tandoori Pineapple</div>
-                  <span class="menu-price">£5.00</span>
-                </div>
-                <p class="menu-desc">With vanilla ice cream.</p>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Gulab Jamun</div>
-                  <span class="menu-price">£4.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Gajar Halwa</div>
-                  <span class="menu-price">£4.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Rasmalai</div>
-                  <span class="menu-price">£4.00</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Children's Menu</span>
-            <h3>Little Favourites</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Chips</div>
-                  <span class="menu-price">£2.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Chicken Nuggets</div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div class="menu-name">Fish Finger</div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-                <div class="menu-tags"><span>F</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Snack Bites</span>
-            <h3>Street Food & Chaat</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Papadum with Homemade Chutney</div>
-                    <p class="menu-desc">Masala papad with onion, tomato, coriander and masala powder.</p>
-                  </div>
-                  <span class="menu-price">£0.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Punjabi Samosa (2pc)</div>
-                    <p class="menu-desc">Classic Punjabi vegetable samosa with tamarind chutney.</p>
-                  </div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Bhel Puri</div>
-                    <p class="menu-desc">Puffed rice tossed with potatoes, onions finished with chutneys.</p>
-                  </div>
-                  <span class="menu-price">£3.50</span>
-                </div>
-                <div class="menu-tags"><span>G</span><span>D</span><span>N</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Onion Bhaji (4pc)</div>
-                    <p class="menu-desc">Crispy fried onion coated with gram flour and mixed spices.</p>
-                  </div>
-                  <span class="menu-price">£3.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Gol Gappa</div>
-                    <p class="menu-desc">Wheat puffs, spiced potatoes, tamarind, chilli water and coriander water.</p>
-                  </div>
-                  <span class="menu-price">£4.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chef Special - Kale Pakora Chaat</div>
-                    <p class="menu-desc">Crispy kale leaves fried with gram flour and tamarind chutney.</p>
-                  </div>
-                  <span class="menu-price">£5.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Samosa Chaat</div>
-                    <p class="menu-desc">Classic smashed samosa with chickpeas, sweet yoghurt, mint and tamarind chutney.</p>
-                  </div>
-                  <span class="menu-price">£5.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Pav Bhaji</div>
-                    <p class="menu-desc">Street food of Mumbai — mashed spicy vegetable, onion, coriander, butter toasted bun.</p>
-                  </div>
-                  <span class="menu-price">£5.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Gobi 65</div>
-                    <p class="menu-desc">Crispy cauliflower florets with curry leaves and chilli.</p>
-                  </div>
-                  <span class="menu-price">£5.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Aloo Tikki Chaat (2pc)</div>
-                    <p class="menu-desc">Crispy potato patties with chickpeas gravy, assorted chutneys.</p>
-                  </div>
-                  <span class="menu-price">£5.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chef Special - Paneer Pocket Kebab</div>
-                    <p class="menu-desc">Layered paneer cheese in a pocket, stuffed with paneer, peppers and onion.</p>
-                  </div>
-                  <span class="menu-price">£9.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chili Paneer</div>
-                    <p class="menu-desc">Indian cottage tossed with chili, mix pepper and soy sauce.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Non-Veg Starters</span>
-            <h3>From the Grill & Wok</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chef Special - Chicken Pocket Kebab</div>
-                    <p class="menu-desc">Layered paneer pocket, stuffed with chicken and peppers.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chicken Lollipop (5pc)</div>
-                    <p class="menu-desc">Deep fried chicken wing lollipop.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chilli Chicken</div>
-                    <p class="menu-desc">Chicken tossed with chilli, mixed pepper and soy sauce.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>G</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chicken 65</div>
-                    <p class="menu-desc">Tender boneless chicken with curry leaf and chilli.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Lamb Seekh Kebab (3pc)</div>
-                    <p class="menu-desc">Juicy minced lamb kebab chargrilled with aromatic spices.</p>
-                  </div>
-                  <span class="menu-price">£7.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Patiyala Lamb Chop (3pc)</div>
-                    <p class="menu-desc">Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chili Squid</div>
-                    <p class="menu-desc">Marinated squid rings glazed in the pan with Indian spices.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>F</span><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Amritsari Fish</div>
-                    <p class="menu-desc">Punjab-style gram flour fried fish marinated in corn, gram flour & spices.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>F</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Dakshini Prawns (5pc)</div>
-                    <p class="menu-desc">Spicy & crispy-fried prawns with curry leaf, lemon and chilli.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>P</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Veg Curries</span>
-            <h3>Comforting House Curries</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Saag Paneer / Aloo</div>
-                    <p class="menu-desc">Indian cottage cheese cooked gently in creamy spinach with spices.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Paneer Butter Masala</div>
-                    <p class="menu-desc">Cottage cheese cooked in rich butter sauce.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Kadai Paneer</div>
-                    <p class="menu-desc">Cottage cheese tossed with onion, pepper and tomato sauce.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Bhindi Masala</div>
-                    <p class="menu-desc">Okra tossed with tomato and onion gravy.</p>
-                  </div>
-                  <span class="menu-price">£8.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Channa Masala</div>
-                    <p class="menu-desc">Chickpeas cooked in tomato and onion gravy.</p>
-                  </div>
-                  <span class="menu-price">£7.50</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Dal Makhani</div>
-                    <p class="menu-desc">Slow cooked black lentil & kidney beans in rich and creamy buttery sauce.</p>
-                  </div>
-                  <span class="menu-price">£7.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Tadka Dal</div>
-                    <p class="menu-desc">Authentic chana dal cooked with aromatic spices and herbs.</p>
-                  </div>
-                  <span class="menu-price">£7.50</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Non-Veg Curries</span>
-            <h3>Signature Meat & Seafood</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Butter Chicken</div>
-                    <p class="menu-desc">Classic butter chicken with tomato, fresh fenugreek finished with cream.</p>
-                  </div>
-                  <span class="menu-price">£9.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Grandma's Chicken Curry</div>
-                    <p class="menu-desc">Chicken marinated with homemade spices and simmered in tomato.</p>
-                  </div>
-                  <span class="menu-price">£9.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Madras Chicken / Lamb Curry</div>
-                    <p class="menu-desc">Spicy south Indian curry with coconut, chicken or lamb cooked tender.</p>
-                  </div>
-                  <span class="menu-price">£9.50 / £10.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Railway Lamb Curry</div>
-                    <p class="menu-desc">Classic railway curry with tomato, fennel, spicy curry, lamb and potato.</p>
-                  </div>
-                  <span class="menu-price">£10.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Fish Moilee</div>
-                    <p class="menu-desc">Fish simmered in onion, ginger, coconut and curry leaf sauce.</p>
-                  </div>
-                  <span class="menu-price">£10.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>F</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Prawn Moilee</div>
-                    <p class="menu-desc">Prawns simmered in onion, ginger, coconut and curry leaf sauce.</p>
-                  </div>
-                  <span class="menu-price">£10.50</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>P</span></div>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-section">
-            <span class="menu-kicker">Combo Meals</span>
-            <h3>Meal Deals with Sides</h3>
-            <div class="menu-list">
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Chicken Combo</div>
-                    <p class="menu-desc">Chicken Dum Biryani, Chicken Lollipop (5pcs), Chilli Chicken, raita, chips, soft drink.</p>
-                  </div>
-                  <span class="menu-price">£16.90</span>
-                </div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Veg Combo</div>
-                    <p class="menu-desc">Veg Biryani, Paneer Tikka (2pcs), raita, chips, soft drink.</p>
-                  </div>
-                  <span class="menu-price">£15.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span></div>
-              </div>
-              <div class="menu-item-row">
-                <div class="menu-item-header">
-                  <div>
-                    <div class="menu-name">Seafood Combo</div>
-                    <p class="menu-desc">Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawn (5pcs), raita, chips, soft drink.</p>
-                  </div>
-                  <span class="menu-price">£18.90</span>
-                </div>
-                <div class="menu-tags"><span>D</span><span>F</span><span>P</span></div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="menu-note">
-          <span>
-            <i class="fa-solid fa-circle-info"></i>
-            Our food may contain nuts, dairy, gluten, mustard, fish, soya or crustaceans — please speak to a member of staff regarding any dietary requirements.
-          </span>
-          <span>Allergen key: D Dairy · G Gluten · N Nuts · F Fish · S Soya · P Prawns.</span>
-        </div>
+      <div class="gallery-item g-tall">
+        <img src="Screenshot 2025-12-16 at 5.09.05 PM.jpg" alt="Crispy Starters">
+      </div>
+      <div class="gallery-item g-std">
+        <img src="Screenshot 2025-12-16 at 5.08.49 PM.jpg" alt="Paneer Tikka">
+      </div>
+      <div class="gallery-item g-std">
+        <img src="Screenshot 2025-12-16 at 5.09.15 PM.jpg" alt="Pineapple Dessert">
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Order Online -->
-  <section id="order" class="section">
+  <div id="contact" style="background: #FFFFFF; padding-top:4rem;">
     <div class="container">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Order Online</div>
-          <h2 class="section-title">
-            Craving comfort? <span>We’ll bring Bharat to you.</span>
-          </h2>
-        </div>
-        <p class="section-desc">
-          Enjoy your favourite curries, biryanis and starters at home. Order securely through JustEat or call us directly for takeaway.
-        </p>
-      </div>
-
-      <div class="order-card reveal">
-        <div>
-          <h3>Order via JustEat or call the restaurant directly.</h3>
-          <p>
-            Choose your favourites, customise your spice level and add sides — we’ll prepare everything fresh and have it ready for collection or delivery.
-          </p>
-
-          <div class="order-cta">
-            <!-- Replace # with your actual JustEat listing URL when available -->
-            <a href="#" class="btn btn-primary" target="_blank" rel="noopener">
-              <i class="fa-brands fa-justeat"></i>
-              Order on JustEat
-            </a>
-            <a href="tel:01793316158" class="btn btn-ghost">
-              <i class="fa-solid fa-phone"></i>
-              Call 01793 316158
-            </a>
-          </div>
-        </div>
-
-        <div class="order-details">
-          <div>
-            <i class="fa-solid fa-location-dot"></i>
-            <strong>Address:</strong> 198 Rodbourne Rd, Swindon SN2 2AA
-          </div>
-          <div>
-            <i class="fa-solid fa-clock"></i>
-            <strong>Opening hours:</strong> Mon – Sun · 12:00 – 22:30
-          </div>
-          <div>
-            <i class="fa-solid fa-truck-fast"></i>
-            <strong>Services:</strong> Dine-in · Takeaway · Delivery via JustEat
-          </div>
-          <div>
-            <i class="fa-solid fa-note-sticky"></i>
-            <strong>Note:</strong> Delivery radius and fees are managed directly by JustEat.
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Gallery -->
-  <section id="gallery" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Gallery</div>
-          <h2 class="section-title">
-            A little preview <span>from our kitchen & tables.</span>
-          </h2>
-        </div>
-        <p class="section-desc">
-          Swap “What should we eat?” for “Let’s go to Taste of Bharat.” Replace these images with photos of your dishes, ambience and guests.
-        </p>
-      </div>
-
-      <div class="gallery-grid reveal">
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1604908177683-1c9ad1ccd46c?auto=format&fit=crop&w=900&q=80"
-            alt="Indian thali spread"
-          />
-          <span class="gallery-badge">Chef’s Special</span>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1604908553869-18c5c7b1e8c4?auto=format&fit=crop&w=900&q=80"
-            alt="Tandoori platter"
-          />
-          <span class="gallery-badge">Tandoor</span>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1544145945-f90425340c7b?auto=format&fit=crop&w=900&q=80"
-            alt="Restaurant interior"
-          />
-          <span class="gallery-badge">Ambience</span>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1631788012422-4c8d05dba4fe?auto=format&fit=crop&w=900&q=80"
-            alt="Biryani close up"
-          />
-          <span class="gallery-badge">Biryani</span>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&w=900&q=80"
-            alt="Indian desserts"
-          />
-          <span class="gallery-badge">Sweet Finish</span>
-        </div>
-        <div class="gallery-item">
-          <img
-            src="https://images.unsplash.com/photo-1564758568607-095f6a13da05?auto=format&fit=crop&w=900&q=80"
-            alt="Family dining at Taste of Bharat"
-          />
-          <span class="gallery-badge">Good Times</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact -->
-  <section id="contact" class="section">
-    <div class="container">
-      <div class="section-header">
-        <div>
-          <div class="section-kicker">Visit Us</div>
-          <h2 class="section-title">
-            Come by, say hello <span>& share a meal.</span>
-          </h2>
-        </div>
-        <p class="section-desc">
-          Book a table, plan a family dinner or organise a group celebration. Drop us a message or call — we’re happy to help.
-        </p>
-      </div>
-
-      <div class="contact-grid reveal">
-        <div class="contact-card">
-          <h3>Book a table or ask us anything.</h3>
-          <p>
-            Use the form below to send us your enquiry. For same-day bookings or large groups, calling us is usually fastest.
-          </p>
-
-          <!-- Replace action with your Formspree / backend endpoint if needed -->
-          <form class="contact-form" action="#" method="post">
-            <div class="field">
-              <label for="name">Name</label>
-              <input id="name" name="name" type="text" placeholder="Your full name" required />
+      <div class="info-grid">
+        
+        <div class="form-wrapper">
+          <h3>Reserve Your Table</h3>
+          <span class="form-sub">Book instantly. No account required.</span>
+          <form action="https://formsubmit.co/kamalshelley@gmal.com" method="POST">
+            <input type="hidden" name="_subject" value="Table Reservation">
+            <input type="hidden" name="_captcha" value="false">
+            
+            <div class="form-group">
+              <label>Full Name</label>
+              <input type="text" name="name" class="form-control" required placeholder="e.g. John Doe">
             </div>
-            <div class="field">
-              <label for="phone">Phone</label>
-              <input id="phone" name="phone" type="tel" placeholder="Your contact number" required />
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label>Date</label>
+                <input type="date" name="date" class="form-control" required>
+              </div>
+              <div class="form-group">
+                <label>Time</label>
+                <input type="time" name="time" class="form-control" required>
+              </div>
             </div>
-            <div class="field">
-              <label for="guests">Guests &amp; Date</label>
-              <input id="guests" name="guests" type="text" placeholder="E.g. 4 people, Saturday 7:30 pm" />
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+              <div class="form-group">
+                <label>Guests</label>
+                <input type="number" name="guests" class="form-control" value="2" min="1" required>
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" name="phone" class="form-control" required placeholder="07...">
+              </div>
             </div>
-            <div class="field">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" placeholder="Tell us about your booking or question"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">
-              <i class="fa-regular fa-paper-plane"></i>
-              Send Enquiry
-            </button>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1rem;">Confirm Booking</button>
           </form>
         </div>
 
-        <div class="map-card">
-          <div class="contact-meta">
-            <div class="contact-meta-item">
-              <i class="fa-solid fa-location-dot"></i>
-              198 Rodbourne Rd, Swindon SN2 2AA
-            </div>
-            <div class="contact-meta-item">
-              <i class="fa-solid fa-phone"></i>
-              <a href="tel:01793316158">01793 316158</a>
-            </div>
-            <div class="contact-meta-item">
-              <i class="fa-brands fa-facebook"></i>
-              <a href="https://www.facebook.com/share/1AG4QmmaMx/?mibextid=wwXIfr" target="_blank" rel="noopener">
-                Taste of Bharat on Facebook
-              </a>
-            </div>
-            <div class="contact-meta-item">
-              <i class="fa-brands fa-instagram"></i>
-              <a href="https://www.instagram.com/tasteofbharat_swindon?igsh=bTlsaG80cndyNGxp" target="_blank" rel="noopener">
-                tasteofbharat_swindon on Instagram
-              </a>
-            </div>
+        <div class="hours-wrapper" style="color: var(--text-main); padding-top: 2rem;">
+          <h3>Visit Us</h3>
+          <p style="color:var(--text-muted); margin-bottom:2rem; font-size:1.1rem;">198 Rodbourne Rd, Swindon SN2 2AA<br>01793 316158</p>
 
-            <div class="contact-hours">
-              Opening hours
-              <div class="hours-list">
-                <div><span>Mon – Thu</span><span>12:00 – 22:00</span></div>
-                <div><span>Fri – Sat</span><span>12:00 – 22:30</span></div>
-                <div><span>Sunday</span><span>12:00 – 22:00</span></div>
-              </div>
+          <div class="hours-list">
+            <div class="hour-row">
+              <span class="day">Monday</span>
+              <span class="time" style="color: #999;">Closed</span>
+            </div>
+            <div class="hour-row">
+              <span class="day">Tuesday — Friday</span>
+              <span class="time">5:00 PM — 10:00 PM</span>
+            </div>
+            <div class="hour-row">
+              <span class="day">Saturday</span>
+              <span class="time">12—2 PM, 5—10 PM</span>
+            </div>
+            <div class="hour-row">
+              <span class="day">Sunday</span>
+              <span class="time">12—2 PM, 5—10 PM</span>
             </div>
           </div>
-
-          <div class="map-placeholder">
-            <!-- You can replace this with an actual Google Maps embed iframe -->
-            <div>
-              <strong>Find us on Google Maps</strong><br />
-              Search for “Taste of Bharat, 198 Rodbourne Rd, Swindon SN2 2AA”.
-            </div>
+          
+          <div class="map-container">
+            <iframe 
+              width="100%" 
+              height="100%" 
+              style="border:0" 
+              loading="lazy" 
+              src="https://maps.app.goo.gl/S5HmpF2xbsMGzudN9">
+            </iframe>
           </div>
-
-          <a
-            class="map-link"
-            href="https://www.google.com/maps/search/?api=1&query=198+Rodbourne+Rd,+Swindon+SN2+2AA"
-            target="_blank"
-            rel="noopener"
-          >
-            <i class="fa-solid fa-map-location-dot"></i>
-            Open in Google Maps
-          </a>
         </div>
+
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- Footer -->
   <footer>
     <div class="container">
-        <div class="footer-grid">
-          <div class="footer-brand">
-            <span>&copy; <span id="year"></span> Taste of Bharat.</span>
-            <span>All rights reserved.</span>
-          </div>
-          <div>198 Rodbourne Rd, Swindon SN2 2AA · Phone: <a href="tel:01793316158">01793 316158</a></div>
-          <div class="footer-social">
-            <span>Follow us</span>
-            <a
-              href="https://www.facebook.com/share/1AG4QmmaMx/?mibextid=wwXIfr"
-              target="_blank"
-              rel="noopener"
-              aria-label="Facebook"
-            >
-              <i class="fa-brands fa-facebook-f"></i>
-            </a>
-            <a
-              href="https://www.instagram.com/tasteofbharat_swindon?igsh=bTlsaG80cndyNGxp"
-              target="_blank"
-              rel="noopener"
-              aria-label="Instagram"
-            >
-              <i class="fa-brands fa-instagram"></i>
-            </a>
-          </div>
-        </div>
+      <div class="social-links">
+        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" aria-label="Instagram">
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+        </a>
+        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" aria-label="Facebook">
+           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        </a>
       </div>
+      <p>© <span id="year"></span> Taste Of Bharat. All rights reserved.</p>
+    </div>
   </footer>
 
-  <!-- WhatsApp Button (update the phone number if you use WhatsApp for orders) -->
-  <!--
-  <div class="whatsapp-float">
-    <a href="https://wa.me/44XXXXXXXXXX" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
-      <i class="fa-brands fa-whatsapp"></i>
-    </a>
-  </div>
-  -->
+  <a href="https://wa.me/447771447915" class="whatsapp-float" target="_blank">
+    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.23 8.25-8.23m4.58 10.8c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.17-.48-.3z"/></svg>
+  </a>
 
   <script>
-    // Mobile menu toggle
-    const hamburger = document.getElementById("hamburger");
-    const mobileMenu = document.getElementById("mobileMenu");
+    // --- MENU DATA ---
+    const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
 
-    hamburger.addEventListener("click", () => {
-      mobileMenu.classList.toggle("open");
+    // --- LOGIC ---
+    const grouped = new Map();
+    menuItems.forEach(item => {
+      const cat = item.category || "General";
+      if(!grouped.has(cat)) grouped.set(cat, []);
+      grouped.get(cat).push(item);
     });
 
-    // Close mobile menu on link click
-    document.querySelectorAll(".mobile-menu-inner a").forEach((link) => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
+    const categories = Array.from(grouped.keys());
+    const categoryList = document.getElementById('categoryList');
+    const menuGrid = document.getElementById('menuGrid');
+    const searchInput = document.getElementById('menuSearch');
+    let activeCategory = categories[0];
+
+    function renderCategories() {
+      categoryList.innerHTML = '';
+      categories.forEach(cat => {
+        const btn = document.createElement('button');
+        btn.className = `category-btn ${cat === activeCategory ? 'active' : ''}`;
+        btn.textContent = cat;
+        btn.onclick = () => {
+          activeCategory = cat;
+          searchInput.value = '';
+          renderCategories();
+          renderMenu();
+        };
+        categoryList.appendChild(btn);
       });
+    }
+
+    function renderMenu(filter = '') {
+      menuGrid.innerHTML = '';
+      let itemsToRender = [];
+
+      if(filter) {
+        itemsToRender = menuItems.filter(i => (i.name + i.desc).toLowerCase().includes(filter.toLowerCase()));
+      } else {
+        itemsToRender = grouped.get(activeCategory);
+      }
+
+      if(itemsToRender.length === 0) {
+        menuGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">No dishes found matching your search.</div>';
+        return;
+      }
+
+      itemsToRender.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'dish-card';
+        card.innerHTML = `
+          <div class="dish-header">
+            <div class="dish-title">${item.name}</div>
+            <div class="dish-price">${item.price}</div>
+          </div>
+          <div class="dish-desc">${item.desc}</div>
+        `;
+        menuGrid.appendChild(card);
+      });
+    }
+
+    searchInput.addEventListener('input', (e) => {
+      renderMenu(e.target.value);
     });
 
-    // Reveal on scroll
-    const revealItems = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add("visible");
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.2 }
-    );
-
-    revealItems.forEach((item) => observer.observe(item));
-
-    // Dynamic year
-    document.getElementById("year").textContent = new Date().getFullYear();
+    // Init
+    renderCategories();
+    renderMenu();
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
