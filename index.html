@@ -11,7 +11,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -39,9 +39,17 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
       overflow-x: hidden;
+      /* Noise Texture for Premium Feel */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--color-primary); }
+    /* Headings Bold (700) */
+    h1, h2, h3, h4 { 
+      font-family: 'Playfair Display', serif; 
+      font-weight: 700; 
+      color: var(--color-primary); 
+    }
+    
     a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
     img { max-width: 100%; display: block; height: auto; }
     ul { list-style: none; }
@@ -102,7 +110,7 @@
       position: fixed; top: 0; left: 0; right: 0;
       height: var(--header-height);
       z-index: 1000;
-      background: rgba(255, 255, 255, 0.9);
+      background: rgba(255, 255, 255, 0.95);
       backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
       border-bottom: 1px solid rgba(0,0,0,0.05);
       display: flex; align-items: center;
@@ -111,31 +119,44 @@
       width: 100%; max-width: var(--container-width); margin: 0 auto;
       padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center;
     }
-    .brand { display: flex; align-items: center; gap: 0.8rem; }
     
-    /* LOGO FIX: Forced circle dimensions */
+    .brand { 
+      display: flex; align-items: center; gap: 1rem; height: 100%;
+    }
+    
+    /* LOGO WRAPPER */
     .logo-wrapper {
-      width: 50px; height: 50px;
-      min-width: 50px; /* Prevents squishing */
+      width: 54px; 
+      height: 54px;
+      min-width: 54px;
       aspect-ratio: 1 / 1;
       border-radius: 50%;
       border: 2px solid var(--color-accent);
       overflow: hidden; 
-      display: flex; justify-content: center; align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       background: #000;
-      padding: 0; margin: 0;
+      padding: 0; 
+      margin: 0; 
     }
+    /* FIX 1: Move Logo Up Slightly */
     .logo-wrapper img { 
       width: 100%; height: 100%; 
       object-fit: cover; 
-      object-position: center;
       display: block; 
+      transform: translateY(-5px); /* Pulls logo up */
     }
 
-    .brand-text h1 { font-size: 1.4rem; line-height: 1; margin-bottom: 0.2rem; color: var(--color-primary); }
+    .brand-text {
+      display: flex; flex-direction: column; justify-content: center;
+    }
+    .brand-text h1 { 
+      font-size: 1.4rem; line-height: 1; margin: 0 0 0.25rem 0; color: var(--color-primary); font-weight: 700;
+    }
     .brand-text span {
       font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--color-accent); font-weight: 600; display: block;
+      color: var(--color-accent); font-weight: 700; display: block; line-height: 1;
     }
 
     .nav-links { display: flex; gap: 2rem; align-items: center; }
@@ -170,6 +191,7 @@
     }
     .hero-content h2 {
       font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--color-primary);
+      font-weight: 700;
     }
     .hero-content p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; }
     
@@ -181,9 +203,25 @@
       transform: rotate(-2deg); 
     }
 
+    /* --- SOCIAL PROOF (New) --- */
+    .social-proof {
+      padding: 3rem 0; text-align: center; 
+      background: #FAFAF9; border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+    .sp-text {
+      text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; 
+      color: var(--color-primary); font-weight: 700; margin-bottom: 0.5rem;
+    }
+    .sp-stars { color: var(--color-accent); font-size: 1.2rem; margin-bottom: 1rem; }
+    .sp-quote {
+      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); 
+      max-width: 700px; margin: 0 auto 0.5rem; line-height: 1.4;
+    }
+    .sp-sub { font-size: 0.9rem; color: var(--text-muted); }
+
     /* --- MENU --- */
     .section-title { text-align: center; margin: 4rem 0 3rem; }
-    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
     .section-title p { color: var(--text-muted); font-size: 1.1rem; }
 
     .menu-container { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
@@ -224,6 +262,13 @@
     .gallery-item { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
     .gallery-item:hover img { transform: scale(1.08); }
+    /* Editorial Overlay */
+    .gallery-item::after {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4));
+      opacity: 0.7; pointer-events: none;
+    }
+    
     .g-large { grid-column: span 8; }
     .g-tall { grid-column: span 4; grid-row: span 2; }
     .g-std { grid-column: span 4; }
@@ -234,7 +279,7 @@
       background: white; padding: 2.5rem;
       border-radius: 24px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft);
     }
-    .form-wrapper h3 { color: var(--color-primary); margin-bottom: 0.5rem; font-size: 2rem; }
+    .form-wrapper h3 { color: var(--color-primary); margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700; }
     .form-sub { color: var(--text-muted); margin-bottom: 2rem; display:block; }
     
     .form-group { margin-bottom: 1.2rem; }
@@ -243,21 +288,18 @@
       letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; 
     }
     
-    /* Responsive Form Row */
     .form-row-2 {
       display: grid; 
       grid-template-columns: 1fr 1fr; 
-      gap: 1rem;
+      gap: 1.5rem;
     }
 
     .form-control {
-      width: 100%; 
-      padding: 1.1rem; 
-      border-radius: 12px; border: 1px solid #ddd;
+      width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd;
       background: #F9F9F9; color: var(--color-primary);
-      font-family: inherit; font-size: 1rem; 
-      transition: all 0.3s;
-      box-sizing: border-box; /* Fix for overflow */
+      font-family: inherit; font-size: 1rem; transition: all 0.3s;
+      box-sizing: border-box; 
+      max-width: 100%;
     }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
 
@@ -271,12 +313,12 @@
     }
     @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
-    .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; }
+    .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; font-weight: 700; }
     .hours-list {
       background: transparent; padding: 0;
       border-left: 3px solid var(--color-accent); padding-left: 2rem;
     }
-    .hour-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid #eee; }
+    .hour-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
     .hour-row:last-child { border-bottom: none; }
     .day { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
     .time { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
@@ -294,10 +336,19 @@
     }
     .social-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
     .social-links a {
-      width: 44px; height: 44px; border-radius: 50%; background: #111;
-      display: flex; justify-content: center; align-items: center; color: white; transition: background 0.3s;
+      width: 44px; height: 44px; border-radius: 50%; 
+      display: flex; justify-content: center; align-items: center; color: white; transition: all 0.3s;
     }
-    .social-links a:hover { background: var(--color-accent); color: black; transform: scale(1.1); }
+    
+    /* FOOTER BRAND COLORS */
+    .social-links .fb-btn { background-color: #1877F2; }
+    .social-links .fb-btn:hover { background-color: #166fe5; transform: scale(1.1); }
+
+    .social-links .insta-btn { 
+      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); 
+    }
+    .social-links .insta-btn:hover { filter: brightness(1.1); transform: scale(1.1); }
+
     .whatsapp-float {
       position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
       background: #25d366; color: white; border-radius: 50%;
@@ -342,17 +393,13 @@
       .gallery-item { height: 260px; }
 
       .info-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .form-wrapper { padding: 1.2rem; }
+      .form-wrapper { padding: 1.5rem; }
       
-      /* FORM OVERFLOW FIX */
       .form-row-2 { 
-        grid-template-columns: 1fr; /* Stack inputs vertically */
-        gap: 1rem;
+        grid-template-columns: 1fr; 
+        gap: 1rem; 
       }
-      .form-control {
-        width: 100%;
-        min-width: 0; /* Prevents overflow in flex/grid */
-      }
+      .form-control { width: 100%; min-width: 0; }
       
       .hours-list { padding-left: 1rem; border-left-width: 2px; }
       .map-container { height: 300px; }
@@ -394,7 +441,8 @@
       }
     ],
     "menu": "https://tasteofbharat.com/#menu",
-    "servesCuisine": "Indian"
+    "servesCuisine": "Indian",
+    "priceRange": "££"
   }
   </script>
 </head>
@@ -416,6 +464,7 @@
         <a href="#menu">Menu</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Book & Info</a>
+        <a href="tel:01793316158" class="btn btn-outline" style="padding: 0.8rem 1.2rem;">Call</a>
         <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder" class="btn btn-primary" target="_blank">Order Online</a>
       </nav>
 
@@ -431,19 +480,21 @@
     <a href="#menu" onclick="toggleMobileMenu()">Menu</a>
     <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
     <a href="#contact" onclick="toggleMobileMenu()">Book a Table</a>
+    <a href="tel:01793316158" class="btn btn-outline" style="width: 80%; justify-content:center;">Call 01793 316158</a>
     <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder" class="btn btn-primary" target="_blank" onclick="toggleMobileMenu()">Order Online</a>
-    <button onclick="toggleMobileMenu()" style="background:none; border:none; margin-top:2rem; font-size:1rem; text-decoration:underline;">Close</button>
+    <button onclick="toggleMobileMenu()" style="background:none; border:none; margin-top:2rem; font-size:1rem; text-decoration:underline; color: var(--text-muted);">Close</button>
   </div>
 
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content reveal">
-        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:600; color:#E98E3A; margin-bottom:1rem;">Swindon's Finest</div>
+        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:600; color:var(--color-accent); margin-bottom:1.5rem; font-size: 0.85rem;">Swindon's Finest</div>
         <h2>Authentic Spice.<br>Modern Soul.</h2>
         <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
           <a href="#menu" class="btn btn-primary">View Full Menu</a>
           <a href="#contact" class="btn btn-outline">Book a Table</a>
+          <a href="tel:01793316158" class="btn btn-outline">Call to Order</a>
         </div>
       </div>
       <div class="hero-image-frame reveal">
@@ -451,6 +502,15 @@
           <img src="hero.jpg" alt="Sizzling Mixed Grill Platter">
         </div>
       </div>
+    </div>
+  </section>
+
+  <section class="social-proof reveal">
+    <div class="container">
+      <div class="sp-text">Trusted by Locals</div>
+      <div class="sp-stars">★★★★★</div>
+      <div class="sp-quote">"Hands down the best curry in Swindon. The flavors are incredible and the service is always warm and welcoming."</div>
+      <div class="sp-sub">Highly Rated Restaurant</div>
     </div>
   </section>
 
@@ -462,7 +522,7 @@
     <div class="menu-container">
       <aside class="menu-sidebar" id="categoryList"></aside>
       <div class="menu-content">
-        <div style="margin-bottom: 2rem;">
+        <div style="margin-bottom: 2.5rem;">
           <input type="text" id="menuSearch" placeholder="Search for Butter Chicken, Biryani..." 
                  style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size:1rem;">
         </div>
@@ -531,7 +591,7 @@
                   <input type="tel" name="phone" class="form-control" required placeholder="07...">
                 </div>
               </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1rem;">Confirm Booking</button>
+              <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
             </form>
           </div>
 
@@ -548,7 +608,7 @@
 
         <div class="hours-wrapper" style="color: var(--text-main); padding-top: 2rem;">
           <h3>Visit Us</h3>
-          <p style="color:var(--text-muted); margin-bottom:2rem; font-size:1.1rem;">198 Rodbourne Rd, Swindon SN2 2AA<br>01793 316158</p>
+          <p style="color:var(--text-muted); margin-bottom:2.5rem; font-size:1.15rem;">198 Rodbourne Rd, Swindon SN2 2AA<br>01793 316158</p>
 
           <div class="hours-list">
             <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
@@ -569,10 +629,10 @@
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" aria-label="Instagram">
+        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" aria-label="Instagram" class="insta-btn">
            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
         </a>
-        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" aria-label="Facebook">
+        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" aria-label="Facebook" class="fb-btn">
            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
         </a>
       </div>
