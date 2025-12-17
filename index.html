@@ -8,15 +8,57 @@
   <meta name="title" content="Taste of Bharat | Modern Indian Restaurant in Swindon">
   <meta name="description" content="Experience authentic and modern Indian cuisine at Taste of Bharat, Swindon. Dine-in, takeaway, and delivery available." />
   <meta name="theme-color" content="#FAFAF9" />
+  <link rel="canonical" href="https://tasteofbharatswindon.co.uk">
+
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://tasteofbharatswindon.co.uk/">
+  <meta property="og:title" content="Taste of Bharat | Modern Indian Restaurant">
+  <meta property="og:description" content="Dine-in, takeaway, and delivery. Book a table or pre-order online.">
+  <meta property="og:image" content="https://tasteofbharatswindon.co.uk/hero.jpg">
+  <meta property="og:image:alt" content="Sizzling Indian Mixed Grill Platter at Taste of Bharat">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Taste of Bharat",
+    "image": "https://tasteofbharatswindon.co.uk/logo.jpg",
+    "url": "https://tasteofbharatswindon.co.uk",
+    "telephone": "01793316158",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "198 Rodbourne Rd",
+      "addressLocality": "Swindon",
+      "postalCode": "SN2 2AA",
+      "addressCountry": "GB"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 51.562,
+      "longitude": -1.795
+    },
+    "servesCuisine": "Indian",
+    "priceRange": "££",
+    "openingHoursSpecification": [
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday"],"opens":"17:00","closes":"22:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"12:00","closes":"14:00"},
+      {"@type":"OpeningHoursSpecification","dayOfWeek":["Saturday","Sunday"],"opens":"17:00","closes":"22:00"}
+    ],
+    "sameAs": [
+      "https://www.instagram.com/tasteofbharat_swindon",
+      "https://www.facebook.com/share/1AG4QmmaMx"
+    ]
+  }
+  </script>
 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-
     gtag('config', 'G-XXXXXXXXXX');
   </script>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
@@ -43,9 +85,7 @@
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    
     html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
-    
     body {
       font-family: 'DM Sans', sans-serif;
       background-color: var(--bg-body);
@@ -54,6 +94,11 @@
       overflow-x: hidden;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     }
+
+    /* Accessibility Skip Link */
+    .skip-link { position: absolute; top: -40px; left: 0; background: var(--color-accent); color: white; padding: 8px; z-index: 2000; transition: top 0.3s; }
+    .skip-link:focus { top: 0; }
+    :focus-visible { outline: 3px solid var(--color-accent); outline-offset: 3px; }
 
     h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-main); letter-spacing: -0.03em; }
     a { text-decoration: none; color: inherit; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
@@ -72,11 +117,9 @@
     .btn:active { transform: scale(0.96); }
     .btn-primary { background: linear-gradient(135deg, var(--color-accent), #c26115); color: white; box-shadow: 0 10px 20px rgba(217, 119, 43, 0.2); }
     .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(217, 119, 43, 0.35); }
-    
     .btn-outline { border: 2px solid var(--color-primary); background: transparent; color: var(--color-primary); font-weight: 800; }
     .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); background: #FFFBF7; transform: translateY(-2px); }
 
-    /* Just Eat Button */
     .btn-justeat {
       background-color: white; color: var(--je-orange); border: 2px solid var(--je-orange);
       font-weight: 800; font-style: italic; padding: 0.6rem 1.2rem; gap: 6px;
@@ -88,8 +131,10 @@
     /* Animations */
     .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
+    
     @keyframes float { 0% { transform: translateY(0px) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } 100% { transform: translateY(0px) rotate(-1deg); } }
     .hero-float { animation: float 8s ease-in-out infinite; }
+    
     @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .menu-item-anim { opacity: 0; animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
@@ -109,30 +154,23 @@
     .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1002; padding: 10px; }
     .hamburger span { width: 24px; height: 2px; background: var(--text-main); transition: all 0.3s; }
     
-    /* MOBILE MENU (Updated Close Icon) */
     .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-body); z-index: 1001; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.6s cubic-bezier(0.83, 0, 0.17, 1); }
     .mobile-menu.active { transform: translateY(0); }
     .mobile-menu a { font-size: 1.4rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-main); }
-    
-    /* New Close Icon Style */
-    .close-menu-icon {
-      position: absolute; top: 2rem; right: 2rem;
-      background: none; border: none; cursor: pointer;
-      color: var(--text-main); padding: 10px;
-      transition: transform 0.3s;
-    }
+    .close-menu-icon { position: absolute; top: 2rem; right: 2rem; background: none; border: none; cursor: pointer; color: var(--text-main); padding: 10px; transition: transform 0.3s; }
     .close-menu-icon:hover { transform: rotate(90deg); color: var(--color-accent); }
     .close-menu-icon svg { width: 32px; height: 32px; }
 
-    /* Hero */
+    /* Sections */
     .hero { padding-top: calc(var(--header-height) + 4rem); padding-bottom: 4rem; position: relative; overflow: hidden; }
-    .hero::before { content: ''; position: absolute; top: -30%; right: -20%; width: 80%; height: 80%; background: radial-gradient(circle, rgba(217, 119, 43, 0.08) 0%, transparent 65%); filter: blur(80px); z-index: -1; }
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .hero-content h2 { font-size: clamp(3rem, 6vw, 4.8rem); line-height: 1.05; margin-bottom: 1.5rem; color: var(--text-main); }
     .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 480px; font-weight: 400; }
+    
+    /* Hero Image */
+    .hero-image-frame { display: flex; justify-content: center; }
     .hero-image { border-radius: var(--radius-lg); box-shadow: var(--shadow-glow); overflow: hidden; transform: rotate(-2deg); transition: all 0.5s ease; }
 
-    /* Offers & Social */
     .offers-section { padding: 4rem 0; background: white; margin-bottom: 2rem; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
     .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
     .offer-card { background: #0B0B0B; color: #E5E5EA; padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--color-accent); text-align: center; display: flex; flex-direction: column; justify-content: center; transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
@@ -140,15 +178,10 @@
     .offer-title { color: var(--color-accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; letter-spacing: 1px; }
     .offer-desc { font-size: 1rem; line-height: 1.5; color: #ccc; }
     .social-proof { padding: 3rem 0; text-align: center; background: #FAFAF9; border-bottom: 1px solid rgba(0,0,0,0.05); }
-    .sp-text { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.5rem; }
-    .sp-stars { color: var(--color-accent); font-size: 1.2rem; margin-bottom: 1rem; }
     .sp-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); max-width: 700px; margin: 0 auto 0.5rem; line-height: 1.4; }
-    .sp-sub { font-size: 0.9rem; color: var(--text-muted); }
 
     /* Menu & Filters */
     .section-title { text-align: center; margin: 4rem 0 3rem; }
-    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.8rem; font-weight: 700; }
-    
     .direct-order-box { background: #FFF4E5; border: 1px dashed var(--color-accent); border-radius: 12px; padding: 1.5rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(217, 119, 43, 0.05); }
     .direct-order-box h4 { margin-bottom: 0.5rem; color: var(--color-accent); font-size: 1.2rem; }
     .direct-order-box p { margin: 0; font-size: 1rem; color: var(--text-main); line-height: 1.5; }
@@ -163,15 +196,13 @@
     .menu-container { display: grid; grid-template-columns: 240px 1fr; gap: 4rem; align-items: start; }
     .menu-sidebar { position: sticky; top: calc(var(--header-height) + 2rem); max-height: 80vh; overflow-y: auto; border-right: 1px solid var(--border-light); }
     .category-btn { display: block; width: 100%; text-align: left; padding: 0.8rem 0; margin-bottom: 0; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.3s; position: relative; }
-    .category-btn::before { content: ''; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s; }
     .category-btn:hover { color: var(--color-accent); padding-left: 5px; }
-    .category-btn.active { color: var(--text-main); font-weight: 700; padding-left: 5px; }
-    .category-btn.active::before { width: 10px; }
+    .category-btn.active { color: var(--text-main); font-weight: 700; padding-left: 5px; border-left: 2px solid var(--color-accent); }
     .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
     
     .dish-card { background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.4s; display: flex; flex-direction: column; justify-content: space-between; }
     .dish-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
-    .dish-card.dimmed { opacity: 0.2; pointer-events: none; filter: grayscale(100%); }
+    .dish-card.dimmed { opacity: 0.4; filter: grayscale(100%); }
     .dish-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; gap: 10px; }
     .dish-title { font-weight: 700; color: var(--text-main); font-size: 1.1rem; }
     .dish-price { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; white-space: nowrap; }
@@ -211,28 +242,25 @@
     .g-tall { grid-column: span 4; grid-row: span 2; }
     .g-std { grid-column: span 4; }
 
-    /* Contact & Visit Us Styles */
+    /* Contact */
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; }
     .form-wrapper { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); position: relative; overflow: hidden; }
     .form-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent); }
     .form-control { width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd; background: #F9F9F9; color: var(--color-primary); font-family: inherit; font-size: 1rem; transition: all 0.3s; box-sizing: border-box; max-width: 100%; }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
+    /* Fix: Added missing style */
+    .form-sub { display:block; margin: 0.4rem 0 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .success-message { text-align: center; padding: 2rem 0; color: var(--color-primary); display: none; animation: fadeIn 0.5s ease; }
     .success-icon { width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
-    
     .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; font-weight: 700; }
     .hours-list { background: transparent; padding: 0; border-left: 3px solid var(--color-accent); padding-left: 2rem; margin-top: 2rem; }
     .hour-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
     .map-container { margin-top: 3rem; border-radius: 20px; overflow: hidden; height: 400px; border: 1px solid #ddd; box-shadow: var(--shadow-soft); }
     .map-container iframe { width: 100% !important; height: 100% !important; }
-
     .contact-details { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
     .contact-item { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.1rem; color: var(--text-muted); }
-    .contact-icon { 
-      min-width: 40px; height: 40px; background: #FFF4E5; border-radius: 50%; 
-      display: flex; align-items: center; justify-content: center; color: var(--color-accent);
-    }
+    .contact-icon { min-width: 40px; height: 40px; background: #FFF4E5; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--color-accent); }
     .contact-icon svg { width: 20px; height: 20px; }
 
     /* Cart */
@@ -244,10 +272,9 @@
     .cart-modal.open .cart-content { transform: translateY(0); }
     .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px dashed #eee; }
     .cart-item-remove { color: red; font-size: 0.8rem; cursor: pointer; background: none; border: none; padding: 5px; }
-    
-    /* CART SUCCESS MESSAGE */
     #cartSuccess { display: none; text-align: center; padding: 2rem 0; }
     #cartSuccess h3 { color: var(--color-accent); margin-bottom: 1rem; }
+    .cart-total { font-size: 1.2rem; font-weight: 700; text-align: right; margin: 1rem 0; border-top: 2px solid #eee; padding-top: 1rem; color: var(--color-primary); }
 
     /* Footer */
     footer { background: #111; color: #888; padding: 4rem 0; text-align: center; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 6rem; }
@@ -257,8 +284,6 @@
     .social-links .fb-btn:hover { background-color: #166fe5; transform: scale(1.1); }
     .social-links .insta-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .social-links .insta-btn:hover { filter: brightness(1.1); transform: scale(1.1); }
-    
-    /* Hidden Admin Link */
     .admin-link { margin-top: 2rem; cursor: pointer; font-size: 1.2rem; opacity: 0.5; transition: opacity 0.3s; }
     .admin-link:hover { opacity: 1; color: var(--color-accent); }
 
@@ -286,10 +311,12 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link">Skip to content</a>
+
   <header>
     <div class="nav-container">
       <div class="brand">
-        <div class="logo-wrapper"><img src="logo.jpg" alt="Logo"></div>
+        <div class="logo-wrapper"><img src="logo.jpg" alt="Taste of Bharat Logo"></div>
         <div class="brand-text">
           <h1>Taste Of Bharat</h1>
           <span>Modern Indian Dining</span>
@@ -302,11 +329,13 @@
         
         <a href="#menu" class="btn btn-primary" style="font-size: 0.85rem;">Menu & Pre-Order</a>
         
-        <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank">
+        <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" rel="noopener noreferrer">
            <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
         </a>
       </nav>
-      <button class="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
+      <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileMenu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </header>
 
@@ -314,211 +343,203 @@
     <button class="close-menu-icon" onclick="toggleMobileMenu()" aria-label="Close Menu">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
     </button>
-    
     <a href="#chef-pairing" onclick="toggleMobileMenu()">Chef's Choice</a>
     <a href="#diner-spin" onclick="toggleMobileMenu()">Spin & Win</a>
     <a href="#contact" onclick="toggleMobileMenu()">Book a Table</a>
     <a href="#menu" class="btn btn-primary" onclick="toggleMobileMenu()">Menu & Pre-Order</a>
-    <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" onclick="toggleMobileMenu()">
+    <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" rel="noopener noreferrer" onclick="toggleMobileMenu()">
        <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
     </a>
   </div>
 
-  <section class="hero">
-    <div class="container hero-grid">
-      <div class="hero-content reveal">
-        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:700; color:var(--color-accent); margin-bottom:1.5rem; font-size: 0.85rem;">Swindon's Finest</div>
-        <h2>Authentic Spice.<br>Modern Soul.</h2>
-        <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
-          <a href="#menu" class="btn btn-primary">Menu & Pre-Order</a>
-          <a href="#contact" class="btn btn-outline">Book a Table</a>
+  <main id="main-content">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content reveal">
+          <div style="text-transform:uppercase; letter-spacing:2px; font-weight:700; color:var(--color-accent); margin-bottom:1.5rem; font-size: 0.85rem;">Swindon's Finest</div>
+          <h2>Authentic Spice.<br>Modern Soul.</h2>
+          <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
+          <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+            <a href="#menu" class="btn btn-primary">Menu & Pre-Order</a>
+            <a href="#contact" class="btn btn-outline">Book a Table</a>
+          </div>
         </div>
-      </div>
-      <div class="hero-image-frame reveal">
-        <div class="hero-image hero-float"><img src="hero.jpg" alt="Sizzling Mixed Grill Platter"></div>
-      </div>
-    </div>
-  </section>
-
-  <section class="offers-section reveal">
-    <div class="container">
-      <div class="section-title" style="margin-top:0;"><h3>Special Offers</h3></div>
-      <div class="offers-grid">
-        <div class="offer-card">
-          <div class="offer-title">EAT IN OFFER</div>
-          <div class="offer-desc">Spend £50 and we will refund your Outlet Village parking charge.</div>
-        </div>
-        <div class="offer-card">
-          <div class="offer-title">EAT IN OFFER</div>
-          <div class="offer-desc">Free beer with a main meal, every Tuesday.</div>
-        </div>
-        <div class="offer-card">
-          <div class="offer-title">TAKEAWAY OFFER</div>
-          <div class="offer-desc">5% discount on takeaway / collections, every Thursday.</div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="social-proof reveal">
-    <div class="container">
-      <div class="sp-text">Trusted by Locals</div>
-      <div class="sp-stars">★★★★★</div>
-      <div class="sp-quote">"Hands down the best curry in Swindon. The flavors are incredible and the service is always warm and welcoming."</div>
-      <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);">Highly Rated Restaurant</div>
-    </div>
-  </section>
-
-  <div class="container reveal" id="menu">
-    <div class="section-title">
-      <h3>Our Menu</h3>
-      <div class="direct-order-box">
-        <h4>Ordering Directly?</h4>
-        <p>Skip the fees. <strong>Collection or Dine-in Pre-order.</strong><br>Simply add items to cart below & Pay at the restaurant.</p>
-      </div>
-    </div>
-    
-    <div class="allergen-notice">
-      <p>OUR FOOD MAY CONTAIN THE FOLLOWING ALLERGENS: NUTS, DAIRY, GLUTEN, MUSTARD, FISH, SOYA, CRUSTACEANS.<br>
-      PLEASE SPEAK TO A MEMBER OF STAFF REGARDING ANY DIETARY REQUIREMENTS.</p>
-    </div>
-    
-    <div class="dietary-filters">
-      <span class="filter-label">Highlight Allergens (Click to Dim Items):</span>
-      <button class="diet-btn" onclick="toggleFilter('D')">D - Dairy</button>
-      <button class="diet-btn" onclick="toggleFilter('G')">G - Gluten</button>
-      <button class="diet-btn" onclick="toggleFilter('N')">N - Nuts</button>
-      <button class="diet-btn" onclick="toggleFilter('F')">F - Fish</button>
-      <button class="diet-btn" onclick="toggleFilter('S')">S - Soya</button>
-      <button class="diet-btn" onclick="toggleFilter('P')">P - Prawns</button>
-    </div>
-
-    <div class="menu-container">
-      <aside class="menu-sidebar" id="categoryList"></aside>
-      <div class="menu-content">
-        <div style="margin-bottom: 2.5rem;">
-          <input type="text" id="menuSearch" placeholder="Search for Butter Chicken, Biryani..." 
-                 style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size:1rem;">
-        </div>
-        <div class="menu-grid" id="menuGrid"></div>
-      </div>
-    </div>
-  </div>
-
-  <section id="diner-spin" class="diner-spin-section reveal">
-    <div class="container">
-      <h3>Can't Decide?</h3>
-      <p>Let fate choose your feast.</p>
-      <div class="spin-container">
-         <div class="spin-slot">
-           <div class="spin-label">Starter</div>
-           <div class="spin-item" id="slotStarter">?</div>
-         </div>
-         <div class="spin-slot">
-           <div class="spin-label">Main</div>
-           <div class="spin-item" id="slotMain">?</div>
-         </div>
-         <div class="spin-slot">
-           <div class="spin-label">Side / Bread</div>
-           <div class="spin-item" id="slotSide">?</div>
-         </div>
-      </div>
-      <button class="btn btn-primary" onclick="spinDinner()">Pick My Dinner</button>
-      <div id="spinMessage" class="spin-msg">Spin 3 times to unlock a discount! (Spins: <span id="spinCount">0</span>)</div>
-    </div>
-  </section>
-
-  <section id="chef-pairing" class="pairing-section reveal">
-    <div class="container pairing-container">
-      <h3 style="font-size:2rem; margin-bottom:1rem;">Chef's Recommendation</h3>
-      <p style="color:var(--text-muted);">Unsure what to order? Select a main, and we'll suggest the perfect accompaniments.</p>
-      <div class="pairing-box">
-        <label style="display:block; margin-bottom:0.5rem; font-weight:700;">Select your Main Dish:</label>
-        <select id="pairingSelect" class="pairing-select" onchange="generatePairing()">
-          <option value="">-- Choose a Dish --</option>
-          <option value="Butter Chicken">Butter Chicken</option>
-          <option value="Lamb Rogan Josh">Lamb Rogan Josh</option>
-          <option value="Railway Lamb Curry">Railway Lamb Curry</option>
-          <option value="Fish Moilee">Fish Moilee</option>
-          <option value="Paneer Butter Masala">Paneer Butter Masala</option>
-          <option value="Saag Paneer">Saag Paneer</option>
-          <option value="Dal Makhani">Dal Makhani</option>
-          <option value="Channa Masala">Channa Masala</option>
-          <option value="Chicken Dum Biryani">Chicken Dum Biryani</option>
-        </select>
-        <div id="pairingResult" class="pairing-result">
-          <div style="text-align:center; margin-bottom:1rem; color:var(--color-accent); font-weight:700;">PERFECT MATCH</div>
-          <div class="suggestion-grid">
-            <div class="suggestion-card"><span class="suggestion-label">Best Bread/Rice</span><div class="suggestion-name" id="sugSide">Garlic Naan</div></div>
-            <div class="suggestion-card"><span class="suggestion-label">Best Starter</span><div class="suggestion-name" id="sugStart">Onion Bhaji</div></div>
+        <div class="hero-image-frame reveal">
+          <div class="hero-image hero-float">
+            <img src="hero.jpg" alt="Sizzling Mixed Grill Platter" fetchpriority="high">
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="container reveal" id="gallery" style="margin-top: 6rem;">
-    <div class="section-title"><h3>Visual Feast</h3><p>A glimpse into our kitchen</p></div>
-    <div class="gallery-grid">
-      <div class="gallery-item g-large"><img src="feast.jpg" alt="Indian Feast"></div>
-      <div class="gallery-item g-tall"><img src="Starters.jpg" alt="Crispy Starters"></div>
-      <div class="gallery-item g-std"><img src="paneer.jpg" alt="Paneer Tikka"></div>
-      <div class="gallery-item g-std"><img src="dessert.jpg" alt="Pineapple Dessert"></div>
-    </div>
-  </div>
-
-  <div id="contact" class="reveal" style="background: #FFFFFF; padding-top:4rem;">
-    <div class="container">
-      <div class="info-grid">
-        <div class="form-wrapper">
-          <div id="formContainer">
-            <h3>Reserve Your Table</h3>
-            <span class="form-sub">Book instantly. No account required.</span>
-            <form id="bookingForm" action="https://formsubmit.co/ajax/tob.swindon@outlook.com" method="POST">
-              <input type="hidden" name="_captcha" value="false">
-              <input type="hidden" name="_subject" value="New Table Reservation">
-              <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
-              <div class="form-row-2">
-                <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
-                <div class="form-group"><label>Time</label><input type="time" name="time" class="form-control" required></div>
-              </div>
-              <div class="form-row-2">
-                <div class="form-group"><label>Guests</label><input type="number" name="guests" class="form-control" value="2" min="1" required></div>
-                <div class="form-group"><label>Phone</label><input type="tel" name="phone" class="form-control" required placeholder="07..."></div>
-              </div>
-              <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
-            </form>
-          </div>
-          <div id="successMessage" class="success-message">
-            <div class="success-icon">✓</div><h3>Booking Submitted!</h3><p style="color:var(--text-muted);">We will call you shortly to confirm.</p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
-          </div>
+    <section class="offers-section reveal">
+      <div class="container">
+        <div class="section-title" style="margin-top:0;"><h3>Special Offers</h3></div>
+        <div class="offers-grid">
+          <div class="offer-card"><div class="offer-title">EAT IN OFFER</div><div class="offer-desc">Spend £50 and we will refund your Outlet Village parking charge.</div></div>
+          <div class="offer-card"><div class="offer-title">EAT IN OFFER</div><div class="offer-desc">Free beer with a main meal, every Tuesday.</div></div>
+          <div class="offer-card"><div class="offer-title">TAKEAWAY OFFER</div><div class="offer-desc">5% discount on takeaway / collections, every Thursday.</div></div>
         </div>
-        
-        <div class="hours-wrapper" style="padding-top: 2rem;">
-          <h3>Visit Us</h3>
-          <div class="contact-details">
-            <div class="contact-item">
-              <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
-              <span>198 Rodbourne Rd, Swindon SN2 2AA</span>
-            </div>
-            <div class="contact-item">
-              <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
-              <span>01793 316158</span>
+      </div>
+    </section>
+
+    <section class="social-proof reveal">
+      <div class="container">
+        <div class="sp-text">Trusted by Locals</div>
+        <div class="sp-stars">★★★★★</div>
+        <div class="sp-quote">"Hands down the best curry in Swindon. The flavors are incredible and the service is always warm and welcoming."</div>
+        <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);">Highly Rated Restaurant</div>
+      </div>
+    </section>
+
+    <div class="container reveal" id="menu">
+      <div class="section-title">
+        <h3>Our Menu</h3>
+        <div class="direct-order-box">
+          <h4>Ordering Directly?</h4>
+          <p>Skip the fees. <strong>Collection or Dine-in Pre-order.</strong><br>Simply add items to cart below & Pay at the restaurant.</p>
+        </div>
+      </div>
+      
+      <div class="allergen-notice">
+        <p>OUR FOOD MAY CONTAIN THE FOLLOWING ALLERGENS: NUTS, DAIRY, GLUTEN, MUSTARD, FISH, SOYA, CRUSTACEANS.<br>
+        PLEASE SPEAK TO A MEMBER OF STAFF REGARDING ANY DIETARY REQUIREMENTS.</p>
+      </div>
+      
+      <div class="dietary-filters">
+        <span class="filter-label">Highlight Allergens (Click to Dim Items):</span>
+        <button class="diet-btn" data-filter="D" onclick="toggleFilter('D')">D - Dairy</button>
+        <button class="diet-btn" data-filter="G" onclick="toggleFilter('G')">G - Gluten</button>
+        <button class="diet-btn" data-filter="N" onclick="toggleFilter('N')">N - Nuts</button>
+        <button class="diet-btn" data-filter="F" onclick="toggleFilter('F')">F - Fish</button>
+        <button class="diet-btn" data-filter="S" onclick="toggleFilter('S')">S - Soya</button>
+        <button class="diet-btn" data-filter="P" onclick="toggleFilter('P')">P - Prawns</button>
+      </div>
+
+      <div class="menu-container">
+        <aside class="menu-sidebar" id="categoryList"></aside>
+        <div class="menu-content">
+          <div style="margin-bottom: 2.5rem;">
+            <input type="text" id="menuSearch" placeholder="Search for Butter Chicken, Biryani..." 
+                   style="width: 100%; padding: 1.2rem; border-radius: 12px; border: 1px solid #ddd; font-family: inherit; font-size:1rem;">
+          </div>
+          <div class="menu-grid" id="menuGrid"></div>
+        </div>
+      </div>
+    </div>
+
+    <section id="diner-spin" class="diner-spin-section reveal">
+      <div class="container">
+        <h3>Can't Decide?</h3>
+        <p>Let fate choose your feast.</p>
+        <div class="spin-container">
+           <div class="spin-slot"><div class="spin-label">Starter</div><div class="spin-item" id="slotStarter">?</div></div>
+           <div class="spin-slot"><div class="spin-label">Main</div><div class="spin-item" id="slotMain">?</div></div>
+           <div class="spin-slot"><div class="spin-label">Side / Bread</div><div class="spin-item" id="slotSide">?</div></div>
+        </div>
+        <button class="btn btn-primary" onclick="spinDinner()">Pick My Dinner</button>
+        <div id="spinMessage" class="spin-msg">Spin 3 times to unlock a discount! (Spins: <span id="spinCount">0</span>)</div>
+      </div>
+    </section>
+
+    <section id="chef-pairing" class="pairing-section reveal">
+      <div class="container pairing-container">
+        <h3 style="font-size:2rem; margin-bottom:1rem;">Chef's Recommendation</h3>
+        <p style="color:var(--text-muted);">Unsure what to order? Select a main, and we'll suggest the perfect accompaniments.</p>
+        <div class="pairing-box">
+          <label style="display:block; margin-bottom:0.5rem; font-weight:700;">Select your Main Dish:</label>
+          <select id="pairingSelect" class="pairing-select" onchange="generatePairing()">
+            <option value="">-- Choose a Dish --</option>
+            <option value="Butter Chicken">Butter Chicken</option>
+            <option value="Lamb Rogan Josh">Lamb Rogan Josh</option>
+            <option value="Railway Lamb Curry">Railway Lamb Curry</option>
+            <option value="Fish Moilee">Fish Moilee</option>
+            <option value="Paneer Butter Masala">Paneer Butter Masala</option>
+            <option value="Saag Paneer">Saag Paneer</option>
+            <option value="Dal Makhani">Dal Makhani</option>
+            <option value="Channa Masala">Channa Masala</option>
+            <option value="Chicken Dum Biryani">Chicken Dum Biryani</option>
+          </select>
+          <div id="pairingResult" class="pairing-result">
+            <div style="text-align:center; margin-bottom:1rem; color:var(--color-accent); font-weight:700;">PERFECT MATCH</div>
+            <div class="suggestion-grid">
+              <div class="suggestion-card"><span class="suggestion-label">Best Bread/Rice</span><div class="suggestion-name" id="sugSide">Garlic Naan</div></div>
+              <div class="suggestion-card"><span class="suggestion-label">Best Starter</span><div class="suggestion-name" id="sugStart">Onion Bhaji</div></div>
             </div>
           </div>
-          <div class="hours-list">
-            <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
-            <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">5:00 PM — 10:00 PM</span></div>
-            <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
-            <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
-          </div>
-          <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         </div>
       </div>
+    </section>
+
+    <div class="container reveal" id="gallery" style="margin-top: 6rem;">
+      <div class="section-title"><h3>Visual Feast</h3><p>A glimpse into our kitchen</p></div>
+      <div class="gallery-grid">
+        <div class="gallery-item g-large"><img src="feast.jpg" alt="Indian Feast" loading="lazy" width="800" height="600"></div>
+        <div class="gallery-item g-tall"><img src="Starters.jpg" alt="Crispy Starters" loading="lazy" width="400" height="600"></div>
+        <div class="gallery-item g-std"><img src="paneer.jpg" alt="Paneer Tikka" loading="lazy" width="400" height="300"></div>
+        <div class="gallery-item g-std"><img src="dessert.jpg" alt="Pineapple Dessert" loading="lazy" width="400" height="300"></div>
+      </div>
     </div>
-  </div>
+
+    <div id="contact" class="reveal" style="background: #FFFFFF; padding-top:4rem;">
+      <div class="container">
+        <div class="info-grid">
+          <div class="form-wrapper">
+            <div id="formContainer">
+              <h3>Reserve Your Table</h3>
+              <span class="form-sub">Book instantly. No account required.</span>
+              <form id="bookingForm" action="https://formsubmit.co/tob.swindon@outlook.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="New Table Reservation">
+                <input type="hidden" name="_next" value="https://tasteofbharatswindon.co.uk/#contact">
+                
+                <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
+                <div class="form-row-2">
+                  <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
+                  <div class="form-group"><label>Time</label><input type="time" name="time" class="form-control" required></div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group"><label>Guests</label><input type="number" name="guests" class="form-control" value="2" min="1" required></div>
+                  <div class="form-group"><label>Phone</label><input type="tel" name="phone" class="form-control" required placeholder="07..."></div>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
+              </form>
+            </div>
+            <div id="successMessage" class="success-message">
+              <div class="success-icon">✓</div><h3>Booking Submitted!</h3><p style="color:var(--text-muted);">We will call you shortly to confirm.</p>
+              <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
+            </div>
+          </div>
+          
+          <div class="hours-wrapper" style="padding-top: 2rem;">
+            <h3>Visit Us</h3>
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+                <span>198 Rodbourne Rd, Swindon SN2 2AA</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+                <span>01793 316158</span>
+              </div>
+            </div>
+            <div class="hours-list">
+              <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
+              <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">5:00 PM — 10:00 PM</span></div>
+              <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
+              <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
+            </div>
+                        <div class="map-container">
+              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe>
+            </div>
+          </div> <!-- .hours-wrapper -->
+        </div>   <!-- .info-grid -->
+      </div>     <!-- .container -->
+    </div>       <!-- #contact -->
+  </main>
 
   <div id="cartFloat" class="cart-float" onclick="openCart()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -532,10 +553,13 @@
         <button onclick="closeCart()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">×</button>
       </div>
       <div id="cartItemsList" style="margin-bottom:2rem;"></div>
+      <div id="cartTotalDisplay" class="cart-total">Total: £0.00</div>
       
-      <form id="cartForm">
+      <form id="cartForm" action="https://formsubmit.co/tob.swindon@outlook.com" method="POST">
         <input type="hidden" name="_subject" value="New Offline Order">
         <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://tasteofbharatswindon.co.uk/#menu">
         <input type="hidden" name="order_details" id="orderDetailsHidden">
         <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
         <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
@@ -546,7 +570,7 @@
       </form>
       <div id="cartSuccess">
         <div class="success-icon">✓</div><h3>Order Received!</h3><p>Thank you. We have received your order details.</p><p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
-        <button onclick="closeCart()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
+        <button onclick="resetCartUI()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
       </div>
     </div>
   </div>
@@ -554,18 +578,41 @@
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" class="insta-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
-        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" class="fb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
+        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" class="insta-btn" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" class="fb-btn" rel="noopener noreferrer"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
       </div>
       <p>© <span id="year"></span> Taste Of Bharat. All rights reserved.</p>
-      
-      <div class="admin-link" onclick="promptAdmin()"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
+      <div class="admin-link" onclick="promptAdmin()" aria-label="Staff Access"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg></div>
     </div>
   </footer>
 
   <script>
-    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
-    const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('active')), {threshold:0.1});
+    function toggleMobileMenu() { 
+      const menu = document.getElementById('mobileMenu');
+      const btn = document.querySelector('.hamburger');
+      const closeBtn = menu.querySelector('.close-menu-icon');
+      
+      menu.classList.toggle('active');
+      const expanded = menu.classList.contains('active');
+      btn.setAttribute('aria-expanded', String(expanded));
+      
+      if (expanded) closeBtn.focus();
+      else btn.focus();
+    }
+    
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape') {
+        const menu = document.getElementById('mobileMenu');
+        if (menu.classList.contains('active')) toggleMobileMenu();
+      }
+    });
+
+    const observer = new IntersectionObserver(e => e.forEach(i => {
+      if (i.isIntersecting) { 
+        i.target.classList.add('active'); 
+        observer.unobserve(i.target); 
+      }
+    }), {threshold:0.1});
 
     // MENU DATA
     const menuItems = [
@@ -581,39 +628,32 @@
       {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90", "codes": ["D"]},
       {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90", "codes": ["G", "D"]},
       {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90", "codes": ["D", "S"]},
-      
       {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "Assortment of grilled meats.", "price": "£18.90", "codes": ["D"]},
       {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50", "codes": ["D"]},
       {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom.", "price": "£6.90", "codes": ["D", "N"]},
       {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Spicy grilled chicken.", "price": "£6.90", "codes": ["D"]},
-      
       {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50", "codes": ["S"]},
       {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt.", "price": "£7.50", "codes": ["D"]},
       {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs.", "price": "£7.90", "codes": []},
       {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish.", "price": "£8.90", "codes": ["F"]},
       {"category": "Non-Veg Starters", "name": "Dakshini Prawns", "desc": "Spicy & crispy-fried prawns.", "price": "£8.90", "codes": ["P"]},
-      
       {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken.", "price": "£10.50", "codes": ["D"]},
       {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb.", "price": "£11.00", "codes": ["D"]},
-      
       {"category": "Veg Curries", "name": "Saag Paneer", "desc": "Paneer in spinach gravy.", "price": "£8.90", "codes": ["D"]},
       {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Rich creamy tomato gravy.", "price": "£8.90", "codes": ["D", "N"]},
       {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils.", "price": "£7.50", "codes": ["D"]},
       {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry.", "price": "£7.50", "codes": []},
-      
       {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken.", "price": "£9.50", "codes": ["D", "N"]},
       {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Home-style gravy.", "price": "£9.50", "codes": []},
       {"category": "Non-Veg Curries", "name": "Lamb Rogan Josh", "desc": "Aromatic Kashmiri lamb curry.", "price": "£10.50", "codes": []},
       {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50", "codes": []},
       {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50", "codes": ["F"]},
       {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Coconut based prawn curry.", "price": "£10.50", "codes": ["P"]},
-      
       {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened flatbread.", "price": "£3.00", "codes": ["G", "D"]},
       {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Naan with butter.", "price": "£3.00", "codes": ["G", "D"]},
       {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Naan with garlic.", "price": "£3.50", "codes": ["G", "D"]},
       {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Sweet naan with coconut and nuts.", "price": "£3.90", "codes": ["G", "D", "N"]},
       {"category": "Tandoor Breads", "name": "Tandoori Roti", "desc": "Whole wheat bread.", "price": "£2.50", "codes": ["G"]},
-      
       {"category": "Sides", "name": "Pilau Rice", "desc": "Aromatic rice.", "price": "£3.90", "codes": []},
       {"category": "Sides", "name": "Steam Rice", "desc": "Plain rice.", "price": "£3.90", "codes": []}
     ];
@@ -621,7 +661,7 @@
 
     let activeFilters = [];
     function toggleFilter(filter) {
-      const btn = document.querySelector(`.diet-btn[onclick="toggleFilter('${filter}')"]`);
+      const btn = document.querySelector(`.diet-btn[data-filter="${filter}"]`);
       if(activeFilters.includes(filter)) {
         activeFilters = activeFilters.filter(f => f !== filter);
         btn.classList.remove('active');
@@ -634,7 +674,6 @@
     function applyFilters() { window.renderMyMenu(); }
 
     const codeKeys = ['MASALA', 'ROGAN', 'KORMA', 'BALTI', 'MADRAS', 'VINDALOO', 'TANDOORI'];
-    
     let spinCount = 0;
     function spinDinner() {
       const slots = [document.getElementById('slotStarter'), document.getElementById('slotMain'), document.getElementById('slotSide')];
@@ -648,20 +687,34 @@
         slots.forEach((slot, i) => {
           if(pools[i].length) {
             const randomItem = pools[i][Math.floor(Math.random() * pools[i].length)];
-            slot.innerText = randomItem.name;
+            slot.textContent = randomItem.name;
           }
         });
         counter++;
         if(counter > 15) {
           clearInterval(interval);
           spinCount++;
+          document.getElementById('spinCount').textContent = spinCount;
+          
           if(spinCount >= 3) {
             const today = new Date();
             const dayIndex = today.getDay() === 0 ? 6 : today.getDay() - 1;
             const dayKey = codeKeys[dayIndex];
             const dailyCode = dayKey + today.getDate();
             const msg = document.getElementById('spinMessage');
-            msg.innerHTML = `🎉 DISCOUNT UNLOCKED! Use Code: <strong>${dailyCode}</strong><br><span style='font-size:0.85rem; display:block; margin-top:5px; color:#666;'>Call the restaurant to order & quote this code!</span>`;
+            
+            msg.textContent = '';
+            const strong = document.createElement('strong');
+            strong.textContent = dailyCode;
+            
+            const span = document.createElement('span');
+            span.style.fontSize = '0.85rem';
+            span.style.display = 'block';
+            span.style.marginTop = '5px';
+            span.style.color = '#666';
+            span.textContent = 'Call the restaurant to order & quote this code!';
+            
+            msg.append('🎉 DISCOUNT UNLOCKED! Use Code: ', strong, document.createElement('br'), span);
             msg.classList.add('unlocked');
           }
         }
@@ -685,36 +738,68 @@
       else if(main.includes("Dal") || main.includes("Channa")) { side = "Tandoori Roti"; starter = "Samosa Chaat"; }
       else if(main.includes("Biryani")) { side = "Raita"; starter = "Chicken 65"; }
 
-      document.getElementById('sugSide').innerText = side;
-      document.getElementById('sugStart').innerText = starter;
+      document.getElementById('sugSide').textContent = side;
+      document.getElementById('sugStart').textContent = starter;
       resultBox.classList.add('active');
     }
 
-    let cart = [];
+    let cart = JSON.parse(localStorage.getItem('tob_cart')) || [];
     function addToCart(index) {
       const item = window.globalMenuItems[index];
       cart.push(item);
+      saveCart();
       updateCartUI();
       document.getElementById('cartFloat').style.display = 'flex';
     }
     function removeFromCart(index) {
       cart.splice(index, 1);
+      saveCart();
       updateCartUI();
       if(cart.length === 0) {
         document.getElementById('cartFloat').style.display = 'none';
         closeCart();
       }
     }
+    function saveCart() { localStorage.setItem('tob_cart', JSON.stringify(cart)); }
+
     function updateCartUI() {
-      document.getElementById('cartCount').innerText = cart.length;
+      document.getElementById('cartCount').textContent = cart.length;
       const list = document.getElementById('cartItemsList');
       list.innerHTML = '';
       let total = 0;
+      
       cart.forEach((item, i) => {
         const priceNum = parseFloat(item.price.replace('£','')) || 0;
         total += priceNum;
-        list.innerHTML += `<div class="cart-item"><div class="cart-item-info"><strong>${item.name}</strong><span style="font-size:0.9rem; color:#666;">${item.price}</span></div><button class="cart-item-remove" onclick="removeFromCart(${i})">Remove</button></div>`;
+        
+        const div = document.createElement('div');
+        div.className = 'cart-item';
+        
+        const info = document.createElement('div');
+        const title = document.createElement('strong');
+        title.textContent = item.name;
+        title.style.display = 'block';
+        
+        const price = document.createElement('span');
+        price.style.fontSize = '0.9rem';
+        price.style.color = '#666';
+        price.textContent = item.price;
+        
+        info.appendChild(title);
+        info.appendChild(price);
+        
+        const removeBtn = document.createElement('button');
+        removeBtn.className = 'cart-item-remove';
+        removeBtn.textContent = 'Remove';
+        removeBtn.onclick = () => removeFromCart(i);
+        
+        div.appendChild(info);
+        div.appendChild(removeBtn);
+        list.appendChild(div);
       });
+      
+      document.getElementById('cartTotalDisplay').textContent = `Total: £${total.toFixed(2)}`;
+      if(cart.length > 0) document.getElementById('cartFloat').style.display = 'flex';
     }
     
     function prepareOrderData() {
@@ -727,6 +812,17 @@
 
     function openCart() { document.getElementById('cartModal').classList.add('open'); }
     function closeCart() { document.getElementById('cartModal').classList.remove('open'); }
+    
+    function resetCartUI() {
+      closeCart();
+      document.getElementById('cartForm').style.display = 'block';
+      document.getElementById('cartItemsList').style.display = 'block';
+      document.getElementById('cartTotalDisplay').style.display = 'block';
+      document.getElementById('cartSuccess').style.display = 'none';
+      const btn = document.querySelector('#cartForm button[type="submit"]');
+      btn.textContent = 'Submit Order';
+      btn.disabled = false;
+    }
 
     function promptAdmin() {
       const pin = prompt("Staff Access PIN:");
@@ -811,8 +907,8 @@
 
       renderCats();
       window.renderMyMenu();
+      if(cart.length > 0) updateCartUI();
 
-      // AJAX Form Handling
       const cartForm = document.getElementById('cartForm');
       if(cartForm) {
         cartForm.addEventListener('submit', function(e) {
@@ -820,9 +916,9 @@
           prepareOrderData(); 
           const formData = new FormData(cartForm);
           const submitBtn = cartForm.querySelector('button[type="submit"]');
-          const originalText = submitBtn.innerText;
+          const originalText = submitBtn.textContent;
           
-          submitBtn.innerText = "Sending...";
+          submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
 
           fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", {
@@ -834,14 +930,16 @@
           .then(data => {
             cartForm.style.display = 'none';
             document.getElementById('cartItemsList').style.display = 'none';
+            document.getElementById('cartTotalDisplay').style.display = 'none';
             document.getElementById('cartSuccess').style.display = 'block';
             cart = [];
+            saveCart();
             document.getElementById('cartFloat').style.display = 'none';
           })
           .catch(error => {
             console.error('Error:', error);
             alert("Something went wrong. Please try calling the restaurant.");
-            submitBtn.innerText = originalText;
+            submitBtn.textContent = originalText;
             submitBtn.disabled = false;
           });
         });
@@ -851,11 +949,26 @@
       if(bookingForm) {
         bookingForm.addEventListener('submit', function(e) {
           e.preventDefault();
+          const submitBtn = bookingForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.textContent;
+          submitBtn.textContent = "Sending...";
+          submitBtn.disabled = true;
+          
           const formData = new FormData(bookingForm);
-          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", { method: "POST", body: formData })
+          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", { 
+             method: "POST", 
+             body: formData,
+             headers: { 'Accept': 'application/json' }
+          })
+          .then(response => response.json())
           .then(() => {
             document.getElementById('formContainer').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
+          })
+          .catch(() => {
+             alert("Error sending booking. Please call us.");
+             submitBtn.textContent = originalText;
+             submitBtn.disabled = false;
           });
         });
       }
