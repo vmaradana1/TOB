@@ -51,7 +51,6 @@
   }
   </script>
 
-  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-49JT0PQTMH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -330,7 +329,7 @@
         <a href="#menu" class="btn btn-primary" style="font-size: 0.85rem;">Menu & Pre-Order</a>
         
         <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" rel="noopener noreferrer">
-           <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
+            <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
         </a>
       </nav>
       <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open Menu" aria-expanded="false" aria-controls="mobileMenu">
@@ -493,16 +492,18 @@
               <span class="form-sub">Book instantly. No account required.</span>
               
               <form id="bookingForm" action="https://api.staticforms.xyz/submit" method="POST">
-                <input type="hidden" name="accessKey" value="sf_6bie7f6c0e3efc6hh4977kll">
+                <input type="hidden" name="accessKey" value="sf_3h764fl4f4f5h53189h1m6j6">
+                
                 <input type="hidden" name="subject" value="New Table Reservation">
                 <input type="hidden" name="redirectTo" value="https://tasteofbharatswindon.co.uk/#contact">
+                
+                <input type="text" name="honeypot" style="display:none">
                 
                 <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
                 <div class="form-row-2">
                   <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
                   <div class="form-group">
                     <label>Time</label>
-                    <!-- 24H format enforced -->
                     <input type="text" name="time" class="form-control" required
                            inputmode="numeric" placeholder="HH:MM (24h) e.g. 19:30"
                            pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 19:30">
@@ -561,17 +562,19 @@
       <div id="cartTotalDisplay" class="cart-total">Total: £0.00</div>
       
       <form id="cartForm" action="https://api.staticforms.xyz/submit" method="POST">
-        <input type="hidden" name="accessKey" value="sf_6bie7f6c0e3efc6hh4977kll">
+        <input type="hidden" name="accessKey" value="sf_3h764fl4f4f5h53189h1m6j6">
+
         <input type="hidden" name="subject" value="New Offline Order">
         <input type="hidden" name="redirectTo" value="https://tasteofbharatswindon.co.uk/#menu">
         <input type="hidden" name="order_details" id="orderDetailsHidden">
+        
+        <input type="text" name="honeypot" style="display:none">
         
         <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
         <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
         <div class="form-group"><label>Phone</label><input class="form-control" name="phone" required placeholder="07..."></div>
         <div class="form-group">
           <label>Pickup/Dine Time</label>
-          <!-- 24H format enforced -->
           <input type="text" class="form-control" name="time" required
                  inputmode="numeric" placeholder="HH:MM (24h) e.g. 18:15"
                  pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 18:15">
@@ -628,31 +631,30 @@
       }
     }), {threshold:0.1});
 
-    // Robust StaticForms submit (handles JSON or text responses)
+    // Robust StaticForms submit
     async function submitToStaticForms(formEl) {
       const formData = new FormData(formEl);
       const data = Object.fromEntries(formData);
 
-      // redirectTo isn't supported in JSON mode (keep it in HTML form as fallback)
+      // JSON mode expects these to be handled differently, 
+      // but deleting redirectTo allows JS to handle the success state manually.
       delete data.redirectTo;
 
       const res = await fetch("https://api.staticforms.xyz/submit", {
         method: "POST",
-        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data)
       });
 
-      const contentType = (res.headers.get("content-type") || "").toLowerCase();
+      if (!res.ok) {
+         throw new Error("Server Error: " + res.statusText);
+      }
 
-      if (contentType.includes("application/json")) {
-        const json = await res.json();
-        const ok = (json.success === true || json.success === "true");
-        if (!ok) throw new Error(json.message || "Booking failed - unable to book");
+      const json = await res.json();
+      if (json.success) {
         return json;
       } else {
-        const text = await res.text();
-        if (!res.ok) throw new Error("Booking failed - unable to book");
-        return { success: true, raw: text };
+        throw new Error(json.message || "Submission failed");
       }
     }
 
@@ -667,7 +669,7 @@
       });
     }
 
-    // MENU DATA (From User PDF)
+    // MENU DATA
     const menuItems = [
       {"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90", "codes": []},
       {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50", "codes": ["G"]},
