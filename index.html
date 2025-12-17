@@ -6,500 +6,323 @@
   
   <title>Taste of Bharat | Modern Indian Restaurant in Swindon</title>
   <meta name="title" content="Taste of Bharat | Modern Indian Restaurant in Swindon">
-  <meta name="description" content="Experience authentic and modern Indian cuisine at Taste of Bharat, Swindon. Dine-in, takeaway, and delivery available. Rated for best curries, biryanis, and grills." />
-  <meta name="theme-color" content="#0B0B0B" />
+  <meta name="description" content="Experience authentic and modern Indian cuisine at Taste of Bharat, Swindon. Dine-in, takeaway, and delivery available." />
+  <meta name="theme-color" content="#FAFAF9" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;500;700;800&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
 
   <style>
     :root {
       /* Palette */
-      --bg-body: #F9F9F9;
+      --bg-body: #FAFAF9; 
       --bg-card: #FFFFFF;
-      --text-main: #1A1A1A;
-      --text-muted: #666666;
+      --text-main: #1C1C1E;
+      --text-muted: #636366;
       --color-primary: #0B0B0B; 
-      --color-accent: #E98E3A;  
-      --color-accent-hover: #d37a28;
-      --border-light: rgba(0,0,0,0.08);
-      --shadow-soft: 0 12px 40px -10px rgba(0,0,0,0.1);
-      --container-width: 1200px;
-      --header-height: 80px;
+      --color-accent: #D9772B; 
+      --color-accent-hover: #C0601A;
+      --border-light: rgba(0,0,0,0.06);
+      --shadow-soft: 0 24px 48px -12px rgba(0,0,0,0.06);
+      --shadow-glow: 0 20px 50px -10px rgba(217, 119, 43, 0.25);
+      --container-width: 1240px;
+      --header-height: 90px;
+      --radius-md: 16px;
+      --radius-lg: 32px;
+      --je-orange: #F36D00; 
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
     
-    html { scroll-behavior: smooth; font-size: 16px; }
+    html { scroll-behavior: smooth; font-size: 16px; -webkit-font-smoothing: antialiased; }
+    
     body {
       font-family: 'DM Sans', sans-serif;
       background-color: var(--bg-body);
       color: var(--text-main);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
+      line-height: 1.7;
       overflow-x: hidden;
-      /* Noise Texture for Premium Feel */
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
     }
 
-    /* Headings Bold (700) */
-    h1, h2, h3, h4 { 
-      font-family: 'Playfair Display', serif; 
-      font-weight: 700; 
-      color: var(--color-primary); 
-    }
-    
-    a { text-decoration: none; color: inherit; transition: all 0.3s ease; }
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-main); letter-spacing: -0.03em; }
+    a { text-decoration: none; color: inherit; transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
     img { max-width: 100%; display: block; height: auto; }
     ul { list-style: none; }
 
-    /* --- ANIMATIONS --- */
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
-    }
-    .reveal.active { opacity: 1; transform: translateY(0); }
+    .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
     
-    @keyframes float {
-      0% { transform: translateY(0px) rotate(-2deg); }
-      50% { transform: translateY(-15px) rotate(-1deg); }
-      100% { transform: translateY(0px) rotate(-2deg); }
-    }
-    .hero-float { animation: float 6s ease-in-out infinite; }
-
-    @keyframes slideInUp {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    .menu-item-anim { opacity: 0; animation: slideInUp 0.5s ease forwards; }
-
-    /* --- UTILITIES --- */
-    .container { max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; }
-    
+    /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
-      padding: 0.8rem 1.8rem;
-      font-weight: 600; letter-spacing: 0.5px;
-      border-radius: 50px;
-      transition: all 0.3s ease;
-      cursor: pointer;
-      font-size: 0.95rem;
-      position: relative; overflow: hidden;
+      padding: 0.8rem 1.6rem; font-weight: 700; letter-spacing: 0.5px;
+      border-radius: 100px; transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      cursor: pointer; font-size: 0.85rem; position: relative; overflow: hidden; text-transform: uppercase; border: none;
     }
-    .btn:active { transform: scale(0.98); }
+    .btn:active { transform: scale(0.96); }
+    .btn-primary { background: linear-gradient(135deg, var(--color-accent), #c26115); color: white; box-shadow: 0 10px 20px rgba(217, 119, 43, 0.2); }
+    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(217, 119, 43, 0.35); }
     
-    .btn-primary { background-color: var(--color-accent); color: #000; }
-    .btn-primary:hover {
-      background-color: var(--color-accent-hover);
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(233, 142, 58, 0.4);
-    }
-    .btn-outline {
-      border: 2px solid var(--color-primary);
-      color: var(--color-primary);
-      background: transparent;
-    }
-    .btn-outline:hover {
-      background: var(--color-primary); color: white; transform: translateY(-2px);
-    }
+    .btn-outline { border: 2px solid var(--color-primary); background: transparent; color: var(--color-primary); font-weight: 800; }
+    .btn-outline:hover { border-color: var(--color-accent); color: var(--color-accent); background: #FFFBF7; transform: translateY(-2px); }
 
-    /* --- NAVIGATION --- */
-    header {
-      position: fixed; top: 0; left: 0; right: 0;
-      height: var(--header-height);
-      z-index: 1000;
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      display: flex; align-items: center;
+    /* Just Eat Button */
+    .btn-justeat {
+      background-color: white; color: var(--je-orange); border: 2px solid var(--je-orange);
+      font-weight: 800; font-style: italic; padding: 0.6rem 1.2rem; gap: 6px;
     }
-    .nav-container {
-      width: 100%; max-width: var(--container-width); margin: 0 auto;
-      padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center;
-    }
+    .btn-justeat:hover { background-color: var(--je-orange); color: white; transform: translateY(-2px); }
+    .btn-justeat svg { width: 18px; height: 18px; fill: currentColor; }
+    .btn-justeat:hover svg { fill: white; }
+
+    /* Animations */
+    .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+    .reveal.active { opacity: 1; transform: translateY(0); }
+    @keyframes float { 0% { transform: translateY(0px) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } 100% { transform: translateY(0px) rotate(-1deg); } }
+    .hero-float { animation: float 8s ease-in-out infinite; }
+    @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+    .menu-item-anim { opacity: 0; animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+
+    /* Navigation */
+    header { position: fixed; top: 0; left: 0; right: 0; height: var(--header-height); z-index: 1000; background: rgba(250, 250, 249, 0.95); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border-light); display: flex; align-items: center; }
+    .nav-container { width: 100%; max-width: var(--container-width); margin: 0 auto; padding: 0 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand { display: flex; align-items: center; gap: 0.8rem; }
+    .logo-wrapper { width: 50px; height: 50px; min-width: 50px; aspect-ratio: 1/1; border-radius: 50%; border: 2px solid var(--color-accent); overflow: hidden; display: grid; place-items: center; background: #000; padding: 0; margin: 0; }
+    .logo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transform: translateY(-5px); }
+    .brand-text h1 { font-size: 1.2rem; line-height: 1; margin: 0 0 0.2rem 0; color: var(--text-main); font-weight: 800; white-space: nowrap; }
+    .brand-text span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent); font-weight: 800; display: block; }
     
-    .brand { 
-      display: flex; align-items: center; gap: 1rem; height: 100%;
-    }
-    
-    /* LOGO WRAPPER */
-    .logo-wrapper {
-      width: 54px; 
-      height: 54px;
-      min-width: 54px;
-      aspect-ratio: 1 / 1;
-      border-radius: 50%;
-      border: 2px solid var(--color-accent);
-      overflow: hidden; 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000;
-      padding: 0; 
-      margin: 0; 
-    }
-    /* FIX 1: Move Logo Up Slightly */
-    .logo-wrapper img { 
-      width: 100%; height: 100%; 
-      object-fit: cover; 
-      display: block; 
-      transform: translateY(-5px); /* Pulls logo up */
-    }
+    .nav-links { display: flex; gap: 1.2rem; align-items: center; }
+    .nav-links a.nav-link { font-weight: 800; font-size: 0.85rem; color: var(--text-main); position: relative; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
+    .nav-links a.nav-link:hover { opacity: 1; color: var(--color-accent); }
 
-    .brand-text {
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .brand-text h1 { 
-      font-size: 1.4rem; line-height: 1; margin: 0 0 0.25rem 0; color: var(--color-primary); font-weight: 700;
-    }
-    .brand-text span {
-      font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px;
-      color: var(--color-accent); font-weight: 700; display: block; line-height: 1;
-    }
-
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a { font-weight: 600; font-size: 0.95rem; color: var(--color-primary); position: relative; }
-    .nav-links a:hover { color: var(--color-accent); }
-
-    /* Mobile Toggle */
-    .hamburger {
-      display: none; background: none; border: none; cursor: pointer;
-      flex-direction: column; gap: 5px; z-index: 1002;
-    }
-    .hamburger span { width: 25px; height: 2px; background: var(--color-primary); transition: all 0.3s; }
-
-    /* Mobile Menu */
-    .mobile-menu {
-      position: fixed; top: 0; left: 0; width: 100%; height: 100vh;
-      background: white; z-index: 1001;
-      display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem;
-      transform: translateY(-100%); transition: transform 0.4s cubic-bezier(0.77, 0, 0.175, 1);
-    }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1002; padding: 10px; }
+    .hamburger span { width: 24px; height: 2px; background: var(--text-main); transition: all 0.3s; }
+    .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-body); z-index: 1001; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.6s cubic-bezier(0.83, 0, 0.17, 1); }
     .mobile-menu.active { transform: translateY(0); }
-    .mobile-menu a { font-size: 1.5rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--color-primary); }
+    .mobile-menu a { font-size: 1.4rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-main); }
 
-    /* --- HERO --- */
-    .hero {
-      padding-top: calc(var(--header-height) + 3rem); padding-bottom: 5rem;
-      background: white; position: relative; overflow: hidden;
-    }
-    .hero-grid {
-      display: grid; grid-template-columns: 1.1fr 0.9fr;
-      gap: 4rem; align-items: center; position: relative;
-    }
-    .hero-content h2 {
-      font-size: clamp(2.5rem, 5vw, 4.2rem); line-height: 1.1; margin-bottom: 1.5rem; color: var(--color-primary);
-      font-weight: 700;
-    }
-    .hero-content p { font-size: 1.15rem; color: var(--text-muted); margin-bottom: 2rem; max-width: 500px; }
-    
-    .hero-image-frame { position: relative; }
-    .hero-image {
-      border-radius: 30px 0 30px 0;
-      box-shadow: 20px 20px 0 var(--color-primary); 
-      overflow: hidden;
-      transform: rotate(-2deg); 
-    }
+    /* Hero */
+    .hero { padding-top: calc(var(--header-height) + 4rem); padding-bottom: 4rem; position: relative; overflow: hidden; }
+    .hero::before { content: ''; position: absolute; top: -30%; right: -20%; width: 80%; height: 80%; background: radial-gradient(circle, rgba(217, 119, 43, 0.08) 0%, transparent 65%); filter: blur(80px); z-index: -1; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .hero-content h2 { font-size: clamp(3rem, 6vw, 4.8rem); line-height: 1.05; margin-bottom: 1.5rem; color: var(--text-main); }
+    .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 480px; font-weight: 400; }
+    .hero-image { border-radius: var(--radius-lg); box-shadow: var(--shadow-glow); overflow: hidden; transform: rotate(-2deg); transition: all 0.5s ease; }
 
-    /* --- SOCIAL PROOF (New) --- */
-    .social-proof {
-      padding: 3rem 0; text-align: center; 
-      background: #FAFAF9; border-bottom: 1px solid rgba(0,0,0,0.05);
-    }
-    .sp-text {
-      text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; 
-      color: var(--color-primary); font-weight: 700; margin-bottom: 0.5rem;
-    }
+    /* Offers & Social */
+    .offers-section { padding: 4rem 0; background: white; margin-bottom: 2rem; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    .offers-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+    .offer-card { background: #0B0B0B; color: #E5E5EA; padding: 2rem; border-radius: var(--radius-md); border: 1px solid var(--color-accent); text-align: center; display: flex; flex-direction: column; justify-content: center; transition: transform 0.3s ease; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+    .offer-card:hover { transform: translateY(-5px); }
+    .offer-title { color: var(--color-accent); font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.5rem; letter-spacing: 1px; }
+    .offer-desc { font-size: 1rem; line-height: 1.5; color: #ccc; }
+    .social-proof { padding: 3rem 0; text-align: center; background: #FAFAF9; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .sp-text { text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; color: var(--color-primary); font-weight: 700; margin-bottom: 0.5rem; }
     .sp-stars { color: var(--color-accent); font-size: 1.2rem; margin-bottom: 1rem; }
-    .sp-quote {
-      font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); 
-      max-width: 700px; margin: 0 auto 0.5rem; line-height: 1.4;
-    }
+    .sp-quote { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: var(--text-main); max-width: 700px; margin: 0 auto 0.5rem; line-height: 1.4; }
     .sp-sub { font-size: 0.9rem; color: var(--text-muted); }
 
-    /* --- MENU --- */
+    /* Menu & Filters */
     .section-title { text-align: center; margin: 4rem 0 3rem; }
-    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.5rem; font-weight: 700; }
-    .section-title p { color: var(--text-muted); font-size: 1.1rem; }
-
-    .menu-container { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; align-items: start; }
-    .menu-sidebar {
-      position: sticky; top: calc(var(--header-height) + 2rem);
-      background: white; padding: 1.5rem;
-      border-radius: 12px; box-shadow: var(--shadow-soft); border: 1px solid var(--border-light);
-      max-height: 80vh; overflow-y: auto;
-    }
+    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.8rem; font-weight: 700; }
+    .direct-order-box { background: #FFF4E5; border: 1px dashed var(--color-accent); border-radius: 12px; padding: 1.5rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(217, 119, 43, 0.05); }
+    .direct-order-box h4 { margin-bottom: 0.5rem; color: var(--color-accent); font-size: 1.2rem; }
+    .direct-order-box p { margin: 0; font-size: 1rem; color: var(--text-main); line-height: 1.5; }
+    .allergen-notice { font-size: 0.75rem; text-transform: uppercase; color: #777; margin-bottom: 1rem; line-height: 1.5; font-weight: 600; text-align: center; background: #eee; padding: 10px; border-radius: 8px; }
+    .dietary-filters { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
+    .filter-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent); margin-right: 0.5rem; }
+    .diet-btn { padding: 0.5rem 1rem; border-radius: 50px; border: 1px solid #ddd; background: white; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); font-weight: 700; }
+    .diet-btn:hover { border-color: var(--text-main); color: var(--text-main); }
+    .diet-btn.active { background: var(--text-main); color: white; border-color: var(--text-main); }
     
-    .category-btn {
-      display: block; width: 100%; text-align: left;
-      padding: 0.9rem 1.1rem; margin-bottom: 0.3rem;
-      border: none; background: transparent;
-      font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 600; 
-      color: var(--text-muted); border-radius: 8px; cursor: pointer; transition: all 0.2s;
-    }
-    .category-btn:hover { background: #FFF4E5; color: var(--color-primary); padding-left: 1.4rem; }
-    .category-btn.active { background: var(--color-primary); color: var(--color-accent); padding-left: 1.4rem; }
-
-    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.2rem; }
-    .dish-card {
-      background: white; padding: 1.5rem;
-      border-radius: 16px; border: 1px solid var(--border-light);
-      transition: all 0.3s ease;
-    }
-    .dish-card:hover { transform: translateY(-5px); box-shadow: 0 15px 30px rgba(0,0,0,0.08); border-color: var(--color-accent); }
-    .dish-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.5rem; gap: 10px; }
+    .menu-container { display: grid; grid-template-columns: 240px 1fr; gap: 4rem; align-items: start; }
+    .menu-sidebar { position: sticky; top: calc(var(--header-height) + 2rem); max-height: 80vh; overflow-y: auto; border-right: 1px solid var(--border-light); }
+    .category-btn { display: block; width: 100%; text-align: left; padding: 0.8rem 0; margin-bottom: 0; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.3s; position: relative; }
+    .category-btn::before { content: ''; position: absolute; left: -15px; top: 50%; transform: translateY(-50%); width: 0; height: 2px; background: var(--color-accent); transition: width 0.3s; }
+    .category-btn:hover { color: var(--color-accent); padding-left: 5px; }
+    .category-btn.active { color: var(--text-main); font-weight: 700; padding-left: 5px; }
+    .category-btn.active::before { width: 10px; }
+    .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+    
+    .dish-card { background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.4s; display: flex; flex-direction: column; justify-content: space-between; }
+    .dish-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
+    .dish-card.dimmed { opacity: 0.2; pointer-events: none; filter: grayscale(100%); }
+    .dish-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.6rem; gap: 10px; }
     .dish-title { font-weight: 700; color: var(--text-main); font-size: 1.1rem; }
     .dish-price { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; white-space: nowrap; }
-    .dish-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; }
+    .dish-desc { font-size: 0.9rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem; }
+    .dish-tags { margin-top: auto; padding-top: 1rem; border-top: 1px dashed #eee; font-size: 0.75rem; font-weight: 800; color: var(--text-light); text-transform: uppercase; letter-spacing: 1px; }
+    .add-to-order-btn { margin-top: 1rem; align-self: flex-start; padding: 0.5rem 1rem; font-size: 0.8rem; border-radius: 50px; border: 1px solid var(--color-accent); color: var(--color-accent); background: transparent; cursor: pointer; transition: all 0.2s; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+    .add-to-order-btn:hover { background: var(--color-accent); color: white; }
 
-    /* --- GALLERY --- */
-    .gallery-grid {
-      display: grid; grid-template-columns: repeat(12, 1fr);
-      grid-auto-rows: 250px; gap: 1rem; padding-bottom: 4rem;
-    }
-    .gallery-item { position: relative; border-radius: 16px; overflow: hidden; box-shadow: var(--shadow-soft); }
-    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
-    .gallery-item:hover img { transform: scale(1.08); }
-    /* Editorial Overlay */
-    .gallery-item::after {
-      content: ''; position: absolute; inset: 0;
-      background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4));
-      opacity: 0.7; pointer-events: none;
-    }
-    
+    /* Spin & Pairing */
+    .diner-spin-section { text-align: center; padding: 4rem 0; background: #fff; border-top: 1px solid var(--border-light); margin-bottom: 2rem; }
+    .spin-container { display: flex; gap: 1rem; justify-content: center; margin: 2rem 0; flex-wrap: wrap; }
+    .spin-slot { width: 220px; height: 140px; background: var(--bg-body); border: 1px solid #E5E5EA; border-radius: var(--radius-md); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; box-shadow: inset 0 0 20px rgba(0,0,0,0.03); }
+    .spin-label { font-size: 0.7rem; text-transform: uppercase; color: var(--color-accent); font-weight: 700; letter-spacing: 1.5px; margin-bottom: 0.5rem; }
+    .spin-item { font-family: 'Playfair Display', serif; font-size: 1.2rem; font-weight: 700; color: var(--text-main); line-height: 1.3; }
+    .spin-msg { margin-top: 1.5rem; font-size: 1rem; color: var(--text-muted); font-weight: 500; transition: color 0.3s; }
+    .spin-msg.unlocked { color: #25D366; font-weight: 700; animation: pulse 1s infinite; }
+    @keyframes pulse { 0% { transform: scale(1); } 50% { transform: scale(1.05); } 100% { transform: scale(1); } }
+
+    .pairing-section { background: white; padding: 4rem 0; margin-top: 4rem; border-top: 1px solid var(--border-light); border-bottom: 1px solid var(--border-light); }
+    .pairing-container { max-width: 800px; margin: 0 auto; text-align: center; }
+    .pairing-box { background: #FAFAF9; border: 1px solid #eee; border-radius: var(--radius-md); padding: 2.5rem; margin-top: 2rem; text-align: left; }
+    .pairing-select { width: 100%; padding: 1rem; border-radius: 8px; border: 1px solid #ddd; font-size: 1.1rem; margin-bottom: 2rem; background: white; color: var(--text-main); }
+    .pairing-result { display: none; animation: fadeIn 0.5s ease; }
+    .pairing-result.active { display: block; }
+    .suggestion-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 1.5rem; }
+    .suggestion-card { background: white; padding: 1.5rem; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); border-left: 3px solid var(--color-accent); }
+    .suggestion-label { font-size: 0.8rem; text-transform: uppercase; color: #999; font-weight: 700; letter-spacing: 1px; display: block; margin-bottom: 0.5rem; }
+    .suggestion-name { font-size: 1.1rem; font-weight: 700; color: var(--text-main); font-family: 'Playfair Display', serif; }
+
+    /* Gallery */
+    .gallery-grid { display: grid; grid-template-columns: repeat(12, 1fr); grid-auto-rows: 280px; gap: 1.2rem; padding-bottom: 4rem; }
+    .gallery-item { position: relative; border-radius: var(--radius-md); overflow: hidden; background: #eee; }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .gallery-item:hover img { transform: scale(1.05); }
+    .gallery-item::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, transparent 60%, rgba(0,0,0,0.4)); opacity: 0.7; pointer-events: none; }
     .g-large { grid-column: span 8; }
     .g-tall { grid-column: span 4; grid-row: span 2; }
     .g-std { grid-column: span 4; }
 
-    /* --- CONTACT --- */
+    /* Contact & Visit Us Styles (UPDATED ICONS) */
     .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 2rem; }
-    .form-wrapper {
-      background: white; padding: 2.5rem;
-      border-radius: 24px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft);
-    }
-    .form-wrapper h3 { color: var(--color-primary); margin-bottom: 0.5rem; font-size: 2rem; font-weight: 700; }
-    .form-sub { color: var(--text-muted); margin-bottom: 2rem; display:block; }
-    
-    .form-group { margin-bottom: 1.2rem; }
-    .form-group label { 
-      display: block; margin-bottom: 0.6rem; font-size: 0.85rem; 
-      letter-spacing: 1px; text-transform: uppercase; color: #888; font-weight: 600; 
-    }
-    
-    .form-row-2 {
-      display: grid; 
-      grid-template-columns: 1fr 1fr; 
-      gap: 1.5rem;
-    }
-
-    .form-control {
-      width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd;
-      background: #F9F9F9; color: var(--color-primary);
-      font-family: inherit; font-size: 1rem; transition: all 0.3s;
-      box-sizing: border-box; 
-      max-width: 100%;
-    }
+    .form-wrapper { background: var(--bg-card); padding: 3rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-soft); position: relative; overflow: hidden; }
+    .form-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent); }
+    .form-control { width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd; background: #F9F9F9; color: var(--color-primary); font-family: inherit; font-size: 1rem; transition: all 0.3s; box-sizing: border-box; max-width: 100%; }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
-
-    .success-message {
-      text-align: center; padding: 2rem 0; color: var(--color-primary);
-      display: none; animation: fadeIn 0.5s ease;
-    }
-    .success-icon {
-      width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem;
-    }
-    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
+    .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .success-message { text-align: center; padding: 2rem 0; color: var(--color-primary); display: none; animation: fadeIn 0.5s ease; }
+    .success-icon { width: 60px; height: 60px; background: #25D366; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem; font-size: 2rem; }
+    
     .hours-wrapper h3 { color: var(--color-primary); margin-bottom: 1.5rem; font-size: 2.2rem; font-weight: 700; }
-    .hours-list {
-      background: transparent; padding: 0;
-      border-left: 3px solid var(--color-accent); padding-left: 2rem;
-    }
+    .hours-list { background: transparent; padding: 0; border-left: 3px solid var(--color-accent); padding-left: 2rem; margin-top: 2rem; }
     .hour-row { display: flex; justify-content: space-between; padding: 1rem 0; border-bottom: 1px dashed rgba(0,0,0,0.1); }
-    .hour-row:last-child { border-bottom: none; }
-    .day { font-weight: 600; font-size: 1.1rem; color: var(--text-main); }
-    .time { font-weight: 700; color: var(--color-accent); font-size: 1.1rem; }
-
-    .map-container {
-      margin-top: 3rem; border-radius: 20px; overflow: hidden;
-      height: 400px; border: 1px solid #ddd; box-shadow: var(--shadow-soft);
-    }
+    .map-container { margin-top: 3rem; border-radius: 20px; overflow: hidden; height: 400px; border: 1px solid #ddd; box-shadow: var(--shadow-soft); }
     .map-container iframe { width: 100% !important; height: 100% !important; }
 
-    /* --- FOOTER --- */
-    footer {
-      background: #000; color: #666; padding: 3rem 0;
-      text-align: center; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 5rem;
+    /* New Contact Details with Icons */
+    .contact-details { margin-bottom: 2.5rem; display: flex; flex-direction: column; gap: 1rem; }
+    .contact-item { display: flex; align-items: flex-start; gap: 1rem; font-size: 1.1rem; color: var(--text-muted); }
+    .contact-icon { 
+      min-width: 40px; height: 40px; background: #FFF4E5; border-radius: 50%; 
+      display: flex; align-items: center; justify-content: center; color: var(--color-accent);
     }
+    .contact-icon svg { width: 20px; height: 20px; }
+
+    /* Cart */
+    .cart-float { position: fixed; bottom: 30px; right: 30px; background: var(--color-accent); color: white; padding: 1rem 1.5rem; border-radius: 50px; box-shadow: 0 10px 30px rgba(217, 119, 43, 0.4); z-index: 999; cursor: pointer; display: none; align-items: center; gap: 10px; font-weight: 700; transition: transform 0.3s; }
+    .cart-float:hover { transform: scale(1.05); }
+    .cart-modal { position: fixed; inset: 0; z-index: 2000; background: rgba(0,0,0,0.6); backdrop-filter: blur(5px); display: none; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s ease; }
+    .cart-modal.open { display: flex; opacity: 1; }
+    .cart-content { background: white; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; border-radius: var(--radius-md); padding: 2rem; box-shadow: 0 20px 50px rgba(0,0,0,0.2); transform: translateY(20px); transition: transform 0.3s ease; }
+    .cart-modal.open .cart-content { transform: translateY(0); }
+    .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px dashed #eee; }
+    .cart-item-remove { color: red; font-size: 0.8rem; cursor: pointer; background: none; border: none; padding: 5px; }
+
+    /* Footer */
+    footer { background: #111; color: #888; padding: 4rem 0; text-align: center; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 6rem; }
     .social-links { display: flex; justify-content: center; gap: 1rem; margin-bottom: 1.5rem; }
-    .social-links a {
-      width: 44px; height: 44px; border-radius: 50%; 
-      display: flex; justify-content: center; align-items: center; color: white; transition: all 0.3s;
-    }
-    
-    /* FOOTER BRAND COLORS */
+    .social-links a { width: 44px; height: 44px; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: white; transition: all 0.3s; }
     .social-links .fb-btn { background-color: #1877F2; }
     .social-links .fb-btn:hover { background-color: #166fe5; transform: scale(1.1); }
-
-    .social-links .insta-btn { 
-      background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); 
-    }
+    .social-links .insta-btn { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%); }
     .social-links .insta-btn:hover { filter: brightness(1.1); transform: scale(1.1); }
 
-    .whatsapp-float {
-      position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
-      background: #25d366; color: white; border-radius: 50%;
-      display: flex; justify-content: center; align-items: center;
-      box-shadow: 0 10px 20px rgba(37, 211, 102, 0.3); z-index: 999; transition: transform 0.3s;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); }
-
-    /* --- MOBILE OPTIMIZATION --- */
     @media (max-width: 900px) {
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .brand-text h1 { font-size: 1.2rem; }
-      .brand-text span { font-size: 0.65rem; }
       .logo-wrapper { width: 45px; height: 45px; min-width: 45px; }
-
-      .hero { padding-top: calc(var(--header-height) + 1.5rem); text-align: center; padding-bottom: 3rem; }
+      .hero { padding-top: calc(var(--header-height) + 1.5rem); text-align: center; }
       .hero-grid { grid-template-columns: 1fr; gap: 2.5rem; }
-      .hero-content h2 { font-size: 2.8rem; }
-      .hero-image { margin-top: 1rem; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
-
       .menu-container { grid-template-columns: 1fr; gap: 1.5rem; }
-      .menu-sidebar { 
-        position: relative; top: 0; 
-        display: flex; gap: 0.5rem;
-        padding: 1rem 0; margin-bottom: 0.5rem;
-        overflow-x: auto; white-space: nowrap;
-        -webkit-overflow-scrolling: touch; 
-        border: none; box-shadow: none; background: transparent;
-      }
-      .menu-sidebar::-webkit-scrollbar { display: none; }
-      .category-btn { 
-        width: auto; display: inline-block;
-        padding: 0.6rem 1.2rem; margin: 0;
-        background: white; border: 1px solid #eee;
-        border-radius: 50px; font-size: 0.95rem;
-      }
-      .category-btn:hover { padding-left: 1.2rem; }
+      .menu-sidebar { position: relative; top: 0; display: flex; gap: 0.5rem; padding: 1rem 0; overflow-x: auto; white-space: nowrap; border: none; }
+      .category-btn { width: auto; padding: 0.6rem 1.2rem; background: white; border: 1px solid #eee; border-radius: 50px; font-size: 0.95rem; }
       .category-btn.active { border-color: var(--color-primary); padding-left: 1.2rem; }
-
       .gallery-grid { display: flex; flex-direction: column; gap: 1rem; }
-      .gallery-item { height: 260px; }
-
       .info-grid { grid-template-columns: 1fr; gap: 3rem; }
       .form-wrapper { padding: 1.5rem; }
-      
-      .form-row-2 { 
-        grid-template-columns: 1fr; 
-        gap: 1rem; 
-      }
-      .form-control { width: 100%; min-width: 0; }
-      
-      .hours-list { padding-left: 1rem; border-left-width: 2px; }
+      .form-row-2 { grid-template-columns: 1fr; gap: 1rem; }
       .map-container { height: 300px; }
+      .offers-grid { grid-template-columns: 1fr; }
+      .suggestion-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .spin-container { gap: 0.5rem; }
+      .spin-slot { width: 100%; height: 100px; }
     }
   </style>
-
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Taste of Bharat",
-    "image": "https://tasteofbharat.com/hero.jpg",
-    "description": "Authentic and Modern Indian Cuisine in Swindon.",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "198 Rodbourne Rd",
-      "addressLocality": "Swindon",
-      "postalCode": "SN2 2AA",
-      "addressCountry": "UK"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": 51.564,
-      "longitude": -1.795
-    },
-    "telephone": "01793316158",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "17:00",
-        "closes": "22:00"
-      },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday", "Sunday"],
-        "opens": "12:00",
-        "closes": "22:00"
-      }
-    ],
-    "menu": "https://tasteofbharat.com/#menu",
-    "servesCuisine": "Indian",
-    "priceRange": "££"
-  }
-  </script>
 </head>
 <body>
 
   <header>
     <div class="nav-container">
       <div class="brand">
-        <div class="logo-wrapper">
-          <img src="logo.jpg" alt="Taste of Bharat Logo">
-        </div>
+        <div class="logo-wrapper"><img src="logo.jpg" alt="Logo"></div>
         <div class="brand-text">
           <h1>Taste Of Bharat</h1>
           <span>Modern Indian Dining</span>
         </div>
       </div>
-
       <nav class="nav-links">
-        <a href="#menu">Menu</a>
-        <a href="#gallery">Gallery</a>
-        <a href="#contact">Book & Info</a>
-        <a href="tel:01793316158" class="btn btn-outline" style="padding: 0.8rem 1.2rem;">Call</a>
-        <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder" class="btn btn-primary" target="_blank">Order Online</a>
+        <a href="#chef-pairing" class="nav-link">Chef's Choice</a>
+        <a href="#diner-spin" class="nav-link">Spin & Win</a>
+        <a href="#contact" class="nav-link">Book Table</a>
+        
+        <a href="#menu" class="btn btn-primary" style="font-size: 0.85rem;">Menu & Pre-Order</a>
+        
+        <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank">
+           <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
+        </a>
       </nav>
-
-      <button class="hamburger" onclick="toggleMobileMenu()" aria-label="Open Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
+      <button class="hamburger" onclick="toggleMobileMenu()"><span></span><span></span><span></span></button>
     </div>
   </header>
 
   <div id="mobileMenu" class="mobile-menu">
-    <a href="#menu" onclick="toggleMobileMenu()">Menu</a>
-    <a href="#gallery" onclick="toggleMobileMenu()">Gallery</a>
+    <a href="#chef-pairing" onclick="toggleMobileMenu()">Chef's Choice</a>
+    <a href="#diner-spin" onclick="toggleMobileMenu()">Spin & Win</a>
     <a href="#contact" onclick="toggleMobileMenu()">Book a Table</a>
-    <a href="tel:01793316158" class="btn btn-outline" style="width: 80%; justify-content:center;">Call 01793 316158</a>
-    <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu?serviceType=collection&utm_source=google&utm_medium=organic&utm_campaign=foodorder" class="btn btn-primary" target="_blank" onclick="toggleMobileMenu()">Order Online</a>
-    <button onclick="toggleMobileMenu()" style="background:none; border:none; margin-top:2rem; font-size:1rem; text-decoration:underline; color: var(--text-muted);">Close</button>
+    <a href="#menu" class="btn btn-primary" onclick="toggleMobileMenu()">Menu & Pre-Order</a>
+    <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" onclick="toggleMobileMenu()">
+       <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
+    </a>
+    <button onclick="toggleMobileMenu()" style="background:none; border:none; margin-top:2rem; font-size:1rem; text-decoration:underline;">Close</button>
   </div>
 
   <section class="hero">
     <div class="container hero-grid">
       <div class="hero-content reveal">
-        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:600; color:var(--color-accent); margin-bottom:1.5rem; font-size: 0.85rem;">Swindon's Finest</div>
+        <div style="text-transform:uppercase; letter-spacing:2px; font-weight:700; color:var(--color-accent); margin-bottom:1.5rem; font-size: 0.85rem;">Swindon's Finest</div>
         <h2>Authentic Spice.<br>Modern Soul.</h2>
         <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich curries, everything is crafted with passion.</p>
-        <div style="display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; md:justify-content: flex-start;">
-          <a href="#menu" class="btn btn-primary">View Full Menu</a>
+        <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+          <a href="#menu" class="btn btn-primary">Menu & Pre-Order</a>
           <a href="#contact" class="btn btn-outline">Book a Table</a>
-          <a href="tel:01793316158" class="btn btn-outline">Call to Order</a>
         </div>
       </div>
       <div class="hero-image-frame reveal">
-        <div class="hero-image hero-float">
-          <img src="hero.jpg" alt="Sizzling Mixed Grill Platter">
+        <div class="hero-image hero-float"><img src="hero.jpg" alt="Sizzling Mixed Grill Platter"></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="offers-section reveal">
+    <div class="container">
+      <div class="section-title" style="margin-top:0;"><h3>Special Offers</h3></div>
+      <div class="offers-grid">
+        <div class="offer-card">
+          <div class="offer-title">EAT IN OFFER</div>
+          <div class="offer-desc">Spend £50 and we will refund your Outlet Village parking charge.</div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-title">EAT IN OFFER</div>
+          <div class="offer-desc">Free beer with a main meal, every Tuesday.</div>
+        </div>
+        <div class="offer-card">
+          <div class="offer-title">TAKEAWAY OFFER</div>
+          <div class="offer-desc">5% discount on takeaway / collections, every Thursday.</div>
         </div>
       </div>
     </div>
@@ -510,15 +333,34 @@
       <div class="sp-text">Trusted by Locals</div>
       <div class="sp-stars">★★★★★</div>
       <div class="sp-quote">"Hands down the best curry in Swindon. The flavors are incredible and the service is always warm and welcoming."</div>
-      <div class="sp-sub">Highly Rated Restaurant</div>
+      <div style="margin-top:0.5rem; font-size:0.9rem; color:var(--text-muted);">Highly Rated Restaurant</div>
     </div>
   </section>
 
   <div class="container reveal" id="menu">
     <div class="section-title">
       <h3>Our Menu</h3>
-      <p>Search dishes or select a category below</p>
+      <div class="direct-order-box">
+        <h4>Ordering Directly?</h4>
+        <p>Skip the fees. <strong>Collection or Dine-in Pre-order.</strong><br>Simply add items to cart below & Pay at the restaurant.</p>
+      </div>
     </div>
+    
+    <div class="allergen-notice">
+      <p>OUR FOOD MAY CONTAIN THE FOLLOWING ALLERGENS: NUTS, DAIRY, GLUTEN, MUSTARD, FISH, SOYA, CRUSTACEANS.<br>
+      PLEASE SPEAK TO A MEMBER OF STAFF REGARDING ANY DIETARY REQUIREMENTS.</p>
+    </div>
+    
+    <div class="dietary-filters">
+      <span class="filter-label">Highlight Allergens (Click to Dim Items):</span>
+      <button class="diet-btn" onclick="toggleFilter('D')">D - Dairy</button>
+      <button class="diet-btn" onclick="toggleFilter('G')">G - Gluten</button>
+      <button class="diet-btn" onclick="toggleFilter('N')">N - Nuts</button>
+      <button class="diet-btn" onclick="toggleFilter('F')">F - Fish</button>
+      <button class="diet-btn" onclick="toggleFilter('S')">S - Soya</button>
+      <button class="diet-btn" onclick="toggleFilter('P')">P - Prawns</button>
+    </div>
+
     <div class="menu-container">
       <aside class="menu-sidebar" id="categoryList"></aside>
       <div class="menu-content">
@@ -531,84 +373,105 @@
     </div>
   </div>
 
-  <div class="container reveal" id="gallery" style="margin-top: 6rem;">
-    <div class="section-title">
-      <h3>Visual Feast</h3>
-      <p>A glimpse into our kitchen</p>
+  <section id="diner-spin" class="diner-spin-section reveal">
+    <div class="container">
+      <h3>Can't Decide?</h3>
+      <p>Let fate choose your feast.</p>
+      <div class="spin-container">
+         <div class="spin-slot">
+           <div class="spin-label">Starter</div>
+           <div class="spin-item" id="slotStarter">?</div>
+         </div>
+         <div class="spin-slot">
+           <div class="spin-label">Main</div>
+           <div class="spin-item" id="slotMain">?</div>
+         </div>
+         <div class="spin-slot">
+           <div class="spin-label">Side / Bread</div>
+           <div class="spin-item" id="slotSide">?</div>
+         </div>
+      </div>
+      <button class="btn btn-primary" onclick="spinDinner()">Pick My Dinner</button>
+      <div id="spinMessage" class="spin-msg">Spin 3 times to unlock a discount! (Spins: <span id="spinCount">0</span>)</div>
     </div>
+  </section>
+
+  <section id="chef-pairing" class="pairing-section reveal">
+    <div class="container pairing-container">
+      <h3 style="font-size:2rem; margin-bottom:1rem;">Chef's Recommendation</h3>
+      <p style="color:var(--text-muted);">Unsure what to order? Select a main, and we'll suggest the perfect accompaniments.</p>
+      <div class="pairing-box">
+        <label style="display:block; margin-bottom:0.5rem; font-weight:700;">Select your Main Dish:</label>
+        <select id="pairingSelect" class="pairing-select" onchange="generatePairing()">
+          <option value="">-- Choose a Dish --</option>
+          <option value="Butter Chicken">Butter Chicken</option>
+          <option value="Lamb Rogan Josh">Lamb Rogan Josh</option>
+          <option value="Railway Lamb Curry">Railway Lamb Curry</option>
+          <option value="Fish Moilee">Fish Moilee</option>
+          <option value="Paneer Butter Masala">Paneer Butter Masala</option>
+          <option value="Saag Paneer">Saag Paneer</option>
+          <option value="Dal Makhani">Dal Makhani</option>
+          <option value="Channa Masala">Channa Masala</option>
+          <option value="Chicken Dum Biryani">Chicken Dum Biryani</option>
+        </select>
+        <div id="pairingResult" class="pairing-result">
+          <div style="text-align:center; margin-bottom:1rem; color:var(--color-accent); font-weight:700;">PERFECT MATCH</div>
+          <div class="suggestion-grid">
+            <div class="suggestion-card"><span class="suggestion-label">Best Bread/Rice</span><div class="suggestion-name" id="sugSide">Garlic Naan</div></div>
+            <div class="suggestion-card"><span class="suggestion-label">Best Starter</span><div class="suggestion-name" id="sugStart">Onion Bhaji</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container reveal" id="gallery" style="margin-top: 6rem;">
+    <div class="section-title"><h3>Visual Feast</h3><p>A glimpse into our kitchen</p></div>
     <div class="gallery-grid">
-      <div class="gallery-item g-large">
-        <img src="feast.jpg" alt="Indian Feast">
-      </div>
-      <div class="gallery-item g-tall">
-        <img src="Starters.jpg" alt="Crispy Starters">
-      </div>
-      <div class="gallery-item g-std">
-        <img src="paneer.jpg" alt="Paneer Tikka">
-      </div>
-      <div class="gallery-item g-std">
-        <img src="dessert.jpg" alt="Pineapple Dessert">
-      </div>
+      <div class="gallery-item g-large"><img src="feast.jpg" alt="Indian Feast"></div>
+      <div class="gallery-item g-tall"><img src="Starters.jpg" alt="Crispy Starters"></div>
+      <div class="gallery-item g-std"><img src="paneer.jpg" alt="Paneer Tikka"></div>
+      <div class="gallery-item g-std"><img src="dessert.jpg" alt="Pineapple Dessert"></div>
     </div>
   </div>
 
   <div id="contact" class="reveal" style="background: #FFFFFF; padding-top:4rem;">
     <div class="container">
       <div class="info-grid">
-        
         <div class="form-wrapper">
           <div id="formContainer">
             <h3>Reserve Your Table</h3>
             <span class="form-sub">Book instantly. No account required.</span>
-            
-            <form id="bookingForm">
+            <form id="bookingForm" action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_subject" value="New Table Reservation">
-
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" name="name" class="form-control" required placeholder="e.g. John Doe">
-              </div>
-              
+              <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
               <div class="form-row-2">
-                <div class="form-group">
-                  <label>Date</label>
-                  <input type="date" name="date" class="form-control" required>
-                </div>
-                <div class="form-group">
-                  <label>Time</label>
-                  <input type="time" name="time" class="form-control" required>
-                </div>
+                <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
+                <div class="form-group"><label>Time</label><input type="time" name="time" class="form-control" required></div>
               </div>
-
               <div class="form-row-2">
-                <div class="form-group">
-                  <label>Guests</label>
-                  <input type="number" name="guests" class="form-control" value="2" min="1" required>
-                </div>
-                <div class="form-group">
-                  <label>Phone</label>
-                  <input type="tel" name="phone" class="form-control" required placeholder="07...">
-                </div>
+                <div class="form-group"><label>Guests</label><input type="number" name="guests" class="form-control" value="2" min="1" required></div>
+                <div class="form-group"><label>Phone</label><input type="tel" name="phone" class="form-control" required placeholder="07..."></div>
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
             </form>
           </div>
-
-          <div id="successMessage" class="success-message">
-            <div class="success-icon">✓</div>
-            <h3 style="margin-bottom: 0.5rem; font-size: 1.8rem;">Booking Submitted!</h3>
-            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.5;">
-              Thank you for choosing Taste of Bharat.<br>
-              <strong>We will call you shortly to confirm your table.</strong>
-            </p>
-            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
-          </div>
         </div>
-
-        <div class="hours-wrapper" style="color: var(--text-main); padding-top: 2rem;">
+        
+        <div class="hours-wrapper" style="padding-top: 2rem;">
           <h3>Visit Us</h3>
-          <p style="color:var(--text-muted); margin-bottom:2.5rem; font-size:1.15rem;">198 Rodbourne Rd, Swindon SN2 2AA<br>01793 316158</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+              <span>198 Rodbourne Rd, Swindon SN2 2AA</span>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+              <span>01793 316158</span>
+            </div>
+          </div>
 
           <div class="hours-list">
             <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
@@ -616,158 +479,333 @@
             <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
             <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
           </div>
-          
-          <div class="map-container">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe>
-          </div>
+          <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></div>
         </div>
-
       </div>
+    </div>
+  </div>
+
+  <div id="cartFloat" class="cart-float" onclick="openCart()">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
+    <span id="cartCount">0</span> Items
+  </div>
+
+  <div id="cartModal" class="cart-modal">
+    <div class="cart-content">
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+        <h3>Your Order</h3>
+        <button onclick="closeCart()" style="background:none; border:none; font-size:1.5rem; cursor:pointer;">×</button>
+      </div>
+      <div id="cartItemsList" style="margin-bottom:2rem;"></div>
+      
+      <form id="cartForm" action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Offline Order">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_next" value="https://tasteofbharat.com">
+        
+        <input type="hidden" name="order_details" id="orderDetailsHidden">
+        
+        <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
+        <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
+        <div class="form-group"><label>Phone</label><input class="form-control" name="phone" required placeholder="07..."></div>
+        <div class="form-group"><label>Pickup/Dine Time</label><input type="time" class="form-control" name="time" required></div>
+        
+        <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem;">Payment will be collected at the restaurant.</p>
+        
+        <button type="submit" class="btn btn-primary" style="width:100%; border:none;" onclick="prepareOrderData()">Submit Order</button>
+      </form>
     </div>
   </div>
 
   <footer>
     <div class="container">
       <div class="social-links">
-        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" aria-label="Instagram" class="insta-btn">
-           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-        </a>
-        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" aria-label="Facebook" class="fb-btn">
-           <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
-        </a>
+        <a href="https://www.instagram.com/tasteofbharat_swindon" target="_blank" class="insta-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        <a href="https://www.facebook.com/share/1AG4QmmaMx" target="_blank" class="fb-btn"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg></a>
       </div>
       <p>© <span id="year"></span> Taste Of Bharat. All rights reserved.</p>
     </div>
   </footer>
 
-  <a href="https://wa.me/447771447915" class="whatsapp-float" target="_blank">
-    <svg width="32" height="32" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.32a8.188 8.188 0 0 1-1.26-4.38c.01-4.54 3.7-8.23 8.25-8.23m4.58 10.8c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.12-.17.25-.64.81-.78.97-.14.17-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.51.11-.11.25-.29.37-.43s.17-.25.25-.41c.08-.17.04-.31-.02-.43s-.56-1.34-.76-1.84c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.25 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.07-.12-.23-.17-.48-.3z"/></svg>
-  </a>
-
   <script>
-    function toggleMobileMenu() {
-      const menu = document.getElementById('mobileMenu');
-      menu.classList.toggle('active');
+    function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
+    const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('active')), {threshold:0.1});
+
+    // MENU DATA (With Specific Allergen Codes)
+    // D=Dairy, G=Gluten, N=Nuts, F=Fish, S=Soya, P=Prawns
+    const menuItems = [
+      {"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90", "codes": []},
+      {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50", "codes": ["G"]},
+      {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50", "codes": ["G"]},
+      {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90", "codes": []},
+      {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50", "codes": ["G"]},
+      {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90", "codes": []},
+      {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90", "codes": ["G", "D"]},
+      {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90", "codes": ["G", "D"]},
+      {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90", "codes": ["G"]},
+      {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90", "codes": ["D"]},
+      {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90", "codes": ["G", "D"]},
+      {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90", "codes": ["D", "S"]},
+      
+      {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "Assortment of grilled meats.", "price": "£18.90", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom.", "price": "£6.90", "codes": ["D", "N"]},
+      {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Spicy grilled chicken.", "price": "£6.90", "codes": ["D"]},
+      
+      {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50", "codes": ["S"]},
+      {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt.", "price": "£7.50", "codes": ["D"]},
+      {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs.", "price": "£7.90", "codes": []},
+      {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish.", "price": "£8.90", "codes": ["F"]},
+      {"category": "Non-Veg Starters", "name": "Dakshini Prawns", "desc": "Spicy & crispy-fried prawns.", "price": "£8.90", "codes": ["P"]},
+      
+      {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken.", "price": "£10.50", "codes": ["D"]},
+      {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb.", "price": "£11.00", "codes": ["D"]},
+      
+      {"category": "Veg Curries", "name": "Saag Paneer", "desc": "Paneer in spinach gravy.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Rich creamy tomato gravy.", "price": "£8.90", "codes": ["D", "N"]},
+      {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils.", "price": "£7.50", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry.", "price": "£7.50", "codes": []},
+      
+      {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken.", "price": "£9.50", "codes": ["D", "N"]},
+      {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Home-style gravy.", "price": "£9.50", "codes": []},
+      {"category": "Non-Veg Curries", "name": "Lamb Rogan Josh", "desc": "Aromatic Kashmiri lamb curry.", "price": "£10.50", "codes": []},
+      {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50", "codes": []},
+      {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50", "codes": ["F"]},
+      {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Coconut based prawn curry.", "price": "£10.50", "codes": ["P"]},
+      
+      {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened flatbread.", "price": "£3.00", "codes": ["G", "D"]},
+      {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Naan with butter.", "price": "£3.00", "codes": ["G", "D"]},
+      {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Naan with garlic.", "price": "£3.50", "codes": ["G", "D"]},
+      {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Sweet naan with coconut and nuts.", "price": "£3.90", "codes": ["G", "D", "N"]},
+      {"category": "Tandoor Breads", "name": "Tandoori Roti", "desc": "Whole wheat bread.", "price": "£2.50", "codes": ["G"]},
+      
+      {"category": "Sides", "name": "Pilau Rice", "desc": "Aromatic rice.", "price": "£3.90", "codes": []},
+      {"category": "Sides", "name": "Steam Rice", "desc": "Plain rice.", "price": "£3.90", "codes": []}
+    ];
+    window.globalMenuItems = menuItems;
+
+    // --- DIETARY FILTER LOGIC ---
+    let activeFilters = [];
+    
+    function toggleFilter(filter) {
+      const btn = document.querySelector(`.diet-btn[onclick="toggleFilter('${filter}')"]`);
+      if(activeFilters.includes(filter)) {
+        activeFilters = activeFilters.filter(f => f !== filter);
+        btn.classList.remove('active');
+      } else {
+        activeFilters.push(filter);
+        btn.classList.add('active');
+      }
+      applyFilters();
     }
 
-    // Scroll Animation Observer
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting) {
-          entry.target.classList.add('active');
+    function applyFilters() {
+      // Re-trigger global render to update UI
+      window.renderMyMenu(); 
+    }
+
+    // --- SPIN WHEEL LOGIC ---
+    let spinCount = 0;
+    function spinDinner() {
+      const slots = [document.getElementById('slotStarter'), document.getElementById('slotMain'), document.getElementById('slotSide')];
+      const pools = [
+        menuItems.filter(i => ['Snack Bites', 'Tandoori Khazana'].includes(i.category)),
+        menuItems.filter(i => ['Veg Curries', 'Non-Veg Curries', 'Biryani'].includes(i.category)),
+        menuItems.filter(i => ['Tandoor Breads', 'Sides'].includes(i.category))
+      ];
+      
+      // Animate
+      let counter = 0;
+      const interval = setInterval(() => {
+        slots.forEach((slot, i) => {
+          if(pools[i].length) {
+            const randomItem = pools[i][Math.floor(Math.random() * pools[i].length)];
+            slot.innerText = randomItem.name;
+          }
+        });
+        counter++;
+        if(counter > 15) {
+          clearInterval(interval);
+          spinCount++;
+          document.getElementById('spinCount').innerText = spinCount;
+          if(spinCount >= 3) {
+            const msg = document.getElementById('spinMessage');
+            msg.innerHTML = "🎉 DISCOUNT UNLOCKED! Use Code: <strong>SPICY5</strong><br><span style='font-size:0.85rem; display:block; margin-top:5px; color:#666;'>Call the restaurant to order & quote this code!</span>";
+            msg.classList.add('unlocked');
+          }
         }
+      }, 100);
+    }
+
+    // --- PAIRING LOGIC ---
+    function generatePairing() {
+      const main = document.getElementById('pairingSelect').value;
+      const resultBox = document.getElementById('pairingResult');
+      if(!main) { resultBox.classList.remove('active'); return; }
+      
+      let side = "Garlic Naan";
+      let starter = "Onion Bhaji";
+      
+      if(main.includes("Butter") || main.includes("Masala")) { side = "Garlic Naan & Pilau Rice"; starter = "Chicken Tikka"; } 
+      else if(main.includes("Lamb") || main.includes("Rogan")) { side = "Peshwari Naan"; starter = "Lamb Seekh Kebab"; } 
+      else if(main.includes("Railway")) { side = "Paratha"; starter = "Punjabi Samosa"; }
+      else if(main.includes("Prawn") || main.includes("Moilee")) { side = "Steam Rice"; starter = "Chilli Squid"; } 
+      else if(main.includes("Fish")) { side = "Steam Rice"; starter = "Amritsari Fish"; }
+      else if(main.includes("Saag")) { side = "Tandoori Roti"; starter = "Aloo Tikki"; }
+      else if(main.includes("Dal") || main.includes("Channa")) { side = "Tandoori Roti"; starter = "Samosa Chaat"; }
+      else if(main.includes("Biryani")) { side = "Raita"; starter = "Chicken 65"; }
+
+      document.getElementById('sugSide').innerText = side;
+      document.getElementById('sugStart').innerText = starter;
+      resultBox.classList.add('active');
+    }
+
+    // --- CART LOGIC ---
+    let cart = [];
+    function addToCart(index) {
+      const item = window.globalMenuItems[index];
+      cart.push(item);
+      updateCartUI();
+      document.getElementById('cartFloat').style.display = 'flex';
+    }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartUI();
+      if(cart.length === 0) {
+        document.getElementById('cartFloat').style.display = 'none';
+        closeCart();
+      }
+    }
+    function updateCartUI() {
+      document.getElementById('cartCount').innerText = cart.length;
+      const list = document.getElementById('cartItemsList');
+      list.innerHTML = '';
+      let total = 0;
+      cart.forEach((item, i) => {
+        const priceNum = parseFloat(item.price.replace('£','')) || 0;
+        total += priceNum;
+        list.innerHTML += `<div class="cart-item"><div class="cart-item-info"><strong>${item.name}</strong><span style="font-size:0.9rem; color:#666;">${item.price}</span></div><button class="cart-item-remove" onclick="removeFromCart(${i})">Remove</button></div>`;
       });
-    }, { threshold: 0.1 });
+    }
+    
+    // UPDATED: Fill hidden input right before submit
+    function prepareOrderData() {
+      let total = 0;
+      cart.forEach(i => { total += (parseFloat(i.price.replace('£','')) || 0); });
+      const orderSummary = cart.map(i => `${i.name} (${i.price})`).join('\n');
+      const finalString = `TOTAL: £${total.toFixed(2)}\n\nITEMS:\n${orderSummary}`;
+      document.getElementById('orderDetailsHidden').value = finalString;
+    }
+
+    function openCart() { document.getElementById('cartModal').classList.add('open'); }
+    function closeCart() { document.getElementById('cartModal').classList.remove('open'); }
 
     document.addEventListener("DOMContentLoaded", function() {
-      
-      // Init Animations
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Menu Data
-      const menuItems = [{"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90"}, {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50"}, {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90"}, {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50"}, {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90"}, {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90"}, {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab — complimentary butter naan.", "price": "£18.90"}, {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50"}, {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom and Indian spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90"}, {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half/Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50 / £14.50"}, {"category": "Non-Veg Starters", "name": "Chef Special — Chicken Pocket Kebab", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chicken Lollipop (4pc)", "desc": "", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt, curry leaf, Indian spices.", "price": "£7.50"}, {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs and smoky charcoal flavour.", "price": "£7.90"}, {"category": "Non-Veg Starters", "name": "Patiala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice.", "price": "£8.90"}, {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli.", "price": "£8.90"}, {"category": "Biryani", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00"}, {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita.", "price": "£10.50"}, {"category": "Biryani", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00"}, {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00"}, {"category": "Biryani", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita.", "price": "£12.50"}, {"category": "Sides", "name": "Noodles (Chicken/Veg)", "desc": "Wok tossed noodles with the option of either tender chicken or assorted vegetables.", "price": "£7.90"}, {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50"}, {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90"}, {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90"}, {"category": "Sides", "name": "Special Tob Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin.", "price": "£3.50"}, {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90"}, {"category": "Veg Curries", "name": "Saag Paneer / Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90"}, {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50"}, {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentils infused with aromatic spices and a sizzling ghee tadka.", "price": "£7.00"}, {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Chicken morsels braised in aromatic home-style gravy.", "price": "£9.50"}, {"category": "Non-Veg Curries", "name": "Madras Chicken / Lamb Curry", "desc": "Spicy authentic Indian curry with tender chicken or lamb.", "price": "£9.50 / £10.50"}, {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Prawn simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50"}, {"category": "Tandoor Breads", "name": "All breads are eggless", "desc": "Tandoori Roti", "price": ""}, {"category": "Tandoor Breads", "name": "Whole wheat unleavened bread.", "desc": "", "price": "£2.50"}, {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter.", "price": "£3.00"}, {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread.", "price": "£3.50"}, {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90"}, {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread stuffed with mix of nuts, raisins, desiccated coconut.", "price": "£3.90"}, {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream.", "price": "£5.00"}, {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00"}, {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00"}, {"category": "Children'S Menu", "name": "Chips", "desc": "", "price": "£2.90"}, {"category": "Children'S Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90"}, {"category": "Children'S Menu", "name": "Fish Finger", "desc": "", "price": "£3.90"}, {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink.", "price": "£16.90"}, {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink.", "price": "£15.90"}, {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakshini Prawns (3pcs), Raita, Chips, Soft Drink.", "price": "£18.90"}];
+      // Init Logic
+      const grouped = new Map();
+      menuItems.forEach(item => {
+        const cat = item.category || "General";
+        if(!grouped.has(cat)) grouped.set(cat, []);
+        grouped.get(cat).push(item);
+      });
 
-      function initMenu() {
-        const grouped = new Map();
-        menuItems.forEach(item => {
-          const cat = item.category || "General";
-          if(!grouped.has(cat)) grouped.set(cat, []);
-          grouped.get(cat).push(item);
-        });
+      const categories = Array.from(grouped.keys());
+      const categoryList = document.getElementById('categoryList');
+      const menuGrid = document.getElementById('menuGrid');
+      const searchInput = document.getElementById('menuSearch');
+      let activeCategory = categories.includes("Non-Veg Starters") ? "Non-Veg Starters" : categories[0];
 
-        const categories = Array.from(grouped.keys());
-        const categoryList = document.getElementById('categoryList');
-        const menuGrid = document.getElementById('menuGrid');
-        const searchInput = document.getElementById('menuSearch');
-        
-        // DEFAULT CATEGORY: "Non-Veg Starters"
-        let activeCategory = categories.includes("Non-Veg Starters") ? "Non-Veg Starters" : categories[0];
+      // EXPOSE RENDER FUNCTION FOR FILTERING
+      window.renderMyMenu = function() {
+        const q = searchInput.value.trim().toLowerCase();
+        let list = [];
 
-        if (!categoryList || !menuGrid) return; 
-
-        function renderCategories() {
-          categoryList.innerHTML = '';
-          categories.forEach(cat => {
-            const btn = document.createElement('button');
-            btn.className = `category-btn ${cat === activeCategory ? 'active' : ''}`;
-            btn.textContent = cat;
-            btn.onclick = () => {
-              activeCategory = cat;
-              if(searchInput) searchInput.value = '';
-              renderCategories();
-              renderMenu();
-            };
-            categoryList.appendChild(btn);
-          });
+        // 1. Get Base List (Search OR Category)
+        if (q) {
+          list = menuItems.filter(it => (it.name + " " + (it.desc || "")).toLowerCase().includes(q));
+        } else {
+          list = grouped.get(activeCategory) || [];
         }
 
-        function renderMenu(filter = '') {
-          menuGrid.innerHTML = '';
-          let itemsToRender = [];
+        // 2. Clear Grid
+        menuGrid.innerHTML = '';
 
-          if(filter) {
-            itemsToRender = menuItems.filter(i => (i.name + " " + i.desc).toLowerCase().includes(filter.toLowerCase()));
-          } else {
-            itemsToRender = grouped.get(activeCategory);
+        if (!list.length) {
+          menuGrid.innerHTML = '<div style="color: var(--text-muted);">No items found.</div>';
+          return;
+        }
+
+        // 3. Render Items with Filter Check
+        list.forEach((item) => {
+          // Check dietary filters: If item HAS any of the active filters, DIM it.
+          let isDimmed = false;
+          if (activeFilters.length > 0) {
+            // Check if item contains ANY of the active allergen codes
+            if(item.codes && activeFilters.some(f => item.codes.includes(f))) {
+               isDimmed = true;
+            }
           }
 
-          if(!itemsToRender || itemsToRender.length === 0) {
-            menuGrid.innerHTML = '<div style="grid-column:1/-1; text-align:center; color:#888;">No dishes found matching your search.</div>';
-            return;
+          const globalIndex = menuItems.indexOf(item);
+          
+          const card = document.createElement('div');
+          card.className = `dish-card menu-item-anim ${isDimmed ? 'dimmed' : ''}`;
+          
+          let tagsHtml = '';
+          if(item.codes && item.codes.length > 0) {
+            tagsHtml = '<div class="dish-tags">' + item.codes.map(c => `[${c}]`).join(' ') + '</div>';
           }
 
-          // Staggered Animation Logic
-          itemsToRender.forEach((item, index) => {
-            const card = document.createElement('div');
-            card.className = 'dish-card menu-item-anim';
-            card.style.animationDelay = `${index * 0.05}s`; // Waterfall delay
-            
-            card.innerHTML = `
+          card.innerHTML = `
+            <div>
               <div class="dish-header">
                 <div class="dish-title">${item.name}</div>
                 <div class="dish-price">${item.price}</div>
               </div>
               <div class="dish-desc">${item.desc}</div>
-            `;
-            menuGrid.appendChild(card);
-          });
-        }
+              ${tagsHtml}
+            </div>
+            <button class="add-to-order-btn" onclick="addToCart(${globalIndex})">+ Add to Order</button>
+          `;
+          menuGrid.appendChild(card);
+        });
+      };
 
-        if(searchInput) {
-          searchInput.addEventListener('input', (e) => {
-            renderMenu(e.target.value);
-          });
-        }
-
-        renderCategories();
-        renderMenu();
-      }
-
-      // FORM SUBMISSION HANDLER
-      const form = document.getElementById('bookingForm');
-      if(form) {
-        form.addEventListener('submit', function(e) {
-          e.preventDefault(); 
-          
-          const formData = new FormData(form);
-          
-          fetch("https://formsubmit.co/kamalshelley@gmail.com", {
-            method: "POST",
-            body: formData
-          })
-          .then(response => {
-            document.getElementById('formContainer').style.display = 'none';
-            document.getElementById('successMessage').style.display = 'block';
-          })
-          .catch(error => {
-            alert("Something went wrong. Please call us to book.");
-          });
+      // Category Render
+      function renderCats() {
+        categoryList.innerHTML = '';
+        categories.forEach(cat => {
+          const btn = document.createElement('button');
+          btn.className = `category-btn ${cat === activeCategory ? 'active' : ''}`;
+          btn.textContent = cat;
+          btn.onclick = () => {
+            activeCategory = cat;
+            searchInput.value = '';
+            renderCats();
+            window.renderMyMenu();
+          };
+          categoryList.appendChild(btn);
         });
       }
 
-      initMenu();
-      const yearEl = document.getElementById('year');
-      if(yearEl) yearEl.textContent = new Date().getFullYear();
+      if(searchInput) searchInput.addEventListener('input', () => window.renderMyMenu());
+
+      renderCats();
+      window.renderMyMenu();
+
+      // Form Handling
+      const cartForm = document.getElementById('cartForm');
+      if(cartForm) {
+        // We let the form submit naturally to FormSubmit.co
+        // But we ensure data is prepared first
+      }
+      
+      const bookingForm = document.getElementById('bookingForm');
+      // Similar for booking form - natural submission ensured
+
+      document.getElementById('year').textContent = new Date().getFullYear();
     });
   </script>
 </body>
