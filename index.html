@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en-GB">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  
+   
   <title>Taste of Bharat | Modern Indian Restaurant in Swindon</title>
   <meta name="title" content="Taste of Bharat | Modern Indian Restaurant in Swindon">
   <meta name="description" content="Experience authentic and modern Indian cuisine at Taste of Bharat, Swindon. Dine-in, takeaway, and delivery available." />
@@ -106,7 +106,7 @@
     ul { list-style: none; }
 
     .container { max-width: var(--container-width); margin: 0 auto; padding: 0 2rem; }
-    
+     
     /* Buttons */
     .btn {
       display: inline-flex; align-items: center; justify-content: center;
@@ -131,10 +131,10 @@
     /* Animations */
     .reveal { opacity: 0; transform: translateY(40px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
     .reveal.active { opacity: 1; transform: translateY(0); }
-    
+     
     @keyframes float { 0% { transform: translateY(0px) rotate(-1deg); } 50% { transform: translateY(-12px) rotate(1deg); } 100% { transform: translateY(0px) rotate(-1deg); } }
     .hero-float { animation: float 8s ease-in-out infinite; }
-    
+     
     @keyframes slideInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
     .menu-item-anim { opacity: 0; animation: slideInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
 
@@ -146,14 +146,14 @@
     .logo-wrapper img { width: 100%; height: 100%; object-fit: cover; display: block; transform: translateY(-5px); }
     .brand-text h1 { font-size: 1.2rem; line-height: 1; margin: 0 0 0.2rem 0; color: var(--text-main); font-weight: 800; white-space: nowrap; }
     .brand-text span { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.15em; color: var(--color-accent); font-weight: 800; display: block; }
-    
+     
     .nav-links { display: flex; gap: 1.2rem; align-items: center; }
     .nav-links a.nav-link { font-weight: 800; font-size: 0.85rem; color: var(--text-main); position: relative; opacity: 0.9; text-transform: uppercase; letter-spacing: 0.5px; white-space: nowrap; }
     .nav-links a.nav-link:hover { opacity: 1; color: var(--color-accent); }
 
     .hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; z-index: 1002; padding: 10px; }
     .hamburger span { width: 24px; height: 2px; background: var(--text-main); transition: all 0.3s; }
-    
+     
     .mobile-menu { position: fixed; top: 0; left: 0; width: 100%; height: 100vh; background: var(--bg-body); z-index: 1001; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2rem; transform: translateY(-100%); transition: transform 0.6s cubic-bezier(0.83, 0, 0.17, 1); }
     .mobile-menu.active { transform: translateY(0); }
     .mobile-menu a { font-size: 1.4rem; font-family: 'Playfair Display', serif; font-weight: 700; color: var(--text-main); }
@@ -166,7 +166,7 @@
     .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
     .hero-content h2 { font-size: clamp(3rem, 6vw, 4.8rem); line-height: 1.05; margin-bottom: 1.5rem; color: var(--text-main); }
     .hero-content p { font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 480px; font-weight: 400; }
-    
+     
     /* Hero Image */
     .hero-image-frame { display: flex; justify-content: center; }
     .hero-image { border-radius: var(--radius-lg); box-shadow: var(--shadow-glow); overflow: hidden; transform: rotate(-2deg); transition: all 0.5s ease; }
@@ -192,14 +192,14 @@
     .diet-btn { padding: 0.5rem 1rem; border-radius: 50px; border: 1px solid #ddd; background: white; font-size: 0.85rem; cursor: pointer; transition: all 0.2s; color: var(--text-muted); font-weight: 700; }
     .diet-btn:hover { border-color: var(--text-main); color: var(--text-main); }
     .diet-btn.active { background: var(--text-main); color: white; border-color: var(--text-main); }
-    
+     
     .menu-container { display: grid; grid-template-columns: 240px 1fr; gap: 4rem; align-items: start; }
     .menu-sidebar { position: sticky; top: calc(var(--header-height) + 2rem); max-height: 80vh; overflow-y: auto; border-right: 1px solid var(--border-light); }
     .category-btn { display: block; width: 100%; text-align: left; padding: 0.8rem 0; margin-bottom: 0; border: none; background: transparent; font-family: 'DM Sans', sans-serif; font-size: 1.05rem; font-weight: 500; color: var(--text-muted); cursor: pointer; transition: all 0.3s; position: relative; }
     .category-btn:hover { color: var(--color-accent); padding-left: 5px; }
     .category-btn.active { color: var(--text-main); font-weight: 700; padding-left: 5px; border-left: 2px solid var(--color-accent); }
     .menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
-    
+     
     .dish-card { background: var(--bg-card); padding: 2rem; border-radius: var(--radius-md); box-shadow: 0 4px 20px rgba(0,0,0,0.03); transition: all 0.4s; display: flex; flex-direction: column; justify-content: space-between; }
     .dish-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-soft); }
     .dish-card.dimmed { opacity: 0.4; filter: grayscale(100%); }
@@ -325,9 +325,9 @@
         <a href="#chef-pairing" class="nav-link">Chef's Choice</a>
         <a href="#diner-spin" class="nav-link">Spin & Win</a>
         <a href="#contact" class="nav-link">Book Table</a>
-        
+         
         <a href="#menu" class="btn btn-primary" style="font-size: 0.85rem;">Menu & Pre-Order</a>
-        
+         
         <a href="https://www.just-eat.co.uk/restaurants-taste-of-bharat-kimbrey-park/menu" class="btn btn-justeat" target="_blank" rel="noopener noreferrer">
             <svg viewBox="0 0 24 24"><path d="M12 2L2 12h3v8h6v-6h2v6h6v-8h3L12 2z"/></svg> Order on Just Eat
         </a>
@@ -399,12 +399,12 @@
           <p>Skip the fees. <strong>Collection or Dine-in Pre-order.</strong><br>Simply add items to cart below & Pay at the restaurant.</p>
         </div>
       </div>
-      
+       
       <div class="allergen-notice">
         <p>OUR FOOD MAY CONTAIN THE FOLLOWING ALLERGENS: NUTS, DAIRY, GLUTEN, MUSTARD, FISH, SOYA, CRUSTACEANS.<br>
         PLEASE SPEAK TO A MEMBER OF STAFF REGARDING ANY DIETARY REQUIREMENTS.</p>
       </div>
-      
+       
       <div class="dietary-filters">
         <span class="filter-label">Highlight Allergens (Click to Dim Items):</span>
         <button class="diet-btn" data-filter="D" onclick="toggleFilter('D')">D - Dairy</button>
@@ -490,24 +490,16 @@
             <div id="formContainer">
               <h3>Reserve Your Table</h3>
               <span class="form-sub">Book instantly. No account required.</span>
-              
-              <form id="bookingForm" action="https://api.staticforms.xyz/submit" method="POST">
-                <input type="hidden" name="accessKey" value="sf_3h764fl4f4f5h53189h1m6j6">
-                
-                <input type="hidden" name="subject" value="New Table Reservation">
-                <input type="hidden" name="redirectTo" value="https://tasteofbharatswindon.co.uk/#contact">
-                
-                <input type="text" name="honeypot" style="display:none">
-                
+              <form id="bookingForm" action="https://formsubmit.co/tob.swindon@gmail.com" method="POST">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_subject" value="New Table Reservation">
+                <input type="hidden" name="_next" value="https://tasteofbharatswindon.co.uk/#contact">
+                 
                 <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
                 <div class="form-row-2">
                   <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
-                  <div class="form-group">
-                    <label>Time</label>
-                    <input type="text" name="time" class="form-control" required
-                           inputmode="numeric" placeholder="HH:MM (24h) e.g. 19:30"
-                           pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 19:30">
-                  </div>
+                  <div class="form-group"><label>Time</label><input type="time" name="time" class="form-control" required></div>
                 </div>
                 <div class="form-row-2">
                   <div class="form-group"><label>Guests</label><input type="number" name="guests" class="form-control" value="2" min="1" required></div>
@@ -521,7 +513,7 @@
               <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
             </div>
           </div>
-          
+           
           <div class="hours-wrapper" style="padding-top: 2rem;">
             <h3>Visit Us</h3>
             <div class="contact-details">
@@ -536,16 +528,13 @@
             </div>
             <div class="hours-list">
               <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
-              <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">17:00 — 22:00</span></div>
-              <div class="hour-row"><span class="day">Saturday</span><span class="time">12:00—14:00, 17:00—22:00</span></div>
-              <div class="hour-row"><span class="day">Sunday</span><span class="time">12:00—14:00, 17:00—22:00</span></div>
+              <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">5:00 PM — 10:00 PM</span></div>
+              <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
+              <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
             </div>
             <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe></div>
           </div>
-        </div>
-      </div>
-    </div>
-  </main>
+        </div> </div>   </div>     </main>
 
   <div id="cartFloat" class="cart-float" onclick="openCart()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -560,33 +549,22 @@
       </div>
       <div id="cartItemsList" style="margin-bottom:2rem;"></div>
       <div id="cartTotalDisplay" class="cart-total">Total: £0.00</div>
-      
-      <form id="cartForm" action="https://api.staticforms.xyz/submit" method="POST">
-        <input type="hidden" name="accessKey" value="sf_3h764fl4f4f5h53189h1m6j6">
-
-        <input type="hidden" name="subject" value="New Offline Order">
-        <input type="hidden" name="redirectTo" value="https://tasteofbharatswindon.co.uk/#menu">
+       
+      <form id="cartForm" action="https://formsubmit.co/tob.swindon@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="New Offline Order">
+        <input type="hidden" name="_captcha" value="false">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_next" value="https://tasteofbharatswindon.co.uk/#menu">
         <input type="hidden" name="order_details" id="orderDetailsHidden">
-        
-        <input type="text" name="honeypot" style="display:none">
-        
         <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
         <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
         <div class="form-group"><label>Phone</label><input class="form-control" name="phone" required placeholder="07..."></div>
-        <div class="form-group">
-          <label>Pickup/Dine Time</label>
-          <input type="text" class="form-control" name="time" required
-                 inputmode="numeric" placeholder="HH:MM (24h) e.g. 18:15"
-                 pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 18:15">
-        </div>
+        <div class="form-group"><label>Pickup/Dine Time</label><input type="time" class="form-control" name="time" required></div>
         <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem;">Payment will be collected at the restaurant.</p>
         <button type="submit" class="btn btn-primary" style="width:100%; border:none;">Submit Order</button>
       </form>
-
       <div id="cartSuccess">
-        <div class="success-icon">✓</div><h3>Order Received!</h3>
-        <p>Thank you. We have received your order details.</p>
-        <p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
+        <div class="success-icon">✓</div><h3>Order Received!</h3><p>Thank you. We have received your order details.</p><p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
         <button onclick="resetCartUI()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
       </div>
     </div>
@@ -608,15 +586,15 @@
       const menu = document.getElementById('mobileMenu');
       const btn = document.querySelector('.hamburger');
       const closeBtn = menu.querySelector('.close-menu-icon');
-      
+       
       menu.classList.toggle('active');
       const expanded = menu.classList.contains('active');
       btn.setAttribute('aria-expanded', String(expanded));
-      
+       
       if (expanded) closeBtn.focus();
       else btn.focus();
     }
-    
+     
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') {
         const menu = document.getElementById('mobileMenu');
@@ -631,86 +609,104 @@
       }
     }), {threshold:0.1});
 
-    // Robust StaticForms submit
-    async function submitToStaticForms(formEl) {
-      const formData = new FormData(formEl);
-      const data = Object.fromEntries(formData);
-
-      // JSON mode expects these to be handled differently, 
-      // but deleting redirectTo allows JS to handle the success state manually.
-      delete data.redirectTo;
-
-      const res = await fetch("https://api.staticforms.xyz/submit", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data)
-      });
-
-      if (!res.ok) {
-         throw new Error("Server Error: " + res.statusText);
-      }
-
-      const json = await res.json();
-      if (json.success) {
-        return json;
-      } else {
-        throw new Error(json.message || "Submission failed");
-      }
-    }
-
-    // Optional UX: auto-pad 7:30 => 07:30 on blur
-    function autoPadTimeInput(el) {
-      el.addEventListener('blur', () => {
-        const v = (el.value || '').trim();
-        const m = v.match(/^(\d{1,2}):(\d{2})$/);
-        if (!m) return;
-        const hh = String(m[1]).padStart(2, '0');
-        el.value = `${hh}:${m[2]}`;
-      });
-    }
-
-    // MENU DATA
+    // MENU DATA (From User PDF)
     const menuItems = [
-      {"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90", "codes": []},
-      {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50", "codes": ["G"]},
-      {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50", "codes": ["G"]},
-      {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce.", "price": "£3.90", "codes": []},
-      {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas, potatoes, tamarind, mint and coriander water.", "price": "£4.50", "codes": ["G"]},
-      {"category": "Snack Bites", "name": "Chef Special — Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney.", "price": "£5.90", "codes": []},
-      {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic corriander, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90", "codes": ["G", "D"]},
-      {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai — mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90", "codes": ["G", "D"]},
-      {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chili.", "price": "£5.90", "codes": ["G"]},
+      // PAGE 1
+      {"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomatoes, coriander and magic powder", "price": "£0.90", "codes": []},
+      {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney", "price": "£3.50", "codes": ["G"]},
+      {"category": "Snack Bites", "name": "Bhel Puri", "desc": "Puffed rice tossed with potatoes, onion finished with chutneys.", "price": "£3.50", "codes": ["G", "D", "N"]},
+      {"category": "Snack Bites", "name": "Onion Bhaji (4pc)", "desc": "Crispy fried onion coated with gram flour and mixed spices, mint sauce", "price": "£3.90", "codes": ["D"]},
+      {"category": "Snack Bites", "name": "Gol-Gappa (6pc)", "desc": "Wheat puffs, spiced chickpeas potatoes, tamarind, mint and coriander water.", "price": "£4.50", "codes": ["G", "D"]},
+      {"category": "Snack Bites", "name": "Chef Special - Kale Pakora Chaat", "desc": "Crispy kale leaves fried with mint and tamarind chutney", "price": "£5.90", "codes": []},
+      {"category": "Snack Bites", "name": "Samosa Chaat", "desc": "Classic deconstructed samosa, chickpeas, sweet yoghurt, mint and tamarind chutney.", "price": "£5.90", "codes": ["D", "G"]},
+      {"category": "Snack Bites", "name": "Pav Bhaji", "desc": "Special Street food of Mumbai Mash spicy vegetable, onion, tomato & spices with butter toasted bun.", "price": "£5.90", "codes": ["D", "G"]},
+      {"category": "Snack Bites", "name": "Gobi 65", "desc": "Crispy cauliflower florets with curry leaves and chilli", "price": "£5.90", "codes": []},
       {"category": "Snack Bites", "name": "Aloo Tikki Chaat (2pc)", "desc": "Crispy potato patties with chickpeas curry, assorted chutneys.", "price": "£5.90", "codes": ["D"]},
-      {"category": "Snack Bites", "name": "Chef Special — Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90", "codes": ["G", "D"]},
-      {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce.", "price": "£7.90", "codes": ["D", "S"]},
-      {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "Assortment of grilled meats.", "price": "£18.90", "codes": ["D"]},
-      {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt, cooked in tandoor.", "price": "£7.50", "codes": ["D"]},
-      {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese, cardamom.", "price": "£6.90", "codes": ["D", "N"]},
-      {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Spicy grilled chicken.", "price": "£6.90", "codes": ["D"]},
-      {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50", "codes": ["S"]},
-      {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender boneless chicken, marinated in yoghurt.", "price": "£7.50", "codes": ["D"]},
-      {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs.", "price": "£7.90", "codes": []},
-      {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish.", "price": "£8.90", "codes": ["F"]},
-      {"category": "Non-Veg Starters", "name": "Dakshini Prawns", "desc": "Spicy & crispy-fried prawns.", "price": "£8.90", "codes": ["P"]},
-      {"category": "Biryani", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken.", "price": "£10.50", "codes": ["D"]},
-      {"category": "Biryani", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb.", "price": "£11.00", "codes": ["D"]},
-      {"category": "Veg Curries", "name": "Saag Paneer", "desc": "Paneer in spinach gravy.", "price": "£8.90", "codes": ["D"]},
-      {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Rich creamy tomato gravy.", "price": "£8.90", "codes": ["D", "N"]},
-      {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils.", "price": "£7.50", "codes": ["D"]},
-      {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry.", "price": "£7.50", "codes": []},
-      {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken.", "price": "£9.50", "codes": ["D", "N"]},
-      {"category": "Non-Veg Curries", "name": "Grandma's Chicken Curry", "desc": "Home-style gravy.", "price": "£9.50", "codes": []},
-      {"category": "Non-Veg Curries", "name": "Lamb Rogan Josh", "desc": "Aromatic Kashmiri lamb curry.", "price": "£10.50", "codes": []},
-      {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry.", "price": "£10.50", "codes": []},
-      {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50", "codes": ["F"]},
-      {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Coconut based prawn curry.", "price": "£10.50", "codes": ["P"]},
-      {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened flatbread.", "price": "£3.00", "codes": ["G", "D"]},
-      {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Naan with butter.", "price": "£3.00", "codes": ["G", "D"]},
-      {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Naan with garlic.", "price": "£3.50", "codes": ["G", "D"]},
-      {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Sweet naan with coconut and nuts.", "price": "£3.90", "codes": ["G", "D", "N"]},
-      {"category": "Tandoor Breads", "name": "Tandoori Roti", "desc": "Whole wheat bread.", "price": "£2.50", "codes": ["G"]},
-      {"category": "Sides", "name": "Pilau Rice", "desc": "Aromatic rice.", "price": "£3.90", "codes": []},
-      {"category": "Sides", "name": "Steam Rice", "desc": "Plain rice.", "price": "£3.90", "codes": []}
+      {"category": "Snack Bites", "name": "Chef Special - Paneer Pocket Kebab", "desc": "Layered paratha encased like a pocket, stuffed with paneer, peppers and onion.", "price": "£7.90", "codes": ["G", "D"]},
+      {"category": "Snack Bites", "name": "Chilli Paneer", "desc": "Indian cottage tossed with chilli, mix pepper and soy sauce", "price": "£7.90", "codes": ["D", "G"]},
+       
+      // NON VEG STARTER
+      {"category": "Non-Veg Starters", "name": "Chef Special - Chicken Pocket Kebab", "desc": "Layered paratha encased like a pocket stuffed with chicken, peppers and onion.", "price": "£7.90", "codes": ["G"]},
+      {"category": "Non-Veg Starters", "name": "Chicken Lolipop (4pc)", "desc": "Deep fried chicken wings lollipop.", "price": "£7.90", "codes": []},
+      {"category": "Non-Veg Starters", "name": "Chilli Chicken", "desc": "Chicken tossed with chilli, mix pepper and soy sauce.", "price": "£7.50", "codes": ["G"]},
+      {"category": "Non-Veg Starters", "name": "Chicken 65", "desc": "Tender Boneless Chicken, marinated in yoghurt, curry leaf, Indian spices", "price": "£7.50", "codes": []},
+      {"category": "Non-Veg Starters", "name": "Lamb Seekh Kebab (3pc)", "desc": "Juicy minced lamb kebabs grilled with aromatic spices, herbs, and smoky charcoal flavour.", "price": "£7.90", "codes": []},
+      {"category": "Non-Veg Starters", "name": "Patiyala Lamb Chop (3pc)", "desc": "Grilled lamb chops marinated with Kashmiri chilli and aromatic spices.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Non-Veg Starters", "name": "Chilli Squid", "desc": "Marinated squid deep fried and tossed in the pan with Indian spices and garnish.", "price": "£8.90", "codes": ["F"]},
+      {"category": "Non-Veg Starters", "name": "Amritsari Fish", "desc": "Punjabi-style crispy-fried fish marinated in carom, gram flour & spice", "price": "£8.90", "codes": ["D", "F"]},
+      {"category": "Non-Veg Starters", "name": "Dakshini Prawns (5pc)", "desc": "Spicy & crispy-fried prawns with curry leaf, lemon and chilli", "price": "£8.90", "codes": ["P"]},
+
+      // VEG CURRIES
+      {"category": "Veg Curries", "name": "Saag Paneer/Aloo", "desc": "Indian cottage cheese cooked in garlicky spinach finish with cream.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Paneer Butter Masala", "desc": "Cottage cheese with dried fenugreek finished with cream.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Kadai Paneer", "desc": "Cottage cheese with mix peppers and tomato onion sauce.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Bhindi Masala", "desc": "Okra tossed with onion and tomato gravy.", "price": "£8.90", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Dal Makhani", "desc": "Slow cooked black lentils in a rich creamy spicy sauce.", "price": "£7.50", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Channa Masala", "desc": "Authentic chickpea curry with bold spices.", "price": "£7.50", "codes": ["D"]},
+      {"category": "Veg Curries", "name": "Tadka Dal", "desc": "Yellow lentis infused with aromatic spices and a sizzling ghee tadka", "price": "£7.00", "codes": ["D"]},
+
+      // NON VEG CURRIES
+      {"category": "Non-Veg Curries", "name": "Butter Chicken", "desc": "Classic butter chicken with tomato, dried fenugreek finished with cream.", "price": "£9.50", "codes": ["D"]},
+      {"category": "Non-Veg Curries", "name": "Grandmas Chicken Curry", "desc": "Chicken morsels braised in aromatic home style gravy.", "price": "£9.50", "codes": []},
+      {"category": "Non-Veg Curries", "name": "Madras Chicken Curry", "desc": "Spicy authentic Indian curry with tender chicken cooked with bold madras spices.", "price": "£9.50", "codes": ["D"]},
+      {"category": "Non-Veg Curries", "name": "Madras Lamb Curry", "desc": "Spicy authentic Indian curry with tender lamb cooked with bold madras spices.", "price": "£10.50", "codes": ["D"]},
+      {"category": "Non-Veg Curries", "name": "Railway Lamb Curry", "desc": "Classic railway of colonial, a mildly spiced, tangy lamb and potato curry", "price": "£10.50", "codes": []},
+      {"category": "Non-Veg Curries", "name": "Fish Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce.", "price": "£10.50", "codes": ["D", "F"]},
+      {"category": "Non-Veg Curries", "name": "Prawn Moilee", "desc": "Fish simmered in onion, ginger, coconut and curry leaf sauce", "price": "£10.50", "codes": ["D", "P"]},
+
+      // COMBO MEALS
+      {"category": "Combo Meals", "name": "Chicken Combo", "desc": "Chicken Dum Biryani, Chicken Lollipop (2pcs), Chilli Chicken, Raita, Chips, Soft Drink", "price": "£16.90", "codes": ["D", "S"]},
+      {"category": "Combo Meals", "name": "Veg Combo", "desc": "Veg Biryani, Paneer Tikka (2pcs), Chilli Paneer, Raita, Chips, Soft Drink", "price": "£15.90", "codes": ["D", "S"]},
+      {"category": "Combo Meals", "name": "Seafood Combo", "desc": "Prawns Biryani, Amritsari Fish (4pcs), Dakeshni Prawn (3pcs), Raita, Chips, Soft Drink", "price": "£18.90", "codes": ["D", "F", "P"]},
+
+      // TANDOORI KHAZANA (PAGE 2)
+      {"category": "Tandoori Khazana", "name": "Mixed Grill", "desc": "1 tandoori chicken pc, 2 Punjabi chicken tikka, 2 Malai chicken tikka, 3 chicken wings, 2 lamb seekh kebab-complimentary butter naan.", "price": "£18.90", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Achari Paneer Tikka (4pc)", "desc": "Cottage cheese marinated with pickling spices in a yoghurt cooked in tandoor", "price": "£7.50", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Malai Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in yoghurt, cream, cheese cardamom and Indian spices", "price": "£6.90", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Punjabi Chicken Tikka (4pc)", "desc": "Grilled chicken marinated in Kashmiri chilli, yoghurt and spices.", "price": "£6.90", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Tandoori Chicken Wings (6pc)", "desc": "Chilli coated chicken wings grilled in tandoor.", "price": "£7.90", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Half)", "desc": "Tandoor-marinated spring chicken.", "price": "£8.50", "codes": ["D"]},
+      {"category": "Tandoori Khazana", "name": "Tandoori Chicken (Full)", "desc": "Tandoor-marinated spring chicken.", "price": "£14.50", "codes": ["D"]},
+
+      // BIRYANIS
+      {"category": "Biryanis", "name": "Kathal and Paneer Biryani", "desc": "Spice infused basmati with fragrant jackfruit, paneer and raita.", "price": "£9.00", "codes": ["D"]},
+      {"category": "Biryanis", "name": "Chicken Dum Biryani", "desc": "Basmati rice slow-cooked with tender chicken and spices, served with raita", "price": "£10.50", "codes": ["D"]},
+      {"category": "Biryanis", "name": "Chicken Tikka Biryani", "desc": "Spice infused basmati with fragrant chicken and raita.", "price": "£10.00", "codes": ["D"]},
+      {"category": "Biryanis", "name": "Lamb Biryani", "desc": "Spice infused basmati with fragrant lamb and raita.", "price": "£11.00", "codes": ["D"]},
+      {"category": "Biryanis", "name": "Prawn Biryani", "desc": "Spice infused basmati with fragrant prawn and raita", "price": "£12.50", "codes": ["D"]},
+
+      // SIDES
+      {"category": "Sides", "name": "Noodles (Chicken)", "desc": "Wok tossed noodles with tender chicken.", "price": "£7.90", "codes": ["G", "S"]},
+      {"category": "Sides", "name": "Noodles (Veg)", "desc": "Wok tossed noodles with assorted vegetables.", "price": "£7.90", "codes": ["G", "S"]},
+      {"category": "Sides", "name": "Aloo Jeera", "desc": "Boiled baby potatoes tossed in aromatic spices.", "price": "£6.50", "codes": ["D"]},
+      {"category": "Sides", "name": "Steam Rice", "desc": "Steam plain long grain basmati rice.", "price": "£3.90", "codes": []},
+      {"category": "Sides", "name": "Pilau Rice", "desc": "Basmati rice tempered with cumin seed.", "price": "£3.90", "codes": []},
+      {"category": "Sides", "name": "Special TOB Salad", "desc": "Onion, tomato, cucumber, coriander & roasted cumin", "price": "£3.50", "codes": []},
+      {"category": "Sides", "name": "Raita", "desc": "Natural yoghurt with cucumber and roasted cumin.", "price": "£2.90", "codes": ["D"]},
+
+      // TANDOOR BREADS
+      {"category": "Tandoor Breads", "name": "Tandoori Roti", "desc": "Whole wheat unleavened bread", "price": "£2.50", "codes": ["G"]},
+      {"category": "Tandoor Breads", "name": "Plain Naan", "desc": "Leavened, white flour flatbread baked in clay oven.", "price": "£3.00", "codes": ["G"]},
+      {"category": "Tandoor Breads", "name": "Butter Naan", "desc": "Unleavened bread with butter", "price": "£3.00", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Cheese Naan", "desc": "Unleavened bread with cheese.", "price": "£3.50", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Chilli Naan", "desc": "Leavened bread with chilli.", "price": "£3.50", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Garlic Naan", "desc": "Leavened bread with garlic.", "price": "£3.50", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Chilli Cheese Naan", "desc": "Leavened bread with cheese and chilli", "price": "£3.90", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Lacchedar Paratha", "desc": "A traditional whole wheat flaky layered bread", "price": "£3.50", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Keema Naan", "desc": "Indian spiced minced lamb stuffed in naan.", "price": "£3.90", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Aloo Paratha", "desc": "All-time favourite stuffed with potato filling.", "price": "£3.90", "codes": ["D", "G"]},
+      {"category": "Tandoor Breads", "name": "Peshwari Naan", "desc": "Leavened bread, stuffed with mix of nuts, raisins, desiccated coconut", "price": "£3.90", "codes": ["D", "N", "G"]},
+
+      // DESSERTS
+      {"category": "Desserts", "name": "Tandoori Pineapple", "desc": "With vanilla ice cream", "price": "£5.00", "codes": []},
+      {"category": "Desserts", "name": "Gulab Jamun", "desc": "", "price": "£4.00", "codes": []},
+      {"category": "Desserts", "name": "Gajar Halwa", "desc": "", "price": "£4.00", "codes": []},
+      {"category": "Desserts", "name": "Rasmalai", "desc": "", "price": "£4.00", "codes": []},
+
+      // CHILDREN'S MENU
+      {"category": "Children's Menu", "name": "Chips", "desc": "", "price": "£2.90", "codes": []},
+      {"category": "Children's Menu", "name": "Chicken Nuggets", "desc": "", "price": "£3.90", "codes": []},
+      {"category": "Children's Menu", "name": "Fish Finger", "desc": "", "price": "£3.90", "codes": []}
     ];
     window.globalMenuItems = menuItems;
 
@@ -733,8 +729,8 @@
     function spinDinner() {
       const slots = [document.getElementById('slotStarter'), document.getElementById('slotMain'), document.getElementById('slotSide')];
       const pools = [
-        menuItems.filter(i => ['Snack Bites', 'Tandoori Khazana'].includes(i.category)),
-        menuItems.filter(i => ['Veg Curries', 'Non-Veg Curries', 'Biryani'].includes(i.category)),
+        menuItems.filter(i => ['Snack Bites', 'Tandoori Khazana', 'Non-Veg Starters'].includes(i.category)),
+        menuItems.filter(i => ['Veg Curries', 'Non-Veg Curries', 'Biryanis', 'Combo Meals'].includes(i.category)),
         menuItems.filter(i => ['Tandoor Breads', 'Sides'].includes(i.category))
       ];
       let counter = 0;
@@ -750,25 +746,25 @@
           clearInterval(interval);
           spinCount++;
           document.getElementById('spinCount').textContent = spinCount;
-          
+           
           if(spinCount >= 3) {
             const today = new Date();
             const dayIndex = today.getDay() === 0 ? 6 : today.getDay() - 1;
             const dayKey = codeKeys[dayIndex];
             const dailyCode = dayKey + today.getDate();
             const msg = document.getElementById('spinMessage');
-            
+             
             msg.textContent = '';
             const strong = document.createElement('strong');
             strong.textContent = dailyCode;
-            
+             
             const span = document.createElement('span');
             span.style.fontSize = '0.85rem';
             span.style.display = 'block';
             span.style.marginTop = '5px';
             span.style.color = '#666';
             span.textContent = 'Call the restaurant to order & quote this code!';
-            
+             
             msg.append('🎉 DISCOUNT UNLOCKED! Use Code: ', strong, document.createElement('br'), span);
             msg.classList.add('unlocked');
           }
@@ -780,10 +776,10 @@
       const main = document.getElementById('pairingSelect').value;
       const resultBox = document.getElementById('pairingResult');
       if(!main) { resultBox.classList.remove('active'); return; }
-      
+       
       let side = "Garlic Naan";
       let starter = "Onion Bhaji";
-      
+       
       if(main.includes("Butter") || main.includes("Masala")) { side = "Garlic Naan & Pilau Rice"; starter = "Chicken Tikka"; } 
       else if(main.includes("Lamb") || main.includes("Rogan")) { side = "Peshwari Naan"; starter = "Lamb Seekh Kebab"; } 
       else if(main.includes("Railway")) { side = "Paratha"; starter = "Punjabi Samosa"; }
@@ -825,41 +821,41 @@
       const list = document.getElementById('cartItemsList');
       list.innerHTML = '';
       let total = 0;
-      
+       
       cart.forEach((item, i) => {
         const priceNum = parseFloat(item.price.replace('£','')) || 0;
         total += priceNum;
-        
+         
         const div = document.createElement('div');
         div.className = 'cart-item';
-        
+         
         const info = document.createElement('div');
         const title = document.createElement('strong');
         title.textContent = item.name;
         title.style.display = 'block';
-        
+         
         const price = document.createElement('span');
         price.style.fontSize = '0.9rem';
         price.style.color = '#666';
         price.textContent = item.price;
-        
+         
         info.appendChild(title);
         info.appendChild(price);
-        
+         
         const removeBtn = document.createElement('button');
         removeBtn.className = 'cart-item-remove';
         removeBtn.textContent = 'Remove';
         removeBtn.onclick = () => removeFromCart(i);
-        
+         
         div.appendChild(info);
         div.appendChild(removeBtn);
         list.appendChild(div);
       });
-      
+       
       document.getElementById('cartTotalDisplay').textContent = `Total: £${total.toFixed(2)}`;
       if(cart.length > 0) document.getElementById('cartFloat').style.display = 'flex';
     }
-    
+     
     function prepareOrderData() {
       let total = 0;
       cart.forEach(i => { total += (parseFloat(i.price.replace('£','')) || 0); });
@@ -870,7 +866,7 @@
 
     function openCart() { document.getElementById('cartModal').classList.add('open'); }
     function closeCart() { document.getElementById('cartModal').classList.remove('open'); }
-    
+     
     function resetCartUI() {
       closeCart();
       document.getElementById('cartForm').style.display = 'block';
@@ -895,9 +891,6 @@
 
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-      // Attach blur auto-pad to ALL time inputs named "time"
-      document.querySelectorAll('input[name="time"]').forEach(autoPadTimeInput);
 
       const grouped = new Map();
       menuItems.forEach(item => {
@@ -933,17 +926,40 @@
           const globalIndex = menuItems.indexOf(item);
           const card = document.createElement('div');
           card.className = `dish-card menu-item-anim ${isDimmed ? 'dimmed' : ''}`;
-          let tagsHtml = '';
+           
+          const contentDiv = document.createElement('div');
+          const header = document.createElement('div');
+          header.className = 'dish-header';
+          const title = document.createElement('div');
+          title.className = 'dish-title';
+          title.textContent = item.name;
+          const price = document.createElement('div');
+          price.className = 'dish-price';
+          price.textContent = item.price;
+          header.appendChild(title);
+          header.appendChild(price);
+           
+          const desc = document.createElement('div');
+          desc.className = 'dish-desc';
+          desc.textContent = item.desc;
+           
+          contentDiv.appendChild(header);
+          contentDiv.appendChild(desc);
+           
           if(item.codes && item.codes.length > 0) {
-            tagsHtml = '<div class="dish-tags">' + item.codes.map(c => `[${c}]`).join(' ') + '</div>';
+             const tags = document.createElement('div');
+             tags.className = 'dish-tags';
+             tags.textContent = item.codes.map(c => `[${c}]`).join(' ');
+             contentDiv.appendChild(tags);
           }
-          card.innerHTML = `
-            <div>
-              <div class="dish-header"><div class="dish-title">${item.name}</div><div class="dish-price">${item.price}</div></div>
-              <div class="dish-desc">${item.desc}</div>${tagsHtml}
-            </div>
-            <button class="add-to-order-btn" onclick="addToCart(${globalIndex})">+ Add to Order</button>
-          `;
+           
+          const btn = document.createElement('button');
+          btn.className = 'add-to-order-btn';
+          btn.textContent = '+ Add to Order';
+          btn.onclick = () => addToCart(globalIndex);
+           
+          card.appendChild(contentDiv);
+          card.appendChild(btn);
           menuGrid.appendChild(card);
         });
       };
@@ -970,59 +986,71 @@
       window.renderMyMenu();
       if(cart.length > 0) updateCartUI();
 
-      // AJAX Form Handling with StaticForms (robust)
+      // FIXED: Switched back to AJAX URL logic to handle JS submission gracefully
+      // IMPORTANT: YOU MUST CLICK 'ACTIVATE' IN THE EMAIL SENT TO tob.swindon@gmail.com
       const cartForm = document.getElementById('cartForm');
       if(cartForm) {
-        cartForm.addEventListener('submit', async function(e) {
+        cartForm.addEventListener('submit', function(e) {
           e.preventDefault(); 
           prepareOrderData(); 
-
+          const formData = new FormData(cartForm);
           const submitBtn = cartForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.textContent;
+           
           submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
 
-          try {
-            await submitToStaticForms(cartForm);
-
+          // REPLACED EMAIL HERE
+          fetch("https://formsubmit.co/ajax/tob.swindon@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: { 'Accept': 'application/json' }
+          })
+          .then(response => response.json())
+          .then(data => {
             cartForm.style.display = 'none';
             document.getElementById('cartItemsList').style.display = 'none';
             document.getElementById('cartTotalDisplay').style.display = 'none';
             document.getElementById('cartSuccess').style.display = 'block';
-
             cart = [];
             saveCart();
             document.getElementById('cartFloat').style.display = 'none';
-          } catch (error) {
+          })
+          .catch(error => {
             console.error('Error:', error);
-            alert("Error: " + (error.message || "Order submission failed"));
+            alert("Something went wrong. Please ensure email is activated or call the restaurant.");
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-          }
+          });
         });
       }
-      
+       
       const bookingForm = document.getElementById('bookingForm');
       if(bookingForm) {
-        bookingForm.addEventListener('submit', async function(e) {
+        bookingForm.addEventListener('submit', function(e) {
           e.preventDefault();
-
           const submitBtn = bookingForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.textContent;
           submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
-
-          try {
-            await submitToStaticForms(bookingForm);
-
+           
+          const formData = new FormData(bookingForm);
+          // REPLACED EMAIL HERE
+          fetch("https://formsubmit.co/ajax/tob.swindon@gmail.com", { 
+             method: "POST", 
+             body: formData,
+             headers: { 'Accept': 'application/json' }
+          })
+          .then(response => response.json())
+          .then(() => {
             document.getElementById('formContainer').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
-          } catch (error) {
-            console.error('Error:', error);
-            alert("Error: " + (error.message || "Booking failed - unable to book"));
-            submitBtn.textContent = originalText;
-            submitBtn.disabled = false;
-          }
+          })
+          .catch(() => {
+             alert("Error sending booking. Please ensure email is activated or call us.");
+             submitBtn.textContent = originalText;
+             submitBtn.disabled = false;
+          });
         });
       }
 
