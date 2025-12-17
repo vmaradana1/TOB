@@ -451,7 +451,7 @@
           <div id="formContainer">
             <h3>Reserve Your Table</h3>
             <span class="form-sub">Book instantly. No account required.</span>
-            <form id="bookingForm" action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
+            <form id="bookingForm">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_subject" value="New Table Reservation">
               <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
@@ -465,6 +465,10 @@
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
             </form>
+          </div>
+          <div id="successMessage" class="success-message">
+            <div class="success-icon">✓</div><h3>Booking Submitted!</h3><p style="color:var(--text-muted);">We will call you shortly to confirm.</p>
+            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
           </div>
         </div>
         
@@ -518,12 +522,8 @@
         <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem;">Payment will be collected at the restaurant.</p>
         <button type="submit" class="btn btn-primary" style="width:100%; border:none;">Submit Order</button>
       </form>
-      
       <div id="cartSuccess">
-        <div class="success-icon">✓</div>
-        <h3>Order Received!</h3>
-        <p>Thank you. We have received your order details.</p>
-        <p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
+        <div class="success-icon">✓</div><h3>Order Received!</h3><p>Thank you. We have received your order details.</p><p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
         <button onclick="closeCart()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
       </div>
     </div>
@@ -545,8 +545,7 @@
     function toggleMobileMenu() { document.getElementById('mobileMenu').classList.toggle('active'); }
     const observer = new IntersectionObserver(e => e.forEach(i => i.isIntersecting && i.target.classList.add('active')), {threshold:0.1});
 
-    // MENU DATA (With Specific Allergen Codes)
-    // D=Dairy, G=Gluten, N=Nuts, F=Fish, S=Soya, P=Prawns
+    // MENU DATA
     const menuItems = [
       {"category": "Papadum & Chutney", "name": "Papadum with Homemade Chutney", "desc": "Masala papad with onion, tomato, coriander and magic powder.", "price": "£0.90", "codes": []},
       {"category": "Snack Bites", "name": "Punjabi Samosa (2pc)", "desc": "Classic Punjabi vegetable samosa with tamarind chutney.", "price": "£3.50", "codes": ["G"]},
@@ -600,7 +599,6 @@
 
     // --- DIETARY FILTER LOGIC ---
     let activeFilters = [];
-    
     function toggleFilter(filter) {
       const btn = document.querySelector(`.diet-btn[onclick="toggleFilter('${filter}')"]`);
       if(activeFilters.includes(filter)) {
@@ -612,14 +610,9 @@
       }
       applyFilters();
     }
-
-    function applyFilters() {
-      // Re-trigger global render to update UI
-      window.renderMyMenu(); 
-    }
+    function applyFilters() { window.renderMyMenu(); }
 
     // --- SPIN WHEEL LOGIC (DAILY CODE) ---
-    // Cipher Keys
     const codeKeys = ['MASALA', 'ROGAN', 'KORMA', 'BALTI', 'MADRAS', 'VINDALOO', 'TANDOORI'];
     
     let spinCount = 0;
@@ -630,8 +623,6 @@
         menuItems.filter(i => ['Veg Curries', 'Non-Veg Curries', 'Biryani'].includes(i.category)),
         menuItems.filter(i => ['Tandoor Breads', 'Sides'].includes(i.category))
       ];
-      
-      // Animate
       let counter = 0;
       const interval = setInterval(() => {
         slots.forEach((slot, i) => {
@@ -645,13 +636,10 @@
           clearInterval(interval);
           spinCount++;
           if(spinCount >= 3) {
-            // Generate Daily Code
             const today = new Date();
-            const dayIndex = today.getDay() === 0 ? 6 : today.getDay() - 1; // Mon=0 ... Sun=6
+            const dayIndex = today.getDay() === 0 ? 6 : today.getDay() - 1;
             const dayKey = codeKeys[dayIndex];
-            const dateNum = today.getDate();
-            const dailyCode = dayKey + dateNum; // e.g. KORMA17
-
+            const dailyCode = dayKey + today.getDate();
             const msg = document.getElementById('spinMessage');
             msg.innerHTML = `🎉 DISCOUNT UNLOCKED! Use Code: <strong>${dailyCode}</strong><br><span style='font-size:0.85rem; display:block; margin-top:5px; color:#666;'>Call the restaurant to order & quote this code!</span>`;
             msg.classList.add('unlocked');
@@ -711,7 +699,6 @@
       });
     }
     
-    // UPDATED: Fill hidden input right before submit
     function prepareOrderData() {
       let total = 0;
       cart.forEach(i => { total += (parseFloat(i.price.replace('£','')) || 0); });
@@ -738,7 +725,6 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // Init Logic
       const grouped = new Map();
       menuItems.forEach(item => {
         const cat = item.category || "General";
@@ -752,55 +738,35 @@
       const searchInput = document.getElementById('menuSearch');
       let activeCategory = categories.includes("Non-Veg Starters") ? "Non-Veg Starters" : categories[0];
 
-      // EXPOSE RENDER FUNCTION FOR FILTERING
       window.renderMyMenu = function() {
         const q = searchInput.value.trim().toLowerCase();
         let list = [];
-
-        // 1. Get Base List (Search OR Category)
         if (q) {
           list = menuItems.filter(it => (it.name + " " + (it.desc || "")).toLowerCase().includes(q));
         } else {
           list = grouped.get(activeCategory) || [];
         }
-
-        // 2. Clear Grid
         menuGrid.innerHTML = '';
-
         if (!list.length) {
           menuGrid.innerHTML = '<div style="color: var(--text-muted);">No items found.</div>';
           return;
         }
-
-        // 3. Render Items with Filter Check
         list.forEach((item) => {
-          // Check dietary filters: If item HAS any of the active filters, DIM it.
           let isDimmed = false;
           if (activeFilters.length > 0) {
-            // Check if item contains ANY of the active allergen codes
-            if(item.codes && activeFilters.some(f => item.codes.includes(f))) {
-               isDimmed = true;
-            }
+            if(item.codes && activeFilters.some(f => item.codes.includes(f))) isDimmed = true;
           }
-
           const globalIndex = menuItems.indexOf(item);
-          
           const card = document.createElement('div');
           card.className = `dish-card menu-item-anim ${isDimmed ? 'dimmed' : ''}`;
-          
           let tagsHtml = '';
           if(item.codes && item.codes.length > 0) {
             tagsHtml = '<div class="dish-tags">' + item.codes.map(c => `[${c}]`).join(' ') + '</div>';
           }
-
           card.innerHTML = `
             <div>
-              <div class="dish-header">
-                <div class="dish-title">${item.name}</div>
-                <div class="dish-price">${item.price}</div>
-              </div>
-              <div class="dish-desc">${item.desc}</div>
-              ${tagsHtml}
+              <div class="dish-header"><div class="dish-title">${item.name}</div><div class="dish-price">${item.price}</div></div>
+              <div class="dish-desc">${item.desc}</div>${tagsHtml}
             </div>
             <button class="add-to-order-btn" onclick="addToCart(${globalIndex})">+ Add to Order</button>
           `;
@@ -808,7 +774,6 @@
         });
       };
 
-      // Category Render
       function renderCats() {
         categoryList.innerHTML = '';
         categories.forEach(cat => {
@@ -830,14 +795,12 @@
       renderCats();
       window.renderMyMenu();
 
-      // AJAX Form Handling to Prevent Blank Page
+      // AJAX Form Handling
       const cartForm = document.getElementById('cartForm');
       if(cartForm) {
         cartForm.addEventListener('submit', function(e) {
-          e.preventDefault(); // Stop standard submit
-          
-          prepareOrderData(); // Prep data
-          
+          e.preventDefault(); 
+          prepareOrderData(); 
           const formData = new FormData(cartForm);
           const submitBtn = cartForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.innerText;
@@ -845,22 +808,16 @@
           submitBtn.innerText = "Sending...";
           submitBtn.disabled = true;
 
-          // Use AJAX fetch
-          fetch("https://formsubmit.co/ajax/kamalshelley@gmail.com", {
+          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", {
             method: "POST",
             body: formData,
-            headers: { 
-                'Accept': 'application/json'
-            }
+            headers: { 'Accept': 'application/json' }
           })
           .then(response => response.json())
           .then(data => {
-            // Hide form, show success message within modal
             cartForm.style.display = 'none';
             document.getElementById('cartItemsList').style.display = 'none';
             document.getElementById('cartSuccess').style.display = 'block';
-            
-            // Clear internal cart logic
             cart = [];
             document.getElementById('cartFloat').style.display = 'none';
           })
@@ -878,7 +835,7 @@
         bookingForm.addEventListener('submit', function(e) {
           e.preventDefault();
           const formData = new FormData(bookingForm);
-          fetch("https://formsubmit.co/ajax/kamalshelley@gmail.com", { method: "POST", body: formData })
+          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", { method: "POST", body: formData })
           .then(() => {
             document.getElementById('formContainer').style.display = 'none';
             document.getElementById('successMessage').style.display = 'block';
