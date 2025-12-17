@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -51,6 +51,7 @@
   }
   </script>
 
+  <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-49JT0PQTMH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -499,7 +500,13 @@
                 <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
                 <div class="form-row-2">
                   <div class="form-group"><label>Date</label><input type="date" name="date" class="form-control" required></div>
-                  <div class="form-group"><label>Time</label><input type="time" name="time" class="form-control" required></div>
+                  <div class="form-group">
+                    <label>Time</label>
+                    <!-- 24H format enforced -->
+                    <input type="text" name="time" class="form-control" required
+                           inputmode="numeric" placeholder="HH:MM (24h) e.g. 19:30"
+                           pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 19:30">
+                  </div>
                 </div>
                 <div class="form-row-2">
                   <div class="form-group"><label>Guests</label><input type="number" name="guests" class="form-control" value="2" min="1" required></div>
@@ -534,7 +541,10 @@
             </div>
             <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe></div>
           </div>
-        </div> </div>   </div>     </main>
+        </div>
+      </div>
+    </div>
+  </main>
 
   <div id="cartFloat" class="cart-float" onclick="openCart()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -559,12 +569,21 @@
         <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
         <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
         <div class="form-group"><label>Phone</label><input class="form-control" name="phone" required placeholder="07..."></div>
-        <div class="form-group"><label>Pickup/Dine Time</label><input type="time" class="form-control" name="time" required></div>
+        <div class="form-group">
+          <label>Pickup/Dine Time</label>
+          <!-- 24H format enforced -->
+          <input type="text" class="form-control" name="time" required
+                 inputmode="numeric" placeholder="HH:MM (24h) e.g. 18:15"
+                 pattern="^([01]\d|2[0-3]):[0-5]\d$" title="Use 24-hour time like 18:15">
+        </div>
         <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem;">Payment will be collected at the restaurant.</p>
         <button type="submit" class="btn btn-primary" style="width:100%; border:none;">Submit Order</button>
       </form>
+
       <div id="cartSuccess">
-        <div class="success-icon">✓</div><h3>Order Received!</h3><p>Thank you. We have received your order details.</p><p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
+        <div class="success-icon">✓</div><h3>Order Received!</h3>
+        <p>Thank you. We have received your order details.</p>
+        <p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
         <button onclick="resetCartUI()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
       </div>
     </div>
@@ -608,6 +627,45 @@
         observer.unobserve(i.target); 
       }
     }), {threshold:0.1});
+
+    // Robust StaticForms submit (handles JSON or text responses)
+    async function submitToStaticForms(formEl) {
+      const formData = new FormData(formEl);
+      const data = Object.fromEntries(formData);
+
+      // redirectTo isn't supported in JSON mode (keep it in HTML form as fallback)
+      delete data.redirectTo;
+
+      const res = await fetch("https://api.staticforms.xyz/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify(data)
+      });
+
+      const contentType = (res.headers.get("content-type") || "").toLowerCase();
+
+      if (contentType.includes("application/json")) {
+        const json = await res.json();
+        const ok = (json.success === true || json.success === "true");
+        if (!ok) throw new Error(json.message || "Booking failed - unable to book");
+        return json;
+      } else {
+        const text = await res.text();
+        if (!res.ok) throw new Error("Booking failed - unable to book");
+        return { success: true, raw: text };
+      }
+    }
+
+    // Optional UX: auto-pad 7:30 => 07:30 on blur
+    function autoPadTimeInput(el) {
+      el.addEventListener('blur', () => {
+        const v = (el.value || '').trim();
+        const m = v.match(/^(\d{1,2}):(\d{2})$/);
+        if (!m) return;
+        const hh = String(m[1]).padStart(2, '0');
+        el.value = `${hh}:${m[2]}`;
+      });
+    }
 
     // MENU DATA (From User PDF)
     const menuItems = [
@@ -836,6 +894,9 @@
     document.addEventListener("DOMContentLoaded", function() {
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
+      // Attach blur auto-pad to ALL time inputs named "time"
+      document.querySelectorAll('input[name="time"]').forEach(autoPadTimeInput);
+
       const grouped = new Map();
       menuItems.forEach(item => {
         const cat = item.category || "General";
@@ -907,84 +968,59 @@
       window.renderMyMenu();
       if(cart.length > 0) updateCartUI();
 
-      // AJAX Form Handling with StaticForms
+      // AJAX Form Handling with StaticForms (robust)
       const cartForm = document.getElementById('cartForm');
       if(cartForm) {
-        cartForm.addEventListener('submit', function(e) {
+        cartForm.addEventListener('submit', async function(e) {
           e.preventDefault(); 
           prepareOrderData(); 
-          const formData = new FormData(cartForm);
+
           const submitBtn = cartForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.textContent;
-          
           submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
 
-          // Note: StaticForms API endpoint
-          // IMPORTANT: Removed redirectTo for JSON API compatibility
-          const data = Object.fromEntries(formData);
-          delete data.redirectTo;
+          try {
+            await submitToStaticForms(cartForm);
 
-          fetch("https://api.staticforms.xyz/submit", {
-            method: "POST",
-            body: JSON.stringify(data),
-            headers: { 'Content-Type': 'application/json' }
-          })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success) {
-              cartForm.style.display = 'none';
-              document.getElementById('cartItemsList').style.display = 'none';
-              document.getElementById('cartTotalDisplay').style.display = 'none';
-              document.getElementById('cartSuccess').style.display = 'block';
-              cart = [];
-              saveCart();
-              document.getElementById('cartFloat').style.display = 'none';
-            } else {
-              throw new Error(data.message || 'Form submission failed');
-            }
-          })
-          .catch(error => {
+            cartForm.style.display = 'none';
+            document.getElementById('cartItemsList').style.display = 'none';
+            document.getElementById('cartTotalDisplay').style.display = 'none';
+            document.getElementById('cartSuccess').style.display = 'block';
+
+            cart = [];
+            saveCart();
+            document.getElementById('cartFloat').style.display = 'none';
+          } catch (error) {
             console.error('Error:', error);
-            alert("Error: " + error.message);
+            alert("Error: " + (error.message || "Order submission failed"));
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
-          });
+          }
         });
       }
       
       const bookingForm = document.getElementById('bookingForm');
       if(bookingForm) {
-        bookingForm.addEventListener('submit', function(e) {
+        bookingForm.addEventListener('submit', async function(e) {
           e.preventDefault();
+
           const submitBtn = bookingForm.querySelector('button[type="submit"]');
           const originalText = submitBtn.textContent;
           submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
-          
-          const formData = new FormData(bookingForm);
-          const data = Object.fromEntries(formData);
-          delete data.redirectTo;
 
-          fetch("https://api.staticforms.xyz/submit", { 
-             method: "POST", 
-             body: JSON.stringify(data),
-             headers: { 'Content-Type': 'application/json' }
-          })
-          .then(response => response.json())
-          .then(data => {
-            if(data.success) {
-              document.getElementById('formContainer').style.display = 'none';
-              document.getElementById('successMessage').style.display = 'block';
-            } else {
-              throw new Error(data.message || 'Booking failed');
-            }
-          })
-          .catch(error => {
-             alert("Error: " + error.message);
-             submitBtn.textContent = originalText;
-             submitBtn.disabled = false;
-          });
+          try {
+            await submitToStaticForms(bookingForm);
+
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+          } catch (error) {
+            console.error('Error:', error);
+            alert("Error: " + (error.message || "Booking failed - unable to book"));
+            submitBtn.textContent = originalText;
+            submitBtn.disabled = false;
+          }
         });
       }
 
