@@ -458,6 +458,9 @@
             <option value="Dal Makhani">Dal Makhani</option>
             <option value="Channa Masala">Channa Masala</option>
             <option value="Chicken Dum Biryani">Chicken Dum Biryani</option>
+            <option value="Grandmas Chicken Curry">Grandmas Chicken Curry</option>
+            <option value="Kadai Paneer">Kadai Paneer</option>
+            <option value="Patiyala Lamb Chop">Patiyala Lamb Chop</option>
           </select>
           <div id="pairingResult" class="pairing-result">
             <div style="text-align:center; margin-bottom:1rem; color:var(--color-accent); font-weight:700;">PERFECT MATCH</div>
@@ -525,9 +528,9 @@
             </div>
             <div class="hours-list">
               <div class="hour-row"><span class="day">Monday</span><span class="time" style="color: #999;">Closed</span></div>
-              <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">5:00 PM — 10:00 PM</span></div>
-              <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
-              <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
+              <div class="hour-row"><span class="day">Tuesday — Friday</span><span class="time">17:00 — 22:00</span></div>
+              <div class="hour-row"><span class="day">Saturday</span><span class="time">12:00—14:00, 17:00—22:00</span></div>
+              <div class="hour-row"><span class="day">Sunday</span><span class="time">12:00—14:00, 17:00—22:00</span></div>
             </div>
             <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe></div>
           </div>
@@ -729,6 +732,9 @@
       else if(main.includes("Saag")) { side = "Tandoori Roti"; starter = "Aloo Tikki"; }
       else if(main.includes("Dal") || main.includes("Channa")) { side = "Tandoori Roti"; starter = "Samosa Chaat"; }
       else if(main.includes("Biryani")) { side = "Raita"; starter = "Chicken 65"; }
+      else if(main.includes("Kadai")) { side = "Butter Naan"; starter = "Paneer Pocket Kebab"; }
+      else if(main.includes("Patiyala")) { side = "Lacchedar Paratha"; starter = "Chilli Chicken"; }
+      else if(main.includes("Grandma")) { side = "Tandoori Roti"; starter = "Punjabi Samosa"; }
 
       document.getElementById('sugSide').textContent = side;
       document.getElementById('sugStart').textContent = starter;
@@ -915,9 +921,13 @@
           submitBtn.disabled = true;
 
           // Note: StaticForms API endpoint
+          // IMPORTANT: Removed redirectTo for JSON API compatibility
+          const data = Object.fromEntries(formData);
+          delete data.redirectTo;
+
           fetch("https://api.staticforms.xyz/submit", {
             method: "POST",
-            body: JSON.stringify(Object.fromEntries(formData)),
+            body: JSON.stringify(data),
             headers: { 'Content-Type': 'application/json' }
           })
           .then(response => response.json())
@@ -931,12 +941,12 @@
               saveCart();
               document.getElementById('cartFloat').style.display = 'none';
             } else {
-              throw new Error('Form submission failed');
+              throw new Error(data.message || 'Form submission failed');
             }
           })
           .catch(error => {
             console.error('Error:', error);
-            alert("Something went wrong. Please call the restaurant.");
+            alert("Error: " + error.message);
             submitBtn.textContent = originalText;
             submitBtn.disabled = false;
           });
@@ -953,9 +963,12 @@
           submitBtn.disabled = true;
           
           const formData = new FormData(bookingForm);
+          const data = Object.fromEntries(formData);
+          delete data.redirectTo;
+
           fetch("https://api.staticforms.xyz/submit", { 
              method: "POST", 
-             body: JSON.stringify(Object.fromEntries(formData)),
+             body: JSON.stringify(data),
              headers: { 'Content-Type': 'application/json' }
           })
           .then(response => response.json())
@@ -964,11 +977,11 @@
               document.getElementById('formContainer').style.display = 'none';
               document.getElementById('successMessage').style.display = 'block';
             } else {
-              throw new Error('Booking failed');
+              throw new Error(data.message || 'Booking failed');
             }
           })
-          .catch(() => {
-             alert("Error sending booking. Please call us.");
+          .catch(error => {
+             alert("Error: " + error.message);
              submitBtn.textContent = originalText;
              submitBtn.disabled = false;
           });
