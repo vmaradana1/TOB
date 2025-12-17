@@ -127,9 +127,11 @@
     /* Menu & Filters */
     .section-title { text-align: center; margin: 4rem 0 3rem; }
     .section-title h3 { font-size: 2.5rem; margin-bottom: 0.8rem; font-weight: 700; }
+    
     .direct-order-box { background: #FFF4E5; border: 1px dashed var(--color-accent); border-radius: 12px; padding: 1.5rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(217, 119, 43, 0.05); }
     .direct-order-box h4 { margin-bottom: 0.5rem; color: var(--color-accent); font-size: 1.2rem; }
     .direct-order-box p { margin: 0; font-size: 1rem; color: var(--text-main); line-height: 1.5; }
+
     .allergen-notice { font-size: 0.75rem; text-transform: uppercase; color: #777; margin-bottom: 1rem; line-height: 1.5; font-weight: 600; text-align: center; background: #eee; padding: 10px; border-radius: 8px; }
     .dietary-filters { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-bottom: 2rem; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid rgba(0,0,0,0.05); }
     .filter-label { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: var(--color-accent); margin-right: 0.5rem; }
@@ -222,6 +224,10 @@
     .cart-modal.open .cart-content { transform: translateY(0); }
     .cart-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px dashed #eee; }
     .cart-item-remove { color: red; font-size: 0.8rem; cursor: pointer; background: none; border: none; padding: 5px; }
+    
+    /* CART SUCCESS MESSAGE */
+    #cartSuccess { display: none; text-align: center; padding: 2rem 0; }
+    #cartSuccess h3 { color: var(--color-accent); margin-bottom: 1rem; }
 
     /* Footer */
     footer { background: #111; color: #888; padding: 4rem 0; text-align: center; font-size: 0.9rem; border-top: 1px solid #222; margin-top: 6rem; }
@@ -442,7 +448,7 @@
           <div id="formContainer">
             <h3>Reserve Your Table</h3>
             <span class="form-sub">Book instantly. No account required.</span>
-            <form id="bookingForm" action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
+            <form id="bookingForm">
               <input type="hidden" name="_captcha" value="false">
               <input type="hidden" name="_subject" value="New Table Reservation">
               <div class="form-group"><label>Full Name</label><input type="text" name="name" class="form-control" required placeholder="e.g. John Doe"></div>
@@ -456,6 +462,10 @@
               </div>
               <button type="submit" class="btn btn-primary" style="width: 100%; border:none; margin-top:1.5rem;">Confirm Booking</button>
             </form>
+          </div>
+          <div id="successMessage" class="success-message">
+            <div class="success-icon">✓</div><h3>Booking Submitted!</h3><p style="color:var(--text-muted);">We will call you shortly to confirm.</p>
+            <button onclick="location.reload()" class="btn btn-outline" style="margin-top: 1.5rem;">Book Another</button>
           </div>
         </div>
         
@@ -498,22 +508,25 @@
       </div>
       <div id="cartItemsList" style="margin-bottom:2rem;"></div>
       
-      <form id="cartForm" action="https://formsubmit.co/kamalshelley@gmail.com" method="POST">
+      <form id="cartForm">
         <input type="hidden" name="_subject" value="New Offline Order">
         <input type="hidden" name="_captcha" value="false">
-        <input type="hidden" name="_next" value="https://tasteofbharat.com">
-        
         <input type="hidden" name="order_details" id="orderDetailsHidden">
-        
         <div class="form-group"><label>Order Type</label><select class="form-control" name="service_type" required style="color:#000;"><option value="Collection">Collection</option><option value="Dine-in Pre-order">Dine-in Pre-order</option></select></div>
         <div class="form-group"><label>Name</label><input class="form-control" name="name" required placeholder="Your Name"></div>
         <div class="form-group"><label>Phone</label><input class="form-control" name="phone" required placeholder="07..."></div>
         <div class="form-group"><label>Pickup/Dine Time</label><input type="time" class="form-control" name="time" required></div>
-        
         <p style="font-size:0.85rem; color:var(--text-muted); margin-top:1rem;">Payment will be collected at the restaurant.</p>
-        
-        <button type="submit" class="btn btn-primary" style="width:100%; border:none;" onclick="prepareOrderData()">Submit Order</button>
+        <button type="submit" class="btn btn-primary" style="width:100%; border:none;">Submit Order</button>
       </form>
+      
+      <div id="cartSuccess">
+        <div class="success-icon">✓</div>
+        <h3>Order Received!</h3>
+        <p>Thank you. We have received your order details.</p>
+        <p style="font-size:0.9rem; color:#666;">We will call you shortly to confirm.</p>
+        <button onclick="closeCart()" class="btn btn-outline" style="margin-top:1rem;">Close</button>
+      </div>
     </div>
   </div>
 
@@ -586,7 +599,6 @@
 
     // --- DIETARY FILTER LOGIC ---
     let activeFilters = [];
-    
     function toggleFilter(filter) {
       const btn = document.querySelector(`.diet-btn[onclick="toggleFilter('${filter}')"]`);
       if(activeFilters.includes(filter)) {
@@ -598,11 +610,7 @@
       }
       applyFilters();
     }
-
-    function applyFilters() {
-      // Re-trigger global render to update UI
-      window.renderMyMenu(); 
-    }
+    function applyFilters() { window.renderMyMenu(); }
 
     // --- SPIN WHEEL LOGIC ---
     let spinCount = 0;
@@ -613,8 +621,6 @@
         menuItems.filter(i => ['Veg Curries', 'Non-Veg Curries', 'Biryani'].includes(i.category)),
         menuItems.filter(i => ['Tandoor Breads', 'Sides'].includes(i.category))
       ];
-      
-      // Animate
       let counter = 0;
       const interval = setInterval(() => {
         slots.forEach((slot, i) => {
@@ -627,7 +633,6 @@
         if(counter > 15) {
           clearInterval(interval);
           spinCount++;
-          document.getElementById('spinCount').innerText = spinCount;
           if(spinCount >= 3) {
             const msg = document.getElementById('spinMessage');
             msg.innerHTML = "🎉 DISCOUNT UNLOCKED! Use Code: <strong>SPICY5</strong><br><span style='font-size:0.85rem; display:block; margin-top:5px; color:#666;'>Call the restaurant to order & quote this code!</span>";
@@ -688,7 +693,6 @@
       });
     }
     
-    // UPDATED: Fill hidden input right before submit
     function prepareOrderData() {
       let total = 0;
       cart.forEach(i => { total += (parseFloat(i.price.replace('£','')) || 0); });
@@ -717,55 +721,36 @@
       const searchInput = document.getElementById('menuSearch');
       let activeCategory = categories.includes("Non-Veg Starters") ? "Non-Veg Starters" : categories[0];
 
-      // EXPOSE RENDER FUNCTION FOR FILTERING
+      // RENDER MENU
       window.renderMyMenu = function() {
         const q = searchInput.value.trim().toLowerCase();
         let list = [];
-
-        // 1. Get Base List (Search OR Category)
         if (q) {
           list = menuItems.filter(it => (it.name + " " + (it.desc || "")).toLowerCase().includes(q));
         } else {
           list = grouped.get(activeCategory) || [];
         }
-
-        // 2. Clear Grid
         menuGrid.innerHTML = '';
-
         if (!list.length) {
           menuGrid.innerHTML = '<div style="color: var(--text-muted);">No items found.</div>';
           return;
         }
-
-        // 3. Render Items with Filter Check
         list.forEach((item) => {
-          // Check dietary filters: If item HAS any of the active filters, DIM it.
           let isDimmed = false;
           if (activeFilters.length > 0) {
-            // Check if item contains ANY of the active allergen codes
-            if(item.codes && activeFilters.some(f => item.codes.includes(f))) {
-               isDimmed = true;
-            }
+            if(item.codes && activeFilters.some(f => item.codes.includes(f))) isDimmed = true;
           }
-
           const globalIndex = menuItems.indexOf(item);
-          
           const card = document.createElement('div');
           card.className = `dish-card menu-item-anim ${isDimmed ? 'dimmed' : ''}`;
-          
           let tagsHtml = '';
           if(item.codes && item.codes.length > 0) {
             tagsHtml = '<div class="dish-tags">' + item.codes.map(c => `[${c}]`).join(' ') + '</div>';
           }
-
           card.innerHTML = `
             <div>
-              <div class="dish-header">
-                <div class="dish-title">${item.name}</div>
-                <div class="dish-price">${item.price}</div>
-              </div>
-              <div class="dish-desc">${item.desc}</div>
-              ${tagsHtml}
+              <div class="dish-header"><div class="dish-title">${item.name}</div><div class="dish-price">${item.price}</div></div>
+              <div class="dish-desc">${item.desc}</div>${tagsHtml}
             </div>
             <button class="add-to-order-btn" onclick="addToCart(${globalIndex})">+ Add to Order</button>
           `;
@@ -795,15 +780,61 @@
       renderCats();
       window.renderMyMenu();
 
-      // Form Handling
+      // AJAX Form Handling to Prevent Blank Page
       const cartForm = document.getElementById('cartForm');
       if(cartForm) {
-        // We let the form submit naturally to FormSubmit.co
-        // But we ensure data is prepared first
+        cartForm.addEventListener('submit', function(e) {
+          e.preventDefault(); // Stop standard submit
+          
+          prepareOrderData(); // Prep data
+          
+          const formData = new FormData(cartForm);
+          const submitBtn = cartForm.querySelector('button[type="submit"]');
+          const originalText = submitBtn.innerText;
+          
+          submitBtn.innerText = "Sending...";
+          submitBtn.disabled = true;
+
+          // Use AJAX fetch
+          fetch("https://formsubmit.co/ajax/kamalshelley@gmail.com", {
+            method: "POST",
+            body: formData,
+            headers: { 
+                'Accept': 'application/json'
+            }
+          })
+          .then(response => response.json())
+          .then(data => {
+            // Hide form, show success message within modal
+            cartForm.style.display = 'none';
+            document.getElementById('cartItemsList').style.display = 'none';
+            document.getElementById('cartSuccess').style.display = 'block';
+            
+            // Clear internal cart logic
+            cart = [];
+            document.getElementById('cartFloat').style.display = 'none';
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            alert("Something went wrong. Please try calling the restaurant.");
+            submitBtn.innerText = originalText;
+            submitBtn.disabled = false;
+          });
+        });
       }
       
       const bookingForm = document.getElementById('bookingForm');
-      // Similar for booking form - natural submission ensured
+      if(bookingForm) {
+        bookingForm.addEventListener('submit', function(e) {
+          e.preventDefault();
+          const formData = new FormData(bookingForm);
+          fetch("https://formsubmit.co/ajax/kamalshelley@gmail.com", { method: "POST", body: formData })
+          .then(() => {
+            document.getElementById('formContainer').style.display = 'none';
+            document.getElementById('successMessage').style.display = 'block';
+          });
+        });
+      }
 
       document.getElementById('year').textContent = new Date().getFullYear();
     });
