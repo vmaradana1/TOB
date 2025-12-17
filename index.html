@@ -51,12 +51,13 @@
   }
   </script>
 
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-49JT0PQTMH"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
+
+    gtag('config', 'G-49JT0PQTMH');
   </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -182,6 +183,7 @@
 
     /* Menu & Filters */
     .section-title { text-align: center; margin: 4rem 0 3rem; }
+    .section-title h3 { font-size: 2.5rem; margin-bottom: 0.8rem; font-weight: 700; }
     .direct-order-box { background: #FFF4E5; border: 1px dashed var(--color-accent); border-radius: 12px; padding: 1.5rem; display: inline-block; margin-bottom: 2rem; box-shadow: 0 5px 15px rgba(217, 119, 43, 0.05); }
     .direct-order-box h4 { margin-bottom: 0.5rem; color: var(--color-accent); font-size: 1.2rem; }
     .direct-order-box p { margin: 0; font-size: 1rem; color: var(--text-main); line-height: 1.5; }
@@ -248,7 +250,6 @@
     .form-wrapper::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: var(--color-accent); }
     .form-control { width: 100%; padding: 1.1rem; border-radius: 12px; border: 1px solid #ddd; background: #F9F9F9; color: var(--color-primary); font-family: inherit; font-size: 1rem; transition: all 0.3s; box-sizing: border-box; max-width: 100%; }
     .form-control:focus { outline: none; border-color: var(--color-accent); background: white; }
-    /* Fix: Added missing style */
     .form-sub { display:block; margin: 0.4rem 0 1.5rem; color: var(--text-muted); font-size: 0.9rem; }
     .form-row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
     .success-message { text-align: center; padding: 2rem 0; color: var(--color-primary); display: none; animation: fadeIn 0.5s ease; }
@@ -530,16 +531,9 @@
               <div class="hour-row"><span class="day">Saturday</span><span class="time">12—2 PM, 5—10 PM</span></div>
               <div class="hour-row"><span class="day">Sunday</span><span class="time">12—2 PM, 5—10 PM</span></div>
             </div>
-                        <div class="map-container">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk"
-                style="border:0;" allowfullscreen="" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe>
-            </div>
-          </div> <!-- .hours-wrapper -->
-        </div>   <!-- .info-grid -->
-      </div>     <!-- .container -->
-    </div>       <!-- #contact -->
-  </main>
+            <div class="map-container"><iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d2480.2715469619097!2d-1.7998058!3d51.563255299999994!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487145d94b747959%3A0x92939de9a8bb7ccb!2sTaste%20of%20Bharat!5e0!3m2!1sen!2suk!4v1765910961123!5m2!1sen!2suk" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Google Map"></iframe></div>
+          </div>
+        </div> </div>   </div>     </main>
 
   <div id="cartFloat" class="cart-float" onclick="openCart()">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 20a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm7 0a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-7-4h7a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-7a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2z"></path><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
@@ -694,6 +688,7 @@
         if(counter > 15) {
           clearInterval(interval);
           spinCount++;
+          // FIX ADDED: Update UI counter
           document.getElementById('spinCount').textContent = spinCount;
           
           if(spinCount >= 3) {
@@ -703,6 +698,7 @@
             const dailyCode = dayKey + today.getDate();
             const msg = document.getElementById('spinMessage');
             
+            // Safe DOM creation instead of innerHTML
             msg.textContent = '';
             const strong = document.createElement('strong');
             strong.textContent = dailyCode;
@@ -921,7 +917,7 @@
           submitBtn.textContent = "Sending...";
           submitBtn.disabled = true;
 
-          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", {
+          fetch("https://formsubmit.co/tob.swindon@outlook.com", {
             method: "POST",
             body: formData,
             headers: { 'Accept': 'application/json' }
@@ -955,7 +951,7 @@
           submitBtn.disabled = true;
           
           const formData = new FormData(bookingForm);
-          fetch("https://formsubmit.co/ajax/tob.swindon@outlook.com", { 
+          fetch("https://formsubmit.co/tob.swindon@outlook.com", { 
              method: "POST", 
              body: formData,
              headers: { 'Accept': 'application/json' }
