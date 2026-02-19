@@ -6,8 +6,8 @@
 const RESTAURANT_EMAIL = "tob.swindon@gmail.com"; 
 
 // 🔴 PASTE YOUR API KEYS HERE
-const WHATSAPP_API_KEY = "1972032"; 
-const MY_PHONE_NUMBER = "447771447915"; 
+const WHATSAPP_API_KEY = "7670753"; 
+const MY_PHONE_NUMBER = "447553484847"; 
 
 // 🔴 PASTE YOUR 3 GOOGLE SHEET CSV LINKS HERE
 const SHEET_MENU_URL    = "https://docs.google.com/spreadsheets/d/e/2PACX-1vQZbAFYD3sVnAi-f-ocPfvHFGfja5fcBMmZOhJwHhvdVefahmRCwGHBGnnPnzr-MVbDNi4pbAYAEVG-/pub?gid=0&single=true&output=csv"; 
