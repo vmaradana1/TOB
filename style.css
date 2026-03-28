@@ -2393,3 +2393,92 @@ input[type="time"].control {
 input[type="date"]::-webkit-date-and-time-value {
   text-align: left;
 }
+
+/* =========================================
+   UX/UI OVERHAUL ENHANCEMENTS
+   ========================================= */
+
+/* 1. Scroll-Reveal Animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 2. Mobile Sticky CTA */
+.mobile-sticky-cta {
+  display: none;
+}
+@media (max-width: 900px) {
+  .mobile-sticky-cta {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+    z-index: 999;
+    justify-content: center;
+  }
+  .mobile-sticky-cta .btn {
+    width: 100%;
+    max-width: 400px;
+    height: 54px;
+    font-size: 1.1rem;
+    box-shadow: 0 8px 16px rgba(217, 119, 43, 0.3);
+  }
+}
+
+/* 3. Sticky Horizontal Categories (Mobile) */
+@media (max-width: 900px) {
+  #categoryList {
+    position: sticky;
+    top: calc(var(--header) - 1px); /* Stick just below header */
+    background: #fff;
+    z-index: 100;
+    margin: 0 -1.5rem; /* Break out of container to span full width */
+    padding: 0.5rem 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border-bottom: 1px solid #eee;
+    white-space: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    flex-wrap: nowrap;
+    border-radius: 0;
+  }
+  #categoryList::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+
+/* 5. Modern Allergen Badge */
+.allergen-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  font-size: 10px;
+  font-weight: 900;
+  color: #fff;
+  margin-right: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.allergen-d { background: #4a90e2; } /* Dairy: Blue */
+.allergen-g { background: #f39c12; } /* Gluten: Orange/Wheat */
+.allergen-n { background: #8e44ad; } /* Nuts: Purple */
+.allergen-f { background: #3498db; } /* Fish: Light Blue */
+.allergen-s { background: #2ecc71; } /* Soya: Green */
+.allergen-p { background: #e74c3c; } /* Prawns: Red */

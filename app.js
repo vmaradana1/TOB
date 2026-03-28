@@ -146,12 +146,20 @@ function renderCategories() {
   const categories = Array.from(grouped.keys());
   if (!grouped.has(activeCategory) && categories.length > 0) activeCategory = categories[0];
   
+  const emojiMap = {
+    "Starters": "🍗", "Non-Veg Starters": "🍗", "Veg Starters": "🥗", "Snack Bites": "🥟", 
+    "Tandoori Khazana": "🔥", "Chicken Curries": "🍛", "Lamb Curries": "🍖", 
+    "Veg Curries": "🥬", "Biryanis": "🍚", "Tandoor Breads": "🫓", 
+    "Sides": "🍟", "Desserts": "🍨", "Drinks": "🧃", "Kids Menu": "👶", "Combo Meals": "🍱"
+  };
+
   const frag = document.createDocumentFragment();
   categoryList.innerHTML = "";
   for (const cat of categories) {
     const b = document.createElement("button");
     b.className = "cat" + (cat === activeCategory ? " active" : "");
-    b.textContent = cat;
+    const emoji = emojiMap[cat] || "🍛";
+    b.innerHTML = `<span style="font-size:1.15rem; margin-right:4px;">${emoji}</span> <span>${cat}</span>`;
     b.addEventListener("click", () => {
       activeCategory = cat;
       menuExpanded = false; 
@@ -213,7 +221,7 @@ function createCard(item) {
   const idx = menuData.indexOf(item); 
   const card = document.createElement("div");
   card.className = "card" + (dim ? " dim" : "");
-  let tagHtml = item.codes && item.codes.length ? `<div class="tags">${item.codes.map(c => `[${c}]`).join(" ")}</div>` : "";
+  let tagHtml = item.codes && item.codes.length ? `<div class="tags" style="margin-top:6px;display:flex;flex-wrap:wrap;">${item.codes.map(c => `<span class="allergen-icon allergen-${c.toLowerCase()}" title="Allergen: ${c}">${c}</span>`).join("")}</div>` : "";
 
   card.innerHTML = `
     <div style="flex-grow:1;">
@@ -768,4 +776,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Start FOMO & Guest Widget
     startFomo();
     initGuestWidget();
+
+    // Initialize UI Scroll Animations
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });

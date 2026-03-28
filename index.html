@@ -149,7 +149,15 @@
   <main id="main">
     <section class="hero">
       <div class="container hero-grid">
-        <div>
+        <div class="reveal">
+          <div class="kicker">Swindon's Finest</div>
+          <h2>Authentic Spice.<br>Modern Soul.</h2>
+          <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich
+            curries, everything is crafted with passion.</p>
+          <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.5rem;">
+            <a href="#menu" class="btn btn-primary">Menu & Pre-Order</a>
+            <a href="#contact" class="btn btn-outline">Book a Table</a>
+          </div>
           <a href="https://ratings.food.gov.uk/business/1885271/taste-of-bharat" target="_blank"
             rel="noopener noreferrer" class="fhr-badge-wrap"
             aria-label="Food Hygiene Rating 5 – Very Good. View our rating on the Food Standards Agency website.">
@@ -160,14 +168,6 @@
               <span>Official Rating by FSA</span>
             </div>
           </a>
-          <div class="kicker">Swindon's Finest</div>
-          <h2>Authentic Spice.<br>Modern Soul.</h2>
-          <p>Experience the vibrant flavors of India in a warm, contemporary setting. From sizzling grills to rich
-            curries, everything is crafted with passion.</p>
-          <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center">
-            <a href="#menu" class="btn btn-primary">Menu & Pre-Order</a>
-            <a href="#contact" class="btn btn-outline">Book a Table</a>
-          </div>
         </div>
 
         <div class="hero-media">
@@ -178,7 +178,8 @@
       </div>
     </section>
 
-    <section class="section offers">
+
+    <section class="section offers reveal">
       <div class="container">
         <div class="section-title">
           <h3>Special Offers</h3>
@@ -187,7 +188,7 @@
       </div>
     </section>
 
-    <section class="section social-proof">
+    <section class="section social-proof reveal">
       <div class="container">
         <div
           style="color:var(--text-light);text-transform:uppercase;letter-spacing:1px;font-size:.8rem;font-weight:900">
@@ -200,7 +201,7 @@
       </div>
     </section>
 
-    <section id="reviews" class="section reviews">
+    <section id="reviews" class="section reviews reveal">
       <div class="container">
         <div class="reviews-top">
           <div>
@@ -245,7 +246,7 @@
       </div>
     </section>
 
-    <section id="menu" class="section">
+    <section id="menu" class="section reveal">
       <div class="container">
         <div class="section-title">
           <h3>Our Menu</h3>
@@ -279,7 +280,7 @@
       </div>
     </section>
 
-    <section id="spin" class="section white">
+    <section id="spin" class="section white reveal">
       <div class="container" style="text-align:center">
         <h3>Can't Decide?</h3>
         <p style="color:var(--text-muted);font-weight:700">Let fate choose your feast.</p>
@@ -317,7 +318,7 @@
       </div>
     </section>
 
-    <section id="chef" class="section">
+    <section id="chef" class="section reveal">
       <div class="container pairbox">
         <h3 style="font-size:2rem;margin-bottom:.5rem">Chef's Recommendation</h3>
         <p style="color:var(--text-muted);font-weight:700">Select a main, and we'll suggest the perfect accompaniments.
@@ -355,7 +356,7 @@
       </div>
     </section>
 
-    <section id="gallery" class="section gallery">
+    <section id="gallery" class="section gallery reveal">
       <div class="container">
         <div class="section-title">
           <h3>Visual Feast</h3>
@@ -590,6 +591,10 @@
       <div id="upsell-content">
       </div>
     </div>
+  </div>
+
+  <div class="mobile-sticky-cta">
+    <a href="#menu" class="btn btn-primary" style="display:flex; align-items:center; gap:8px; justify-content:center;">Menu & Order Live</a>
   </div>
 
   <script src="data.js"></script>
