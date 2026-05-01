@@ -777,6 +777,26 @@ document.addEventListener("DOMContentLoaded", () => {
     startFomo();
     initGuestWidget();
 
+    // Promo Popup Logic
+    const promoPopup = document.getElementById('promo-popup');
+    const closePromoBtn = document.getElementById('closePromo');
+    if (promoPopup && closePromoBtn) {
+        setTimeout(() => {
+            promoPopup.classList.remove('hidden');
+        }, 1500); // Show after 1.5 seconds
+
+        const closePromo = () => {
+            promoPopup.classList.add('hidden');
+        };
+
+        closePromoBtn.addEventListener('click', closePromo);
+        promoPopup.addEventListener('click', (e) => {
+            if (e.target === promoPopup) {
+                closePromo();
+            }
+        });
+    }
+
     // Initialize UI Scroll Animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {

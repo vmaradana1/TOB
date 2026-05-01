@@ -2482,3 +2482,71 @@ input[type="date"]::-webkit-date-and-time-value {
 .allergen-f { background: #3498db; } /* Fish: Light Blue */
 .allergen-s { background: #2ecc71; } /* Soya: Green */
 .allergen-p { background: #e74c3c; } /* Prawns: Red */
+
+/* Promo Popup */
+.promo-popup {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  padding: 1rem;
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.promo-popup.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.promo-popup-content {
+  position: relative;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  transform: scale(1);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.promo-popup.hidden .promo-popup-content {
+  transform: scale(0.9);
+}
+
+.promo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.close-promo {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease, transform 0.3s ease;
+  z-index: 10;
+}
+
+.close-promo:hover {
+  background: rgba(0, 0, 0, 0.8);
+  transform: scale(1.1);
+}
